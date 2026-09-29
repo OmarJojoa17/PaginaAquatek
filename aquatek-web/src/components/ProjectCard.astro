@@ -75,6 +75,7 @@ const searchableText = [
 
 <style>
   .project-card {
+    min-width: 0;
     border: 1px solid var(--color-line);
     background: var(--color-white);
   }
@@ -85,13 +86,15 @@ const searchableText = [
 
   .project-card article {
     display: grid;
-    height: 100%;
+    grid-template-rows: auto 1fr;
   }
 
   .project-card__visual {
     display: block;
+    aspect-ratio: 16 / 9;
     overflow: hidden;
     border-bottom: 1px solid var(--color-line);
+    background: var(--color-ice);
   }
 
   .project-card__visual :global(svg) {
@@ -101,8 +104,9 @@ const searchableText = [
   .project-card__visual img {
     display: block;
     width: 100%;
-    aspect-ratio: 16 / 9;
+    height: 100%;
     object-fit: cover;
+    object-position: center;
     transition: transform 220ms ease;
   }
 

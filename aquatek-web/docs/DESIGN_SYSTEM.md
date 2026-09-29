@@ -98,3 +98,5 @@ Móvil                     Escritorio
 - La matriz de especialidades conserva una celda disponible para crecimiento futuro.
 - Las capacidades se presentan como una banda de cuatro criterios verificables en escritorio y se
   apilan progresivamente en pantallas menores.
+- El índice de proyectos usa una cuadrícula de dos columnas en escritorio y una en móvil. Cada
+  imagen se mantiene en un marco `16:9` para que ninguna ficha crezca según la altura del archivo.

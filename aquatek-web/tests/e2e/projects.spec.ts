@@ -16,6 +16,13 @@ test('presenta el primer proyecto publicado', async ({ page }, testInfo) => {
     page.getByRole('link', { name: 'Diseño hidráulico de la nueva PTAP de San Francisco' }),
   ).toBeVisible();
 
+  const visualRatio = await page.locator('.project-card__visual').evaluate((visual) => {
+    const bounds = visual.getBoundingClientRect();
+    return bounds.width / bounds.height;
+  });
+  expect(visualRatio).toBeGreaterThan(1.7);
+  expect(visualRatio).toBeLessThan(1.85);
+
   const hasHorizontalOverflow = await page.evaluate(
     () => document.documentElement.scrollWidth > document.documentElement.clientWidth,
   );
