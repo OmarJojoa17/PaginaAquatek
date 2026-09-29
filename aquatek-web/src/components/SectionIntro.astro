@@ -10,6 +10,15 @@ const { title, description, headingId, titleLines } = Astro.props;
 ---
 
 <div class="section-intro">
-  <h2 id={headingId}>{titleLines ? titleLines.map((line) => <span>{line}</span>) : title}</h2>
+  <h2 id={headingId}>
+    {titleLines
+      ? titleLines.map((line, index) => (
+          <span>
+            {line}
+            {index < titleLines.length - 1 ? ' ' : ''}
+          </span>
+        ))
+      : title}
+  </h2>
   <p>{description}</p>
 </div>

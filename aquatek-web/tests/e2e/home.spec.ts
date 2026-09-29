@@ -26,6 +26,12 @@ test('presenta el alcance técnico sin desbordamiento horizontal', async ({ page
       name: 'Servicios para diseñar y controlar el agua adecuadamente.',
     }),
   ).toBeVisible();
+  await expect(page.locator('#team-title')).toHaveText(
+    'Quienes atienden también diseñan y firman.',
+  );
+  await expect(page.locator('#scope-title')).toHaveText(
+    'Servicios para diseñar y controlar el agua adecuadamente.',
+  );
   await expect(page.getByText('Sitio técnico de Aquatek')).toBeVisible();
   await expect(page.getByText('Portafolio técnico en desarrollo')).toHaveCount(0);
 
