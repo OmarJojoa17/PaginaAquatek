@@ -29,6 +29,8 @@ test('presenta el alcance técnico sin desbordamiento horizontal', async ({ page
   await expect(page.locator('#team-title')).toHaveText(
     'Quienes atienden también diseñan y firman.',
   );
+  await expect(page.locator('.technical-team__intro > p')).not.toContainText('Julián Pasuy');
+  await expect(page.locator('.technical-team__intro > p')).not.toContainText('Omar David Jojoa');
   await expect(page.locator('#scope-title')).toHaveText(
     'Servicios para diseñar y controlar el agua adecuadamente.',
   );
