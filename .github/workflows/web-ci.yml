@@ -1,0 +1,99 @@
+name: Verificar y desplegar sitio
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "aquatek-web/**"
+      - ".github/workflows/web-ci.yml"
+  pull_request:
+    paths:
+      - "aquatek-web/**"
+      - ".github/workflows/web-ci.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    defaults:
+      run:
+        working-directory: aquatek-web
+    steps:
+      - name: Obtener repositorio
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - name: Preparar pnpm
+        uses: pnpm/action-setup@f40ffcd9367d9f12939873eb1018b921a783ffaa # v4
+        with:
+          version: 11
+      - name: Preparar Node.js
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: 24
+          cache: pnpm
+          cache-dependency-path: aquatek-web/pnpm-lock.yaml
+      - name: Instalar dependencias
+        run: pnpm install --frozen-lockfile
+      - name: Verificar tipos, formato, unidades y compilación
+        run: pnpm run ci
+      - name: Instalar Chromium
+        run: pnpm exec playwright install --with-deps chromium
+      - name: Ejecutar recorridos críticos
+        run: pnpm run test:e2e
+
+  build-pages:
+    if: github.event_name != 'pull_request'
+    needs: verify
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    defaults:
+      run:
+        working-directory: aquatek-web
+    steps:
+      - name: Obtener repositorio
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - name: Preparar pnpm
+        uses: pnpm/action-setup@f40ffcd9367d9f12939873eb1018b921a783ffaa # v4
+        with:
+          version: 11
+      - name: Preparar Node.js
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: 24
+          cache: pnpm
+          cache-dependency-path: aquatek-web/pnpm-lock.yaml
+      - name: Instalar dependencias
+        run: pnpm install --frozen-lockfile
+      - name: Compilar vista previa pública
+        env:
+          PUBLIC_SITE_URL: https://omarjojoa17.github.io/aquatek-web/
+          PUBLIC_BASE_PATH: /aquatek-web/
+          PUBLIC_ALLOW_INDEXING: "false"
+        run: pnpm build
+      - name: Auditar artefacto público
+        run: pnpm audit:build
+      - name: Subir artefacto de Pages
+        uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
+        with:
+          path: aquatek-web/dist
+
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: build-pages
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publicar en GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4

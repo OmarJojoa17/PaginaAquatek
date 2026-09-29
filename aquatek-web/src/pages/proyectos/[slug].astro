@@ -1,0 +1,343 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import ProjectGallery from '../../components/ProjectGallery.astro';
+import ProjectHero from '../../components/ProjectHero.astro';
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { isPublicProject } from '../../utils/content';
+import { disciplineLabels } from '../../utils/disciplines';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+
+  return projects
+    .filter((project) => isPublicProject(project.data))
+    .map((project) => ({ params: { slug: project.data.slug }, props: { project } }));
+}
+
+type Props = {
+  project: CollectionEntry<'projects'>;
+};
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+const title = `${project.data.title} | Proyecto Aquatek`;
+const description = project.data.summary;
+const discipline = disciplineLabels[project.data.discipline];
+const featuredVideo = project.data.media.find((medium) => medium.type === 'video');
+const remainingMedia = project.data.media.filter((medium) => medium !== featuredVideo);
+---
+
+<SiteLayout
+  {title}
+  {description}
+  type="article"
+  schema={{
+    '@context': 'https://schema.org',
+    '@type': 'CreativeWork',
+    name: project.data.title,
+    description,
+    dateCreated: project.data.year ? String(project.data.year) : undefined,
+    about: discipline,
+    creator: { '@type': 'Organization', name: 'Aquatek' },
+  }}
+>
+  <ProjectHero {project} />
+
+  {featuredVideo && (
+    <section class="project-film page-section" aria-labelledby="film-title">
+      <div class="project-film__intro">
+        <p>Primera mirada</p>
+        <h2 id="film-title">El proyecto en 60 segundos</h2>
+        <p>Del tren de tratamiento al modelo BIM y los planos que permiten revisar la solución.</p>
+      </div>
+      <ProjectGallery media={[featuredVideo]} />
+    </section>
+  )}
+
+  <section class="project-facts page-section" aria-labelledby="facts-title">
+    <h2 id="facts-title">Lectura rápida del proyecto</h2>
+    <dl>
+      <div>
+        <dt>Especialidad</dt>
+        <dd>{discipline}</dd>
+      </div>
+      {project.data.year && (
+        <div>
+          <dt>Año</dt>
+          <dd>{project.data.year}</dd>
+        </div>
+      )}
+      {project.data.location && (
+        <div>
+          <dt>Ubicación publicable</dt>
+          <dd>{project.data.location}</dd>
+        </div>
+      )}
+      {project.data.client && (
+        <div>
+          <dt>Cliente</dt>
+          <dd>{project.data.client}</dd>
+        </div>
+      )}
+      <div>
+        <dt>Evidencia</dt>
+        <dd>{project.data.media.length} recursos publicados</dd>
+      </div>
+    </dl>
+  </section>
+
+  <section class="project-question page-section page-section--ice" aria-labelledby="question-title">
+    <div>
+      <p>Problema</p>
+      <h2 id="question-title">La pregunta de ingeniería</h2>
+    </div>
+    <div class="project-question__copy">
+      <p>{project.data.need}</p>
+      <div class="prose">
+        <Content />
+      </div>
+    </div>
+  </section>
+
+  <section class="project-work page-section" aria-labelledby="work-title">
+    <div>
+      <p>Proceso</p>
+      <h2 id="work-title">Qué se revisó y cómo se analizó</h2>
+    </div>
+    <div class="project-work__columns">
+      <article>
+        <h3>Alcance</h3>
+        <ul>
+          {project.data.scope?.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </article>
+      <article>
+        <h3>Metodología</h3>
+        <ol>
+          {project.data.methodology?.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ol>
+      </article>
+    </div>
+  </section>
+
+  <section class="project-results page-section page-section--dark" aria-labelledby="results-title">
+    <div>
+      <p>Resultado</p>
+      <h2 id="results-title">Decisiones y entregables verificables</h2>
+    </div>
+    <ul>
+      {project.data.results?.map((result) => (
+        <li>{result}</li>
+      ))}
+    </ul>
+  </section>
+
+  {(project.data.tools.length > 0 || project.data.standards.length > 0) && (
+    <section class="project-basis page-section" aria-labelledby="basis-title">
+      <h2 id="basis-title">Base técnica</h2>
+      <div>
+        {project.data.tools.length > 0 && (
+          <article>
+            <h3>Herramientas</h3>
+            <ul>
+              {project.data.tools.map((tool) => (
+                <li>{tool}</li>
+              ))}
+            </ul>
+          </article>
+        )}
+        {project.data.standards.length > 0 && (
+          <article>
+            <h3>Normas y criterios</h3>
+            <ul>
+              {project.data.standards.map((standard) => (
+                <li>{standard}</li>
+              ))}
+            </ul>
+          </article>
+        )}
+      </div>
+    </section>
+  )}
+
+  {remainingMedia.length > 0 && (
+    <section
+      class="project-evidence page-section page-section--ice"
+      aria-labelledby="evidence-title"
+    >
+      <div class="project-evidence__intro">
+        <h2 id="evidence-title">Evidencia del proyecto</h2>
+        <p>
+          Los archivos publicados son derivados web revisados; los originales permanecen protegidos.
+        </p>
+      </div>
+      <ProjectGallery media={remainingMedia} />
+    </section>
+  )}
+</SiteLayout>
+
+<style>
+  .project-facts,
+  .project-film__intro,
+  .project-question,
+  .project-work,
+  .project-results,
+  .project-basis,
+  .project-evidence__intro {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .project-facts h2 {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+  }
+
+  .project-film {
+    background: var(--color-navy);
+  }
+
+  .project-film__intro {
+    margin-bottom: 2.5rem;
+  }
+
+  .project-film__intro > p:first-child {
+    color: #b8c4f2;
+    font-weight: 750;
+  }
+
+  .project-film__intro h2,
+  .project-film__intro > p:last-child {
+    color: var(--color-white);
+  }
+
+  .project-film__intro > p:last-child {
+    max-width: 42rem;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .project-facts dl {
+    margin: 0;
+    border-top: 1px solid var(--color-line);
+  }
+
+  .project-facts dl div {
+    display: grid;
+    gap: 0.35rem;
+    padding-block: 1rem;
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .project-facts dt,
+  .project-question > div:first-child > p,
+  .project-work > div:first-child > p,
+  .project-results > div:first-child > p {
+    color: var(--color-blue);
+    font-weight: 750;
+  }
+
+  .project-facts dd {
+    margin: 0;
+  }
+
+  .project-question__copy > p {
+    font-size: clamp(1.25rem, 2vw, 1.55rem);
+    line-height: 1.55;
+  }
+
+  .project-question__copy .prose {
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-line);
+  }
+
+  .project-work__columns {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .project-work article,
+  .project-basis article {
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--color-line);
+  }
+
+  .project-work h3,
+  .project-basis h3 {
+    color: var(--color-navy);
+    font-size: 1.4rem;
+  }
+
+  .project-work ul,
+  .project-work ol,
+  .project-results ul,
+  .project-basis ul {
+    display: grid;
+    gap: 0.8rem;
+    margin: 0;
+    padding-left: 1.25rem;
+    line-height: 1.55;
+  }
+
+  .project-results h2,
+  .project-results > div:first-child > p {
+    color: var(--color-white);
+  }
+
+  .project-results {
+    color: var(--color-white);
+    background: var(--color-indigo);
+  }
+
+  .project-results ul {
+    border-top: 1px solid rgb(255 255 255 / 24%);
+    color: var(--color-on-dark);
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .project-results li {
+    padding: 1.1rem 0;
+    border-bottom: 1px solid rgb(255 255 255 / 24%);
+  }
+
+  .project-basis > div {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .project-evidence__intro {
+    margin-bottom: 3rem;
+  }
+
+  .project-evidence__intro p {
+    max-width: 42rem;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  @media (min-width: 48rem) {
+    .project-facts,
+    .project-film__intro,
+    .project-question,
+    .project-work,
+    .project-results,
+    .project-basis,
+    .project-evidence__intro {
+      grid-template-columns: minmax(16rem, 0.8fr) minmax(20rem, 1.2fr);
+    }
+
+    .project-facts dl div {
+      grid-template-columns: minmax(10rem, 0.5fr) 1fr;
+      gap: 1.5rem;
+    }
+
+    .project-work__columns,
+    .project-basis > div {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>

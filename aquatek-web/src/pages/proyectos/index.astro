@@ -1,0 +1,164 @@
+---
+import { getCollection } from 'astro:content';
+import PageHero from '../../components/PageHero.astro';
+import ProjectBrowser from '../../components/ProjectBrowser.astro';
+import ProjectTrace from '../../components/ProjectTrace.astro';
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { isPublicProject } from '../../utils/content';
+
+const projects = (await getCollection('projects'))
+  .filter((project) => isPublicProject(project.data))
+  .sort(
+    (a, b) =>
+      Number(b.data.featured) - Number(a.data.featured) ||
+      (b.data.year ?? 0) - (a.data.year ?? 0) ||
+      a.data.title.localeCompare(b.data.title, 'es'),
+  );
+---
+
+<SiteLayout
+  title="Proyectos de ingeniería del agua | Aquatek"
+  description="Casos técnicos de hidrología, hidráulica, drenaje y redes explicados mediante datos, modelos, planos, videos y decisiones de diseño."
+>
+  <PageHero
+    current="Proyectos"
+    title="Estudios, modelos y decisiones que se pueden revisar."
+    intro="Cada caso reúne el problema, la información utilizada, el análisis y la evidencia necesaria para entender qué se hizo y por qué."
+  />
+
+  {projects.length > 0 ? (
+    <section class="project-index page-section" aria-labelledby="project-index-title">
+      <div class="project-index__intro">
+        <h2 id="project-index-title">Portafolio técnico</h2>
+        <p>Busca por tema o filtra según la especialidad y la evidencia que quieras revisar.</p>
+      </div>
+      <ProjectBrowser {projects} />
+    </section>
+  ) : (
+    <section class="portfolio-pending page-section" aria-labelledby="portfolio-pending-title">
+      <div class="portfolio-pending__copy">
+        <p>Portafolio en preparación</p>
+        <h2 id="portfolio-pending-title">Los proyectos se publicarán después de su revisión.</h2>
+        <p>
+          La estructura ya está preparada para presentar videos, planos, imágenes y documentos. El
+          primer caso aparecerá cuando la información técnica y los permisos de publicación estén
+          confirmados.
+        </p>
+      </div>
+      <div class="portfolio-pending__visual">
+        <ProjectTrace title="Estructura visual preparada para documentar proyectos" />
+        <p>Esta representación define el formato; no corresponde a un proyecto publicado.</p>
+      </div>
+    </section>
+  )}
+
+  <section class="publication-flow page-section page-section--ice" aria-labelledby="flow-title">
+    <div>
+      <h2 id="flow-title">Antes de mostrar un proyecto</h2>
+      <p>La publicación protege la información técnica y ayuda a explicar el caso con precisión.</p>
+    </div>
+    <ol>
+      <li>
+        <strong>Revisión técnica</strong>
+        <span>Se verifican alcance, datos, modelos y conclusiones.</span>
+      </li>
+      <li>
+        <strong>Autorización</strong>
+        <span>Se retiran datos sensibles y se confirman permisos de uso.</span>
+      </li>
+      <li>
+        <strong>Preparación web</strong>
+        <span>Se optimizan planos, imágenes, videos y textos alternativos.</span>
+      </li>
+      <li>
+        <strong>Publicación</strong>
+        <span>El caso se relaciona con sus especialidades y entra al buscador.</span>
+      </li>
+    </ol>
+  </section>
+</SiteLayout>
+
+<style>
+  .project-index__intro,
+  .publication-flow > div {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .project-index__intro p,
+  .publication-flow > div p,
+  .portfolio-pending__copy > p:last-child {
+    max-width: 42rem;
+    margin: 0;
+    font-size: 1.08rem;
+    line-height: 1.6;
+  }
+
+  .portfolio-pending {
+    display: grid;
+    gap: 3rem;
+  }
+
+  .portfolio-pending__copy > p:first-child {
+    color: var(--color-blue);
+    font-weight: 750;
+  }
+
+  .portfolio-pending__visual {
+    align-self: start;
+    border: 1px solid var(--color-line);
+  }
+
+  .portfolio-pending__visual p {
+    margin: 0;
+    padding: 1rem 1.25rem;
+    border-top: 1px solid var(--color-line);
+    color: var(--color-blue);
+    font-size: 0.9rem;
+  }
+
+  .publication-flow ol {
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--color-line);
+    list-style: none;
+    counter-reset: publication-step;
+  }
+
+  .publication-flow li {
+    display: grid;
+    gap: 0.5rem;
+    padding: 1.4rem 0 1.4rem 3.5rem;
+    border-bottom: 1px solid var(--color-line);
+    counter-increment: publication-step;
+  }
+
+  .publication-flow li::before {
+    position: absolute;
+    margin-left: -3.5rem;
+    color: var(--color-indigo);
+    content: counter(publication-step, decimal-leading-zero);
+    font-family: var(--font-display);
+    font-weight: 750;
+  }
+
+  .publication-flow strong {
+    color: var(--color-navy);
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+  }
+
+  @media (min-width: 48rem) {
+    .project-index__intro,
+    .publication-flow > div,
+    .portfolio-pending {
+      grid-template-columns: minmax(16rem, 0.8fr) minmax(20rem, 1.2fr);
+    }
+
+    .publication-flow li {
+      grid-template-columns: minmax(14rem, 0.55fr) minmax(20rem, 1fr);
+      gap: 2rem;
+    }
+  }
+</style>

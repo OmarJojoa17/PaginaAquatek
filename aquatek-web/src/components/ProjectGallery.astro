@@ -1,0 +1,187 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+type Props = {
+  media: CollectionEntry<'projects'>['data']['media'];
+};
+
+const { media } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const assetUrl = (src: string) => `${base}${src.replace(/^\//, '')}`;
+const typeLabels = {
+  image: 'Imagen técnica',
+  video: 'Video explicado',
+  plan: 'Plano derivado',
+  document: 'Documento',
+} as const;
+---
+
+<ul class="project-gallery">
+  {media.map((medium) => (
+    <li
+      class:list={[
+        'project-gallery__item',
+        `project-gallery__item--${medium.type}`,
+        { 'project-gallery__item--wide': medium.layout === 'wide' },
+      ]}
+    >
+      {medium.type === 'image' && (
+        <figure>
+          <img
+            src={assetUrl(medium.src)}
+            alt={medium.alt}
+            width={medium.width}
+            height={medium.height}
+            loading="lazy"
+            decoding="async"
+            draggable="false"
+          />
+          {medium.caption && <figcaption>{medium.caption}</figcaption>}
+        </figure>
+      )}
+
+      {medium.type === 'video' && (
+        <figure>
+          <video
+            controls
+            controlslist="nodownload noremoteplayback"
+            disablepictureinpicture
+            preload="metadata"
+            poster={medium.poster ? assetUrl(medium.poster) : undefined}
+            aria-label={medium.alt}
+          >
+            <source src={assetUrl(medium.src)} />
+            {medium.captionsSrc && (
+              <track
+                kind="captions"
+                src={assetUrl(medium.captionsSrc)}
+                srclang="es"
+                label="Español"
+                default
+              />
+            )}
+            Tu navegador no puede reproducir este video.
+          </video>
+          {medium.caption && <figcaption>{medium.caption}</figcaption>}
+          {medium.transcript && (
+            <details>
+              <summary>Leer transcripción</summary>
+              <p>{medium.transcript}</p>
+            </details>
+          )}
+        </figure>
+      )}
+
+      {(medium.type === 'plan' || medium.type === 'document') && (
+        <article class="project-gallery__file">
+          <p>{typeLabels[medium.type]}</p>
+          <h3>{medium.alt}</h3>
+          {medium.caption && <p>{medium.caption}</p>}
+          <a href={assetUrl(medium.src)} target="_blank" rel="noopener">
+            Abrir {medium.type === 'plan' ? 'plano' : 'documento'} en otra pestaña
+          </a>
+        </article>
+      )}
+    </li>
+  ))}
+</ul>
+
+<style>
+  .project-gallery {
+    display: grid;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .project-gallery__item {
+    overflow: hidden;
+    border: 1px solid var(--color-line);
+    background: var(--color-white);
+  }
+
+  .project-gallery figure {
+    margin: 0;
+  }
+
+  .project-gallery img,
+  .project-gallery video {
+    display: block;
+    width: 100%;
+    max-height: 46rem;
+    background: var(--color-navy);
+    object-fit: contain;
+  }
+
+  .project-gallery img {
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .project-gallery figcaption,
+  .project-gallery details,
+  .project-gallery__file {
+    padding: 1.25rem;
+  }
+
+  .project-gallery figcaption {
+    color: var(--color-blue);
+    line-height: 1.5;
+  }
+
+  .project-gallery details {
+    border-top: 1px solid var(--color-line);
+  }
+
+  .project-gallery summary {
+    color: var(--color-navy);
+    cursor: pointer;
+    font-weight: 750;
+  }
+
+  .project-gallery details p {
+    max-width: 70ch;
+    margin: 1rem 0 0;
+    line-height: 1.6;
+  }
+
+  .project-gallery__file {
+    min-height: 16rem;
+    background:
+      linear-gradient(var(--color-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--color-line) 1px, transparent 1px), var(--color-ice);
+    background-size: 2.5rem 2.5rem;
+  }
+
+  .project-gallery__file > p:first-child {
+    color: var(--color-blue);
+    font-weight: 750;
+  }
+
+  .project-gallery__file h3 {
+    max-width: 25ch;
+    color: var(--color-navy);
+    font-size: clamp(1.5rem, 3vw, 2.4rem);
+  }
+
+  .project-gallery__file a {
+    color: var(--color-navy);
+    font-weight: 750;
+    text-decoration-color: var(--color-signal);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.35rem;
+  }
+
+  @media (min-width: 56rem) {
+    .project-gallery {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .project-gallery__item--video,
+    .project-gallery__item--wide,
+    .project-gallery__item:first-child:last-child {
+      grid-column: 1 / -1;
+    }
+  }
+</style>

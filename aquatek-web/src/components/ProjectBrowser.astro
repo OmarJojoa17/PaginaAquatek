@@ -1,0 +1,195 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { disciplineLabels, disciplineValues } from '../utils/disciplines';
+import ProjectCard from './ProjectCard.astro';
+
+type Props = {
+  projects: CollectionEntry<'projects'>[];
+};
+
+const { projects } = Astro.props;
+const mediaOptions = [
+  ['image', 'Fotografías'],
+  ['video', 'Video'],
+  ['plan', 'Planos'],
+  ['document', 'Documentos'],
+] as const;
+---
+
+<div class="project-browser" data-project-browser>
+  <form class="project-filters" aria-label="Filtrar proyectos">
+    <label>
+      <span>Buscar</span>
+      <input
+        type="search"
+        name="query"
+        placeholder="Tema, sistema o resultado"
+        autocomplete="off"
+      />
+    </label>
+    <label>
+      <span>Especialidad</span>
+      <select name="discipline">
+        <option value="">Todas</option>
+        {disciplineValues.map((discipline) => (
+          <option value={discipline}>{disciplineLabels[discipline]}</option>
+        ))}
+      </select>
+    </label>
+    <label>
+      <span>Evidencia</span>
+      <select name="medium">
+        <option value="">Toda</option>
+        {mediaOptions.map(([value, label]) => (
+          <option value={value}>{label}</option>
+        ))}
+      </select>
+    </label>
+    <button type="reset">Limpiar filtros</button>
+  </form>
+
+  <p class="project-browser__count" aria-live="polite" data-project-count>
+    {projects.length === 1 ? '1 proyecto visible' : `${projects.length} proyectos visibles`}
+  </p>
+
+  <ul class="project-browser__list" data-project-list>
+    {projects.map((project) => (
+      <ProjectCard {project} />
+    ))}
+  </ul>
+
+  <div class="project-browser__empty" data-filter-empty hidden>
+    <h2>No hay proyectos con esos filtros.</h2>
+    <p>Prueba otra especialidad, otro tipo de evidencia o una búsqueda más amplia.</p>
+  </div>
+</div>
+
+<script>
+  const normalize = (value: string) =>
+    value
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLocaleLowerCase('es')
+      .trim();
+
+  document.querySelectorAll<HTMLElement>('[data-project-browser]').forEach((browser) => {
+    const form = browser.querySelector<HTMLFormElement>('form');
+    const cards = [...browser.querySelectorAll<HTMLElement>('[data-project-card]')];
+    const count = browser.querySelector<HTMLElement>('[data-project-count]');
+    const empty = browser.querySelector<HTMLElement>('[data-filter-empty]');
+
+    if (!form || !count || !empty) return;
+
+    const update = () => {
+      const values = new FormData(form);
+      const query = normalize(String(values.get('query') ?? ''));
+      const discipline = String(values.get('discipline') ?? '');
+      const medium = String(values.get('medium') ?? '');
+      let visible = 0;
+
+      cards.forEach((card) => {
+        const matches =
+          (!query || normalize(card.dataset.search ?? '').includes(query)) &&
+          (!discipline || card.dataset.discipline === discipline) &&
+          (!medium || (card.dataset.media ?? '').split(' ').includes(medium));
+        card.hidden = !matches;
+        if (matches) visible += 1;
+      });
+
+      count.textContent = visible === 1 ? '1 proyecto visible' : `${visible} proyectos visibles`;
+      empty.hidden = visible !== 0;
+    };
+
+    form.addEventListener('input', update);
+    form.addEventListener('reset', () => requestAnimationFrame(update));
+  });
+</script>
+
+<style>
+  .project-filters {
+    display: grid;
+    gap: 1rem;
+    padding: 1.25rem;
+    border: 1px solid var(--color-line);
+    background: var(--color-ice);
+  }
+
+  .project-filters label {
+    display: grid;
+    gap: 0.45rem;
+    color: var(--color-navy);
+    font-weight: 700;
+  }
+
+  .project-filters input,
+  .project-filters select,
+  .project-filters button {
+    width: 100%;
+    min-height: 3rem;
+    border: 1px solid var(--color-blue);
+    border-radius: 0;
+    color: var(--color-navy);
+    background: var(--color-white);
+    font: inherit;
+  }
+
+  .project-filters input,
+  .project-filters select {
+    padding-inline: 0.8rem;
+  }
+
+  .project-filters button {
+    align-self: end;
+    padding: 0.7rem 1rem;
+    cursor: pointer;
+    font-weight: 750;
+  }
+
+  .project-filters button:hover {
+    color: var(--color-white);
+    background: var(--color-navy);
+  }
+
+  .project-browser__count {
+    margin: 1.25rem 0 2rem;
+    color: var(--color-blue);
+    font-weight: 700;
+  }
+
+  .project-browser__list {
+    display: grid;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .project-browser__empty {
+    padding: clamp(2rem, 5vw, 4rem);
+    border: 1px solid var(--color-line);
+  }
+
+  .project-browser__empty h2 {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+  }
+
+  .project-browser__empty p {
+    margin: 1rem 0 0;
+    line-height: 1.6;
+  }
+
+  @media (min-width: 48rem) {
+    .project-filters {
+      grid-template-columns: minmax(15rem, 1.4fr) repeat(2, minmax(10rem, 1fr)) auto;
+      align-items: end;
+    }
+
+    .project-filters button {
+      width: auto;
+    }
+
+    .project-browser__list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>

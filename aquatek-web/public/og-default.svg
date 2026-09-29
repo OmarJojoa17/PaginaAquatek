@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <pattern id="grid" width="42" height="42" patternUnits="userSpaceOnUse">
+      <path d="M42 0H0v42" fill="none" stroke="#c8d8ee" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="#f4f7fb"/>
+  <rect x="646" width="554" height="630" fill="#e5ebf7"/>
+  <rect x="646" width="554" height="630" fill="url(#grid)"/>
+  <g fill="none">
+    <path d="M620 116c95-57 168 43 260-15s169-42 255 12 133 15 194-27M620 182c92-51 165 37 257-17s171-36 258 18 132 16 194-25M620 251c89-46 161 31 253-19s174-29 262 24 131 18 194-23M620 323c87-41 158 25 249-21s176-22 265 30 130 18 195-21" stroke="#174ea6" stroke-width="2" opacity=".38"/>
+    <path d="M747-20c-3 98 50 117 39 200s72 89 89 164 86 92 116 306" stroke="#3d6fd8" stroke-width="12"/>
+    <path d="M688 441h134l63-77h159l72 82h114" stroke="#071e3d" stroke-width="8"/>
+  </g>
+  <g fill="#f4f7fb" stroke="#3346a8" stroke-width="5">
+    <circle cx="688" cy="441" r="11"/><circle cx="822" cy="441" r="11"/>
+    <circle cx="885" cy="364" r="11"/><circle cx="1044" cy="364" r="11"/>
+    <circle cx="1116" cy="446" r="11"/>
+  </g>
+  <text x="72" y="207" fill="#071e3d" font-family="Segoe UI, Arial, sans-serif" font-size="100" font-weight="700" letter-spacing="-5">Aquatek</text>
+  <text x="77" y="277" fill="#174ea6" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="650">Ingeniería del agua</text>
+  <line x1="77" y1="337" x2="520" y2="337" stroke="#6878cf" stroke-width="7"/>
+  <text x="77" y="403" fill="#071e3d" font-family="Segoe UI, Arial, sans-serif" font-size="28">Territorio, sistema y decisión</text>
+  <text x="77" y="442" fill="#071e3d" font-family="Segoe UI, Arial, sans-serif" font-size="28">en una misma lectura técnica.</text>
+</svg>

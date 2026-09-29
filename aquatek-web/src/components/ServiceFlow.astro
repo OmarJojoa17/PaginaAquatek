@@ -1,0 +1,125 @@
+---
+type Props = {
+  input: string;
+  analysis: string;
+  output: string;
+};
+
+const { input, analysis, output } = Astro.props;
+---
+
+<figure class="service-flow" aria-labelledby="service-flow-caption">
+  <div class="service-flow__stage">
+    <span>Información</span>
+    <strong>{input}</strong>
+  </div>
+  <div class="service-flow__channel" aria-hidden="true">
+    <i></i>
+    <svg viewBox="0 0 40 24">
+      <path d="m2 8 6 6 6-6 6 6 6-6 6 6 6-6" />
+    </svg>
+    <i></i>
+  </div>
+  <div class="service-flow__stage service-flow__stage--analysis">
+    <span>Análisis</span>
+    <strong>{analysis}</strong>
+  </div>
+  <div class="service-flow__channel" aria-hidden="true">
+    <i></i>
+    <svg viewBox="0 0 40 24">
+      <path d="m2 8 6 6 6-6 6 6 6-6 6 6 6-6" />
+    </svg>
+    <i></i>
+  </div>
+  <div class="service-flow__stage">
+    <span>Decisión</span>
+    <strong>{output}</strong>
+  </div>
+  <figcaption id="service-flow-caption">
+    La información se organiza, se analiza y se convierte en una decisión técnica documentada.
+  </figcaption>
+</figure>
+
+<style>
+  .service-flow {
+    display: grid;
+    margin: 0;
+    padding: clamp(1.25rem, 4vw, 2.5rem);
+    border: 1px solid var(--color-line);
+    background-color: var(--color-white);
+    background-image:
+      linear-gradient(var(--color-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--color-line) 1px, transparent 1px);
+    background-size: 2rem 2rem;
+  }
+
+  .service-flow__stage {
+    display: grid;
+    gap: 0.4rem;
+    padding: 1.25rem;
+    border: 2px solid var(--color-navy);
+    background: var(--color-paper);
+  }
+
+  .service-flow__stage--analysis {
+    color: var(--color-white);
+    background: var(--color-indigo);
+  }
+
+  .service-flow__stage span {
+    color: var(--color-blue);
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+
+  .service-flow__stage--analysis span {
+    color: #e0e5f7;
+  }
+
+  .service-flow__stage strong {
+    font-family: var(--font-display);
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+  }
+
+  .service-flow__channel {
+    display: grid;
+    grid-template-columns: 1fr 2.5rem 1fr;
+    align-items: center;
+    color: var(--color-signal);
+  }
+
+  .service-flow__channel i {
+    height: 2px;
+    background: currentColor;
+  }
+
+  .service-flow__channel svg {
+    width: 2.5rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+  }
+
+  .service-flow figcaption {
+    margin-top: 1.5rem;
+    color: var(--color-blue);
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  @media (min-width: 64rem) {
+    .service-flow {
+      grid-template-columns: minmax(0, 1fr) 4rem minmax(0, 1fr) 4rem minmax(0, 1fr);
+      align-items: stretch;
+    }
+
+    .service-flow__stage {
+      min-height: 9rem;
+      align-content: space-between;
+    }
+
+    .service-flow figcaption {
+      grid-column: 1 / -1;
+    }
+  }
+</style>

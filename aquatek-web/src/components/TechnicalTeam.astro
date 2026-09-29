@@ -1,0 +1,145 @@
+<section class="technical-team" id="equipo" aria-labelledby="team-title">
+  <div class="technical-team__intro">
+    <div>
+      <p class="technical-team__label">Responsabilidad técnica directa</p>
+      <h2 id="team-title">Quienes atienden también realizan y firman.</h2>
+    </div>
+    <p>
+      La consulta no pasa por un equipo comercial. Julián Pasuy y Omar David Jojoa revisan la
+      información, participan en los estudios y diseños, y responden por los entregables según el
+      alcance de cada proyecto.
+    </p>
+  </div>
+
+  <div class="technical-team__grid">
+    <article class="professional-card">
+      <header>
+        <p>Profesional responsable</p>
+        <h3>Julián Pasuy</h3>
+      </header>
+      <ul aria-label="Formación profesional de Julián Pasuy">
+        <li>Ingeniero Civil — Universidad Nacional de Colombia, Sede Bogotá</li>
+        <li>Especialista en Aguas y Saneamiento Ambiental — Universidad Manuela Beltrán</li>
+        <li>Magíster en Ingeniería de Recursos Hídricos — Universidad del Cauca</li>
+      </ul>
+      <p class="professional-card__registration">
+        Matrícula profesional COPNIA <strong>25202213839 CND</strong>
+      </p>
+    </article>
+
+    <article class="professional-card professional-card--indigo">
+      <header>
+        <p>Profesional responsable</p>
+        <h3>Omar David Jojoa</h3>
+      </header>
+      <ul aria-label="Formación profesional de Omar David Jojoa">
+        <li>Ingeniero Civil — Universidad Nacional de Colombia, Sede Bogotá</li>
+        <li>
+          Magíster en Ingeniería de Recursos Hidráulicos — Universidad Nacional de Colombia, Sede
+          Bogotá
+        </li>
+      </ul>
+      <p class="professional-card__registration">
+        Matrícula profesional COPNIA <strong>091037-0622737 CND</strong>
+      </p>
+    </article>
+  </div>
+</section>
+
+<style>
+  .technical-team {
+    width: min(100%, var(--content-width));
+    margin-inline: auto;
+    padding: var(--section-space) var(--page-gutter);
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .technical-team__intro {
+    display: grid;
+    gap: 1.5rem 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .technical-team__label {
+    width: fit-content;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.35rem;
+    border-bottom: 2px solid var(--color-signal);
+    color: var(--color-blue);
+    font-weight: 700;
+  }
+
+  .technical-team__intro > p {
+    max-width: 43rem;
+    margin: 0;
+    font-size: 1.12rem;
+    line-height: 1.65;
+  }
+
+  .technical-team__grid {
+    display: grid;
+    gap: clamp(1.25rem, 3vw, 2.5rem);
+  }
+
+  .professional-card {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 25rem;
+    padding: clamp(1.5rem, 4vw, 3rem);
+    border: 1px solid var(--color-line);
+    background: var(--color-white);
+  }
+
+  .professional-card header > p {
+    margin-bottom: 0.7rem;
+    color: var(--color-blue);
+    font-weight: 700;
+  }
+
+  .professional-card h3 {
+    max-width: 14ch;
+    margin-bottom: 2.5rem;
+    color: var(--color-navy);
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    letter-spacing: -0.045em;
+    line-height: 1;
+  }
+
+  .professional-card ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .professional-card li {
+    padding-block: 0.85rem;
+    border-top: 1px solid var(--color-line);
+    font-size: 1.05rem;
+  }
+
+  .professional-card__registration {
+    margin: 2rem 0 0;
+    padding-top: 1rem;
+    border-top: 2px solid var(--color-signal);
+    color: var(--color-navy);
+  }
+
+  .professional-card__registration strong {
+    font-weight: 750;
+  }
+
+  .professional-card--indigo {
+    background: color-mix(in oklab, var(--color-ice) 64%, var(--color-white));
+  }
+
+  @media (min-width: 48rem) {
+    .technical-team__intro {
+      grid-template-columns: minmax(18rem, 0.9fr) minmax(22rem, 1.1fr);
+      align-items: end;
+    }
+
+    .technical-team__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>

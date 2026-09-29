@@ -1,0 +1,107 @@
+---
+type Props = {
+  title?: string;
+  compact?: boolean;
+};
+
+const { title = 'Esquema técnico de red, perfil y puntos de control', compact = false } =
+  Astro.props;
+---
+
+<svg
+  class:list={['project-trace', { 'project-trace--compact': compact }]}
+  viewBox="0 0 720 420"
+  role="img"
+  aria-label={title}
+>
+  <g class="project-trace__grid" aria-hidden="true">
+    {Array.from({ length: 12 }, (_, index) => (
+      <path d={`M${index * 60} 0v420`} />
+    ))}
+    {Array.from({ length: 8 }, (_, index) => (
+      <path d={`M0 ${index * 60}h720`} />
+    ))}
+  </g>
+  <path
+    class="project-trace__terrain"
+    d="M-20 316c97-89 176 8 265-43s175-101 266-27 150 12 229-42"
+  />
+  <path class="project-trace__system" d="M64 166h142l78 68h151l71-86h151" />
+  <path class="project-trace__branch" d="M206 166v132m229-64v116m71-202V83" />
+  <g class="project-trace__nodes">
+    <circle cx="64" cy="166" r="10" />
+    <circle cx="206" cy="166" r="10" />
+    <circle cx="284" cy="234" r="10" />
+    <circle cx="435" cy="234" r="10" />
+    <circle cx="506" cy="148" r="10" />
+    <circle cx="657" cy="148" r="10" />
+  </g>
+  <g class="project-trace__labels" aria-hidden="true">
+    <text x="64" y="138">
+      Entrada
+    </text>
+    <text x="276" y="208">
+      Modelo
+    </text>
+    <text x="506" y="120">
+      Control
+    </text>
+    <text x="548" y="377">
+      Perfil
+    </text>
+  </g>
+</svg>
+
+<style>
+  .project-trace {
+    display: block;
+    width: 100%;
+    height: auto;
+    min-height: 18rem;
+    background: var(--color-ice);
+  }
+
+  .project-trace__grid {
+    fill: none;
+    stroke: var(--color-line);
+    stroke-width: 1;
+  }
+
+  .project-trace__terrain,
+  .project-trace__system,
+  .project-trace__branch {
+    fill: none;
+  }
+
+  .project-trace__terrain {
+    stroke: var(--color-signal);
+    stroke-width: 4;
+  }
+
+  .project-trace__system {
+    stroke: var(--color-navy);
+    stroke-width: 9;
+  }
+
+  .project-trace__branch {
+    stroke: var(--color-navy);
+    stroke-width: 5;
+  }
+
+  .project-trace__nodes {
+    fill: var(--color-paper);
+    stroke: var(--color-indigo);
+    stroke-width: 5;
+  }
+
+  .project-trace__labels {
+    fill: var(--color-navy);
+    font-family: var(--font-body);
+    font-size: 23px;
+    font-weight: 650;
+  }
+
+  .project-trace--compact {
+    min-height: 12rem;
+  }
+</style>

@@ -1,0 +1,129 @@
+---
+type Props = {
+  title: string;
+  intro: string;
+  current: string;
+  parent?: {
+    label: string;
+    href: string;
+  };
+};
+
+const { title, intro, current, parent } = Astro.props;
+const base = import.meta.env.BASE_URL;
+---
+
+<header class="page-hero">
+  <nav aria-label="Ruta de navegación">
+    <a href={base}>Inicio</a>
+    <span aria-hidden="true">/</span>
+    {parent && <a href={parent.href}>{parent.label}</a>}
+    {parent && <span aria-hidden="true">/</span>}
+    <span aria-current="page">{current}</span>
+  </nav>
+  <div class="page-hero__body">
+    <div>
+      <h1>{title}</h1>
+      <p>{intro}</p>
+    </div>
+    <div class="page-hero__signal" aria-hidden="true">
+      <div class="page-hero__lockup">
+        <img
+          src={`${base}brand/logo-aquatek-recursos-hidricos.png`}
+          alt=""
+          width="395"
+          height="321"
+          draggable="false"
+        />
+      </div>
+    </div>
+  </div>
+</header>
+
+<style>
+  .page-hero {
+    width: min(100%, var(--content-width));
+    margin-inline: auto;
+    padding: 2rem var(--page-gutter) var(--section-space);
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .page-hero nav {
+    display: flex;
+    gap: 0.55rem;
+    margin-bottom: clamp(3.5rem, 8vw, 7rem);
+    color: var(--color-blue);
+    font-size: 0.92rem;
+  }
+
+  .page-hero nav a {
+    text-underline-offset: 0.25rem;
+  }
+
+  .page-hero__body {
+    display: grid;
+    gap: 3rem;
+  }
+
+  .page-hero h1 {
+    max-width: 13ch;
+  }
+
+  .page-hero p {
+    max-width: 42rem;
+    margin: 1.5rem 0 0;
+    font-size: clamp(1.15rem, 2vw, 1.45rem);
+    line-height: 1.5;
+  }
+
+  .page-hero__signal {
+    position: relative;
+    display: grid;
+    min-height: clamp(17.5rem, 40vw, 21rem);
+    place-items: center;
+    overflow: hidden;
+    isolation: isolate;
+    background: radial-gradient(
+      ellipse at center,
+      var(--color-white) 0 48%,
+      rgb(255 255 255 / 72%) 72%,
+      transparent 96%
+    );
+  }
+
+  .page-hero__signal::before {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 700 330'%3E%3Cg fill='none' stroke-linecap='square'%3E%3Cpath d='M-20 42C170 42 200 160 350 165S540 58 720 58' stroke='%230099dd' stroke-width='3'/%3E%3Cpath d='M-20 286C170 286 210 174 350 165S555 275 720 275' stroke='%23174ea6' stroke-opacity='.55' stroke-width='2'/%3E%3Cpath d='M-20 96C185 96 205 161 350 165S560 112 720 112' stroke='%23596dcc' stroke-opacity='.32' stroke-width='2'/%3E%3C/g%3E%3C/svg%3E");
+    background-position: center;
+    background-size: cover;
+    content: '';
+  }
+
+  .page-hero__lockup {
+    position: relative;
+    z-index: 1;
+    padding: 0.2rem 0.35rem;
+    background: var(--color-white);
+    box-shadow: 0 0 1rem 0.8rem var(--color-white);
+  }
+
+  .page-hero__lockup img {
+    display: block;
+    width: clamp(11.75rem, 48vw, 13.5rem);
+    height: auto;
+    user-select: none;
+  }
+
+  @media (min-width: 64rem) {
+    .page-hero__body {
+      grid-template-columns: minmax(0, 1.18fr) minmax(20rem, 0.82fr);
+      align-items: center;
+    }
+
+    .page-hero__lockup img {
+      width: clamp(14.25rem, 16vw, 15.75rem);
+    }
+  }
+</style>

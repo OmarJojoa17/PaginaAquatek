@@ -1,0 +1,377 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import PageHero from '../../components/PageHero.astro';
+import ServiceFlow from '../../components/ServiceFlow.astro';
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { isPublicProject } from '../../utils/content';
+
+export async function getStaticPaths() {
+  const services = await getCollection('services');
+
+  return services.map((service) => ({
+    params: { slug: service.data.slug },
+    props: { service },
+  }));
+}
+
+type Props = {
+  service: CollectionEntry<'services'>;
+};
+
+const { service } = Astro.props;
+const { Content } = await render(service);
+const base = import.meta.env.BASE_URL;
+const allServices = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
+const allProjects = await getCollection('projects');
+const relatedProjects = allProjects
+  .filter(
+    (project) =>
+      isPublicProject(project.data) &&
+      (project.data.discipline === service.data.discipline ||
+        project.data.relatedDisciplines.includes(service.data.discipline)),
+  )
+  .sort((a, b) => (b.data.year ?? 0) - (a.data.year ?? 0));
+const serviceIndex = allServices.findIndex((item) => item.id === service.id);
+const previousService = serviceIndex > 0 ? allServices[serviceIndex - 1] : undefined;
+const nextService =
+  serviceIndex < allServices.length - 1 ? allServices[serviceIndex + 1] : undefined;
+const title = `${service.data.title} | Aquatek`;
+const description = service.data.summary;
+---
+
+<SiteLayout
+  {title}
+  {description}
+  schema={{
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: service.data.title,
+    description,
+    provider: {
+      '@type': 'Organization',
+      name: 'Aquatek',
+    },
+  }}
+>
+  <PageHero
+    current={service.data.title}
+    parent={{ label: 'Especialidades', href: `${base}especialidades/` }}
+    title={service.data.headline}
+    intro={service.data.intro}
+  />
+
+  <section class="service-overview page-section" aria-labelledby="overview-title">
+    <div>
+      <p>Especialidad</p>
+      <h2 id="overview-title">{service.data.title}</h2>
+    </div>
+    <div class="prose service-overview__copy">
+      <Content />
+    </div>
+  </section>
+
+  <section class="service-flow-section page-section page-section--ice" aria-labelledby="flow-title">
+    <div class="service-flow-section__intro">
+      <h2 id="flow-title">Del dato a la decisión</h2>
+      <p>Este recorrido se ajusta a la información disponible y al objetivo del proyecto.</p>
+    </div>
+    <ServiceFlow {...service.data.flow} />
+  </section>
+
+  <section class="service-problems page-section" aria-labelledby="problems-title">
+    <h2 id="problems-title">Qué ayuda a resolver</h2>
+    <ul>
+      {service.data.problems.map((problem) => (
+        <li>{problem}</li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="service-scope page-section" aria-labelledby="scope-detail-title">
+    <div class="service-scope__intro">
+      <h2 id="scope-detail-title">Alcance técnico</h2>
+      <p>
+        El alcance final depende del estado del proyecto, los datos disponibles y la entrega
+        acordada.
+      </p>
+    </div>
+    <div class="service-scope__items">
+      {service.data.scope.map((item) => (
+        <article>
+          <h3>{item.title}</h3>
+          <p>{item.description}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section
+    class="service-deliverables page-section page-section--dark"
+    aria-labelledby="deliverables-title"
+  >
+    <div>
+      <p>Documentación</p>
+      <h2 id="deliverables-title">Qué puede recibir el cliente</h2>
+    </div>
+    <ul>
+      {service.data.deliverables.map((deliverable) => (
+        <li>{deliverable}</li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="service-projects page-section" aria-labelledby="related-projects-title">
+    <div>
+      <p>Proyectos relacionados</p>
+      <h2 id="related-projects-title">Trabajo que permite revisar la especialidad</h2>
+    </div>
+    {relatedProjects.length > 0 ? (
+      <ul>
+        {relatedProjects.map((project) => (
+          <li>
+            <strong>
+              <a href={`${base}proyectos/${project.data.slug}/`}>{project.data.title}</a>
+            </strong>
+            <span>{project.data.summary}</span>
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <div class="service-projects__empty">
+        <p>
+          Los casos públicos de esta especialidad se incorporarán cuando su información esté
+          revisada y autorizada.
+        </p>
+        <a href={`${base}proyectos/`}>Conocer cómo se documentarán</a>
+      </div>
+    )}
+  </section>
+
+  <nav class="service-pagination" aria-label="Otras especialidades">
+    {previousService ? (
+      <a href={`${base}especialidades/${previousService.data.slug}/`} rel="prev">
+        <span>Anterior</span>
+        <strong>{previousService.data.title}</strong>
+      </a>
+    ) : (
+      <span aria-hidden="true" />
+    )}
+    {nextService ? (
+      <a href={`${base}especialidades/${nextService.data.slug}/`} rel="next">
+        <span>Siguiente</span>
+        <strong>{nextService.data.title}</strong>
+      </a>
+    ) : (
+      <a href={`${base}especialidades/`}>
+        <span>Índice</span>
+        <strong>Ver todas las especialidades</strong>
+      </a>
+    )}
+  </nav>
+</SiteLayout>
+
+<style>
+  .service-overview,
+  .service-problems,
+  .service-deliverables,
+  .service-projects {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .service-overview > div:first-child > p,
+  .service-deliverables > div > p,
+  .service-projects > div:first-child > p {
+    margin-bottom: 1rem;
+    color: var(--color-blue);
+    font-weight: 700;
+  }
+
+  .service-overview__copy :global(p) {
+    font-size: 1.2rem;
+    line-height: 1.65;
+  }
+
+  .service-flow-section__intro,
+  .service-scope__intro {
+    display: grid;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .service-flow-section__intro p,
+  .service-scope__intro p {
+    max-width: 42rem;
+    margin: 0;
+    font-size: 1.08rem;
+    line-height: 1.6;
+  }
+
+  .service-problems ul,
+  .service-deliverables ul,
+  .service-projects ul {
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--color-line);
+    list-style: none;
+  }
+
+  .service-problems li,
+  .service-deliverables li,
+  .service-projects li {
+    padding: 1.2rem 0 1.2rem 1.6rem;
+    border-bottom: 1px solid var(--color-line);
+    font-size: 1.08rem;
+    line-height: 1.5;
+  }
+
+  .service-problems li::before,
+  .service-deliverables li::before {
+    float: left;
+    margin-left: -1.6rem;
+    color: var(--color-signal);
+    content: '◆';
+    font-size: 0.7rem;
+    transform: translateY(0.35rem);
+  }
+
+  .service-scope__items {
+    border-top: 1px solid var(--color-line);
+  }
+
+  .service-scope article {
+    display: grid;
+    gap: 0.7rem;
+    padding-block: 1.5rem;
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .service-scope h3 {
+    margin: 0;
+    color: var(--color-navy);
+    font-size: clamp(1.25rem, 2.5vw, 1.65rem);
+  }
+
+  .service-scope article p {
+    max-width: 48rem;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .page-section--dark {
+    color: var(--color-white);
+    background: var(--color-navy);
+  }
+
+  .page-section--dark h2 {
+    color: var(--color-white);
+  }
+
+  .service-deliverables > div > p {
+    color: #b8c4f2;
+  }
+
+  .service-deliverables ul {
+    border-color: rgb(255 255 255 / 24%);
+  }
+
+  .service-deliverables li {
+    border-color: rgb(255 255 255 / 24%);
+    color: var(--color-on-dark);
+  }
+
+  .service-projects li {
+    display: grid;
+    gap: 0.5rem;
+    padding-left: 0;
+  }
+
+  .service-projects li strong {
+    color: var(--color-navy);
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+  }
+
+  .service-projects li strong a {
+    text-decoration-color: var(--color-signal);
+    text-underline-offset: 0.3rem;
+  }
+
+  .service-projects__empty {
+    align-self: end;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-line);
+  }
+
+  .service-projects__empty p {
+    max-width: 42rem;
+    line-height: 1.6;
+  }
+
+  .service-projects__empty a {
+    color: var(--color-navy);
+    font-weight: 700;
+    text-decoration-color: var(--color-signal);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.35rem;
+  }
+
+  .service-pagination {
+    display: grid;
+    width: min(100%, var(--content-width));
+    margin-inline: auto;
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .service-pagination a {
+    display: grid;
+    gap: 0.5rem;
+    min-height: 9rem;
+    align-content: center;
+    padding: 2rem var(--page-gutter);
+    color: var(--color-navy);
+    text-decoration: none;
+  }
+
+  .service-pagination a:hover {
+    background: var(--color-ice);
+  }
+
+  .service-pagination a:last-child {
+    text-align: right;
+  }
+
+  .service-pagination span {
+    color: var(--color-blue);
+    font-size: 0.9rem;
+  }
+
+  .service-pagination strong {
+    font-family: var(--font-display);
+    font-size: clamp(1.15rem, 2vw, 1.5rem);
+  }
+
+  @media (min-width: 48rem) {
+    .service-overview,
+    .service-problems,
+    .service-deliverables,
+    .service-projects,
+    .service-flow-section__intro,
+    .service-scope__intro {
+      grid-template-columns: minmax(16rem, 0.8fr) minmax(20rem, 1.2fr);
+    }
+
+    .service-scope article {
+      grid-template-columns: minmax(16rem, 0.8fr) minmax(20rem, 1.2fr);
+      gap: 2rem;
+    }
+
+    .service-pagination {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .service-pagination a + a {
+      border-left: 1px solid var(--color-line);
+    }
+  }
+</style>

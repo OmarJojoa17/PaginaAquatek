@@ -1,0 +1,53 @@
+---
+import PageHero from '../components/PageHero.astro';
+import { siteConfig } from '../config/site';
+import SiteLayout from '../layouts/SiteLayout.astro';
+
+const title = 'Contacto | Aquatek';
+const description =
+  'Información necesaria para consultar un estudio o diseño de hidrología, hidráulica, drenaje o redes de agua con Aquatek.';
+---
+
+<SiteLayout
+  {title}
+  {description}
+  schema={{
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    name: title,
+    description,
+  }}
+>
+  <PageHero
+    current="Contacto"
+    title="Hablemos de su estudio o diseño hidráulico."
+    intro="Describa el proyecto, su ubicación y la decisión que necesita tomar. Los profesionales responsables revisarán directamente la consulta."
+  />
+
+  <section class="page-section split-section" aria-labelledby="prepare-title">
+    <h2 id="prepare-title">Qué información ayuda</h2>
+    <div class="prose">
+      <p>Comparte lo que tengas. Estos datos permiten entender mejor la consulta:</p>
+      <ul>
+        <li>Tipo de proyecto y ubicación general.</li>
+        <li>Etapa actual: idea, estudio, diseño, construcción o revisión.</li>
+        <li>Problema que necesitas resolver.</li>
+        <li>Planos, estudios o datos disponibles.</li>
+        <li>Fecha en la que necesitas una respuesta o entrega.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="page-section contact-status" aria-labelledby="channels-title">
+    <div>
+      <h2 id="channels-title">Correo directo</h2>
+      <p>
+        Envíe la información disponible, incluso si el alcance todavía no está completamente
+        definido. La revisión inicial permite ordenar las preguntas y precisar el servicio técnico.
+      </p>
+    </div>
+    <a class="contact-status__email" href={`mailto:${siteConfig.contactEmail}`}>
+      {siteConfig.contactEmail}
+    </a>
+  </section>
+</SiteLayout>

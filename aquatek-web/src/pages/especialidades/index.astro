@@ -1,0 +1,141 @@
+---
+import { getCollection } from 'astro:content';
+import PageHero from '../../components/PageHero.astro';
+import SiteLayout from '../../layouts/SiteLayout.astro';
+
+const base = import.meta.env.BASE_URL;
+const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
+const title = 'Especialidades en ingeniería del agua | Aquatek';
+const description =
+  'Conoce las especialidades de Aquatek en hidrología, sistemas hidráulicos, drenaje, ríos, redes contra incendio y redes hidrosanitarias.';
+---
+
+<SiteLayout
+  {title}
+  {description}
+  schema={{
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: title,
+    description,
+  }}
+>
+  <PageHero
+    current="Especialidades"
+    title="Siete formas de resolver problemas con el agua."
+    intro="Cada especialidad explica qué problema aborda, cómo se estudia y qué información queda documentada al terminar el trabajo."
+  />
+
+  <section class="service-index" aria-labelledby="service-index-title">
+    <div class="service-index__intro">
+      <h2 id="service-index-title">Áreas de trabajo</h2>
+      <p>
+        Las disciplinas pueden participar solas o combinarse. La necesidad del proyecto define
+        cuáles se relacionan.
+      </p>
+    </div>
+    <ul class="service-index__list">
+      {services.map((service) => (
+        <li>
+          <span class="service-index__trace" aria-hidden="true">
+            <i></i>
+            <i></i>
+          </span>
+          <div>
+            <h3>{service.data.title}</h3>
+            <p>{service.data.summary}</p>
+          </div>
+          <a href={`${base}especialidades/${service.data.slug}/`}>
+            Ver alcance<span class="visually-hidden"> de {service.data.title}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+</SiteLayout>
+
+<style>
+  .service-index {
+    width: min(100%, var(--content-width));
+    margin-inline: auto;
+    padding: var(--section-space) var(--page-gutter);
+  }
+
+  .service-index__intro {
+    display: grid;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .service-index__intro p {
+    max-width: 42rem;
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  .service-index__list {
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--color-line);
+    list-style: none;
+  }
+
+  .service-index__list li {
+    display: grid;
+    gap: 1rem;
+    padding-block: 1.75rem;
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .service-index__trace {
+    display: grid;
+    width: 3rem;
+    align-self: start;
+    gap: 0.35rem;
+    padding-top: 0.45rem;
+    color: var(--color-signal);
+  }
+
+  .service-index__trace i {
+    height: 2px;
+    background: currentColor;
+  }
+
+  .service-index__trace i:last-child {
+    width: 65%;
+  }
+
+  .service-index__list h3 {
+    margin-bottom: 0.65rem;
+    color: var(--color-navy);
+    font-size: clamp(1.35rem, 3vw, 2rem);
+  }
+
+  .service-index__list p {
+    max-width: 48rem;
+    margin: 0;
+    line-height: 1.55;
+  }
+
+  .service-index__list a {
+    width: fit-content;
+    align-self: center;
+    color: var(--color-navy);
+    font-weight: 700;
+    text-decoration-color: var(--color-signal);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.35rem;
+  }
+
+  @media (min-width: 48rem) {
+    .service-index__intro {
+      grid-template-columns: minmax(16rem, 0.8fr) minmax(20rem, 1.2fr);
+    }
+
+    .service-index__list li {
+      grid-template-columns: 3rem minmax(20rem, 1fr) auto;
+      gap: 2rem;
+    }
+  }
+</style>

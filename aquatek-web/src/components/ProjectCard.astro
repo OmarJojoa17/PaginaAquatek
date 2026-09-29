@@ -1,0 +1,183 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { disciplineLabels } from '../utils/disciplines';
+import ProjectTrace from './ProjectTrace.astro';
+
+type Props = {
+  project: CollectionEntry<'projects'>;
+};
+
+const { project } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const mediaLabels = {
+  image: 'Fotografías',
+  video: 'Video',
+  plan: 'Planos',
+  document: 'Documentos',
+} as const;
+const availableMedia = [...new Set(project.data.media.map((medium) => medium.type))];
+const preview =
+  project.data.media.find((medium) => medium.type === 'video' && medium.poster)?.poster ??
+  project.data.media.find((medium) => medium.type === 'image')?.src;
+const searchableText = [
+  project.data.title,
+  project.data.summary,
+  disciplineLabels[project.data.discipline],
+].join(' ');
+---
+
+<li
+  class="project-card"
+  data-project-card
+  data-discipline={project.data.discipline}
+  data-media={availableMedia.join(' ')}
+  data-search={searchableText}
+>
+  <article>
+    <div class="project-card__visual" aria-hidden="true">
+      {preview ? (
+        <img
+          src={`${base}${preview.replace(/^\//, '')}`}
+          alt=""
+          width="1600"
+          height="900"
+          loading="lazy"
+        />
+      ) : (
+        <ProjectTrace
+          compact
+          title={`Representación técnica provisional de ${project.data.title}`}
+        />
+      )}
+    </div>
+    <div class="project-card__body">
+      <div class="project-card__meta">
+        <span>{disciplineLabels[project.data.discipline]}</span>
+        {project.data.year && <time datetime={String(project.data.year)}>{project.data.year}</time>}
+      </div>
+      <h2>
+        <a href={`${base}proyectos/${project.data.slug}/`}>{project.data.title}</a>
+      </h2>
+      <p>{project.data.summary}</p>
+      {availableMedia.length > 0 && (
+        <ul aria-label="Evidencia disponible">
+          {availableMedia.map((medium) => (
+            <li>{mediaLabels[medium]}</li>
+          ))}
+        </ul>
+      )}
+      <a class="project-card__action" href={`${base}proyectos/${project.data.slug}/`}>
+        Revisar el proyecto
+      </a>
+    </div>
+  </article>
+</li>
+
+<style>
+  .project-card {
+    border: 1px solid var(--color-line);
+    background: var(--color-white);
+  }
+
+  .project-card[hidden] {
+    display: none;
+  }
+
+  .project-card article {
+    display: grid;
+    height: 100%;
+  }
+
+  .project-card__visual {
+    display: block;
+    overflow: hidden;
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .project-card__visual :global(svg) {
+    transition: transform 220ms ease;
+  }
+
+  .project-card__visual img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    transition: transform 220ms ease;
+  }
+
+  .project-card__visual:hover :global(svg),
+  .project-card__visual:hover img {
+    transform: scale(1.015);
+  }
+
+  .project-card__body {
+    display: grid;
+    align-content: start;
+    padding: clamp(1.25rem, 3vw, 2rem);
+  }
+
+  .project-card__meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    color: var(--color-blue);
+    font-weight: 700;
+  }
+
+  .project-card h2 {
+    max-width: 20ch;
+    font-size: clamp(1.65rem, 3vw, 2.5rem);
+  }
+
+  .project-card h2 a {
+    text-decoration: none;
+  }
+
+  .project-card h2 a:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--color-signal);
+    text-underline-offset: 0.25rem;
+  }
+
+  .project-card p {
+    line-height: 1.6;
+  }
+
+  .project-card ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0 0 1.5rem;
+    padding: 0;
+    list-style: none;
+  }
+
+  .project-card ul li {
+    padding: 0.3rem 0.55rem;
+    border: 1px solid var(--color-line);
+    color: var(--color-navy);
+    font-size: 0.9rem;
+  }
+
+  .project-card__action {
+    width: fit-content;
+    margin-top: auto;
+    color: var(--color-navy);
+    font-weight: 750;
+    text-decoration-color: var(--color-signal);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.35rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .project-card__visual :global(svg) {
+      transition: none;
+    }
+
+    .project-card__visual img {
+      transition: none;
+    }
+  }
+</style>

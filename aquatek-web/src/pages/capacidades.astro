@@ -1,0 +1,98 @@
+---
+import PageHero from '../components/PageHero.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+
+const title = 'Capacidades técnicas | Aquatek';
+const description =
+  'Capacidades de Aquatek para analizar sistemas hidráulicos, comparar alternativas y preparar diseños y documentos técnicos.';
+---
+
+<SiteLayout
+  {title}
+  {description}
+  schema={{
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: title,
+    description,
+  }}
+>
+  <PageHero
+    current="Capacidades"
+    title="Convertimos información en decisiones de diseño."
+    intro="Un cálculo aislado dice poco. Organizamos los datos, entendemos el sistema, comparamos escenarios y dejamos una solución que pueda revisarse."
+  />
+
+  <section class="page-section capability-detail" aria-labelledby="understand-title">
+    <div>
+      <span>Entrada</span>
+      <h2 id="understand-title">Entender el sistema</h2>
+    </div>
+    <div class="prose">
+      <p>
+        Revisamos el objetivo del proyecto, la información disponible y las condiciones del sitio.
+      </p>
+      <ul>
+        <li>Delimitación de cuencas y áreas de aporte.</li>
+        <li>Lectura de redes, perfiles, topografía y planos.</li>
+        <li>Revisión de demandas, caudales y condiciones de operación.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="page-section capability-detail" aria-labelledby="model-title">
+    <div>
+      <span>Análisis</span>
+      <h2 id="model-title">Calcular y comparar</h2>
+    </div>
+    <div class="prose">
+      <p>
+        Los modelos permiten revisar el comportamiento del sistema y comparar opciones antes de
+        diseñar.
+      </p>
+      <ul>
+        <li>Estimación de caudales y eventos de diseño.</li>
+        <li>Revisión de presiones, velocidades, niveles y capacidad.</li>
+        <li>Comparación de escenarios y criterios de funcionamiento.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="page-section capability-detail" aria-labelledby="design-title">
+    <div>
+      <span>Diseño</span>
+      <h2 id="design-title">Definir la solución</h2>
+    </div>
+    <div class="prose">
+      <p>
+        El análisis se traduce en dimensiones, trazados, estructuras y condiciones de operación.
+      </p>
+      <ul>
+        <li>Redes de acueducto, alcantarillado, incendio e instalaciones hidrosanitarias.</li>
+        <li>Obras de drenaje vial y manejo de escorrentía.</li>
+        <li>Intervenciones en cauces y sistemas asociados.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section
+    class="page-section capability-detail page-section--ice"
+    aria-labelledby="document-title"
+  >
+    <div>
+      <span>Entrega</span>
+      <h2 id="document-title">Documentar para revisar</h2>
+    </div>
+    <div class="prose">
+      <p>
+        Una solución técnica debe poder entenderse después del cálculo. Por eso organizamos la
+        información en documentos y recursos visuales.
+      </p>
+      <ul>
+        <li>Memorias de cálculo y criterios de diseño.</li>
+        <li>Planos, esquemas, perfiles y detalles.</li>
+        <li>Modelos, imágenes y videos cuando ayudan a explicar el resultado.</li>
+      </ul>
+    </div>
+  </section>
+</SiteLayout>

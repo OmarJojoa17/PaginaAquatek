@@ -1,0 +1,27 @@
+# Temporary review and render artifacts
+.work/
+**/.work/
+
+# Original media library: keep local; publish optimized derivatives only
+assets/
+aquatek-ptap-video/public/assets/
+
+# JavaScript build products
+**/node_modules/
+**/dist/
+**/.astro/
+.pnpm-store/
+**/playwright-report/
+**/test-results/
+**/tmp/
+**/debug.log
+**/design-previews/
+
+# Local environment files
+**/.env
+**/.env.*
+!**/.env.example
+
+# Editor and operating-system files
+.DS_Store
+Thumbs.db

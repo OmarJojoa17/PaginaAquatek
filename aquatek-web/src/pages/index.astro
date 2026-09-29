@@ -1,0 +1,104 @@
+---
+import { getCollection } from 'astro:content';
+import AtlasDiagram from '../components/AtlasDiagram.astro';
+import ProjectShowcase from '../components/ProjectShowcase.astro';
+import SectionIntro from '../components/SectionIntro.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import TechnicalTeam from '../components/TechnicalTeam.astro';
+
+const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
+const base = import.meta.env.BASE_URL;
+---
+
+<SiteLayout
+  title="Consultoría en Ingeniería de Recursos Hídricos | Aquatek"
+  description="Estudios y diseños de hidrología, hidráulica, drenaje, redes contra incendio y redes hidrosanitarias."
+>
+  <section class="hero" id="inicio">
+    <div class="hero__content">
+      <p class="hero__status">Consultoría en Ingeniería de Recursos Hídricos</p>
+      <h1>Estudios y diseños para proyectos hidráulicos.</h1>
+      <p class="hero__lead">
+        Desarrollamos ingeniería del agua para hidrología, acueductos, alcantarillados, ríos,
+        drenaje vial, redes contra incendio y redes hidrosanitarias.
+      </p>
+      <div class="hero__actions">
+        <a class="button" href={`${base}contacto/`}>
+          Consultar un proyecto
+        </a>
+        <a class="text-link" href={`${base}proyectos/`}>
+          Ver proyectos realizados
+        </a>
+      </div>
+      <p class="hero__direct-contact">
+        Atención directa: <a href="mailto:aquatek@gmail.com">aquatek@gmail.com</a>
+      </p>
+    </div>
+    <AtlasDiagram />
+  </section>
+
+  <ProjectShowcase />
+
+  <TechnicalTeam />
+
+  <section class="scope" id="especialidades" aria-labelledby="scope-title">
+    <SectionIntro
+      headingId="scope-title"
+      title="Servicios para estudiar, diseñar y controlar el agua."
+      description="Siete especialidades cubren el ciclo técnico del proyecto, desde el análisis hidrológico hasta los planos y memorias de diseño."
+    />
+    <ul class="discipline-list">
+      {services.map((service) => (
+        <li>
+          <div>
+            <h3>{service.data.title}</h3>
+            <p>{service.data.summary}</p>
+          </div>
+          <a href={`${import.meta.env.BASE_URL}especialidades/${service.data.slug}/`}>
+            Ver especialidad<span class="visually-hidden">: {service.data.title}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="capabilities" id="capacidades" aria-labelledby="capabilities-title">
+    <SectionIntro
+      headingId="capabilities-title"
+      title="El resultado debe poder revisarse."
+      description="Cada trabajo relaciona los datos de entrada, el análisis, la representación técnica y los entregables."
+    />
+    <ul class="capability-lines">
+      <li>
+        <strong>Datos</strong>
+        <span>Fuentes, supuestos y condiciones de diseño.</span>
+      </li>
+      <li>
+        <strong>Modelación</strong>
+        <span>Escenarios, criterios y comportamiento hidráulico.</span>
+      </li>
+      <li>
+        <strong>Documentación</strong>
+        <span>Planos, memorias, detalles y material audiovisual.</span>
+      </li>
+      <li>
+        <strong>Decisión</strong>
+        <span>Resultado técnico explicado en lenguaje claro.</span>
+      </li>
+    </ul>
+  </section>
+
+  <section class="company" id="empresa" aria-labelledby="company-title">
+    <p>Aquatek</p>
+    <div>
+      <h2 id="company-title">Hable directamente con los profesionales responsables.</h2>
+      <p>
+        Envíe una descripción breve del proyecto y la información disponible. Revisaremos qué debe
+        resolverse y cómo estructurar el alcance técnico.
+      </p>
+      <a class="company__email" href="mailto:aquatek@gmail.com">
+        aquatek@gmail.com
+      </a>
+    </div>
+  </section>
+</SiteLayout>

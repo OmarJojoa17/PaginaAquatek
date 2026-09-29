@@ -1,0 +1,79 @@
+---
+import '../styles/fonts.css';
+import '../styles/global.css';
+import SiteFooter from '../components/SiteFooter.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import { getPublicSiteUrl, siteConfig } from '../config/site';
+
+type Props = {
+  title: string;
+  description: string;
+  type?: 'website' | 'article';
+  noindex?: boolean;
+  schema?: Record<string, unknown> | Record<string, unknown>[];
+};
+
+const { title, description, type = 'website', noindex = false, schema } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const publicSiteUrl = getPublicSiteUrl();
+const canonicalUrl = publicSiteUrl
+  ? new URL(Astro.url.pathname.replace(base, '').replace(/^\/+/, ''), publicSiteUrl)
+  : undefined;
+const socialImageUrl = publicSiteUrl
+  ? new URL(siteConfig.socialImage.slice(1), publicSiteUrl)
+  : undefined;
+const allowIndexing = import.meta.env.PUBLIC_ALLOW_INDEXING === 'true';
+const shouldIndex = Boolean(publicSiteUrl) && allowIndexing && !noindex;
+const schemas = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
+
+if (publicSiteUrl) {
+  schemas.unshift({
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: siteConfig.name,
+    url: publicSiteUrl.href,
+    email: siteConfig.contactEmail,
+    description: siteConfig.defaultDescription,
+  });
+}
+---
+
+<!doctype html>
+<html lang={siteConfig.language}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="robots" content={shouldIndex ? 'index, follow' : 'noindex, nofollow'} />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="theme-color" content="#071E3D" />
+    <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+    <meta property="og:site_name" content={siteConfig.name} />
+    <meta property="og:locale" content={siteConfig.locale} />
+    <meta property="og:type" content={type} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
+    {socialImageUrl && <meta property="og:image" content={socialImageUrl} />}
+    <meta name="twitter:card" content={socialImageUrl ? 'summary_large_image' : 'summary'} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {socialImageUrl && <meta name="twitter:image" content={socialImageUrl} />}
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    {schemas.map((item) => (
+      <script type="application/ld+json" set:html={JSON.stringify(item).replace(/</g, '\\u003c')} />
+    ))}
+  </head>
+  <body>
+    <a class="skip-link" href="#contenido">
+      Ir al contenido
+    </a>
+    <SiteHeader />
+    <main id="contenido">
+      <slot />
+    </main>
+    <SiteFooter />
+  </body>
+</html>

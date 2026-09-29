@@ -1,0 +1,161 @@
+---
+import SectionIntro from './SectionIntro.astro';
+
+const base = import.meta.env.BASE_URL;
+---
+
+<section class="project-showcase" id="proyectos" aria-labelledby="projects-title">
+  <SectionIntro
+    headingId="projects-title"
+    title="Proyectos explicados con evidencia."
+    description="Cada caso relaciona el problema inicial con el modelo, los planos, las decisiones de diseño y el resultado. Así se puede revisar qué se hizo y por qué."
+  />
+
+  <div class="project-frame">
+    <figure class="project-visual">
+      <img
+        src={`${base}media/projects/ptap-san-francisco/video-poster.webp`}
+        alt="Modelo BIM de la planta de tratamiento de agua potable de San Francisco, Putumayo"
+        width="1600"
+        height="900"
+        loading="lazy"
+        draggable="false"
+      />
+      <figcaption>
+        Caso publicado con video, modelo BIM, planos seleccionados y extractos de la memoria de
+        diseño.
+      </figcaption>
+    </figure>
+
+    <div class="project-narrative">
+      <p class="project-status">Primer caso técnico publicado</p>
+      <h3>PTAP San Francisco: ingeniería explicada con evidencia.</h3>
+      <dl>
+        <div>
+          <dt>Problema</dt>
+          <dd>Abastecer la demanda proyectada con una solución segura y verificable.</dd>
+        </div>
+        <div>
+          <dt>Proceso</dt>
+          <dd>Diseño hidráulico, memoria de cálculo, planos y coordinación BIM.</dd>
+        </div>
+        <div>
+          <dt>Resultado</dt>
+          <dd>Tren convencional de tratamiento dimensionado para 16 L/s.</dd>
+        </div>
+      </dl>
+      <a class="project-narrative__action" href={`${base}proyectos/ptap-san-francisco/`}>
+        Ver el caso completo
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .project-showcase {
+    width: min(100%, var(--content-width));
+    margin-inline: auto;
+    padding: var(--section-space) var(--page-gutter);
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .project-frame {
+    display: grid;
+    overflow: hidden;
+    border: 1px solid var(--color-line);
+    background: var(--color-white);
+  }
+
+  .project-visual {
+    margin: 0;
+    background: var(--color-ice);
+  }
+
+  .project-visual img {
+    display: block;
+    width: 100%;
+    height: auto;
+    min-height: 21rem;
+    object-fit: cover;
+    user-select: none;
+  }
+
+  .project-visual figcaption {
+    padding: 1rem 1.25rem;
+    border-top: 1px solid var(--color-line);
+    color: var(--color-blue);
+    font-size: 0.9rem;
+    line-height: 1.45;
+  }
+
+  .project-narrative {
+    padding: clamp(1.5rem, 5vw, 4rem);
+    color: var(--color-white);
+    background: var(--color-indigo);
+  }
+
+  .project-status {
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid rgb(255 255 255 / 28%);
+    color: #e0e5f7;
+    font-weight: 700;
+  }
+
+  .project-narrative h3 {
+    max-width: 14ch;
+    margin-block: 2rem 3rem;
+    font-size: clamp(1.8rem, 4vw, 3.4rem);
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+  }
+
+  .project-narrative dl {
+    display: grid;
+    gap: 1.25rem;
+    margin: 0;
+  }
+
+  .project-narrative dl div {
+    display: grid;
+    grid-template-columns: 5.5rem 1fr;
+    gap: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgb(255 255 255 / 20%);
+  }
+
+  .project-narrative dt {
+    color: #e0e5f7;
+    font-weight: 700;
+  }
+
+  .project-narrative dd {
+    margin: 0;
+    color: var(--color-white);
+    line-height: 1.45;
+  }
+
+  .project-narrative__action {
+    width: fit-content;
+    margin-top: 2rem;
+    color: var(--color-white);
+    font-weight: 750;
+    text-decoration-color: #e0e5f7;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.35rem;
+  }
+
+  @media (min-width: 64rem) {
+    .project-frame {
+      grid-template-columns: minmax(0, 1.35fr) minmax(22rem, 0.65fr);
+    }
+
+    .project-visual {
+      display: grid;
+      grid-template-rows: 1fr auto;
+    }
+
+    .project-visual img {
+      align-self: center;
+    }
+  }
+</style>

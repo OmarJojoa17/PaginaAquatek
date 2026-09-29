@@ -1,0 +1,31 @@
+---
+type Props = { class?: string };
+
+const { class: className } = Astro.props;
+---
+
+<svg
+  class={className}
+  viewBox="0 0 72 52"
+  role="img"
+  aria-label="Aquatek"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path d="M7 14 22 3l14 11L50 3l15 11" />
+  <path d="m7 25 15 11 14-11 14 11 15-11" />
+  <path d="m7 37 15 11 14-11 14 11 15-11" />
+</svg>
+
+<style>
+  svg {
+    width: var(--brand-mark-width, 2.8rem);
+    height: auto;
+    flex: none;
+    color: var(--color-signal);
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: square;
+    stroke-linejoin: round;
+    stroke-width: 6;
+  }
+</style>

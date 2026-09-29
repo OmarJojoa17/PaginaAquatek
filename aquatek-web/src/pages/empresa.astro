@@ -1,0 +1,78 @@
+---
+import PageHero from '../components/PageHero.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+
+const title = 'Empresa | Aquatek';
+const description =
+  'Conoce el enfoque de Aquatek para estudiar, diseñar y explicar proyectos de ingeniería del agua.';
+---
+
+<SiteLayout
+  {title}
+  {description}
+  schema={{
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    name: title,
+    description,
+  }}
+>
+  <PageHero
+    current="Empresa"
+    title="Ingeniería del agua, explicada con claridad."
+    intro="Aquatek desarrolla ingeniería de recursos hídricos para entender cómo se mueve el agua y cómo debe conducirse, tratarse, evacuarse o controlarse. En palabras simples: ingeniería del agua explicada desde el problema hasta la decisión de diseño."
+  />
+
+  <section class="page-section split-section" aria-labelledby="work-title">
+    <h2 id="work-title">Qué hacemos</h2>
+    <div class="prose">
+      <p>
+        Trabajamos en cuencas, ríos, vías, redes y edificaciones. El alcance puede incluir estudios
+        hidrológicos, análisis hidráulicos, diseño de tuberías, drenaje y documentación técnica.
+      </p>
+      <p>
+        No todos los proyectos necesitan lo mismo. Primero se define la pregunta de ingeniería.
+        Luego se revisan los datos, se comparan alternativas y se documenta la solución.
+      </p>
+    </div>
+  </section>
+
+  <section class="page-section method-section" aria-labelledby="method-title">
+    <div class="section-copy">
+      <h2 id="method-title">Cómo abordamos un proyecto</h2>
+      <p>El proceso cambia según el alcance, pero conserva cuatro preguntas.</p>
+    </div>
+    <ol class="process-list">
+      <li>
+        <strong>¿Qué debe resolverse?</strong>
+        <span>Objetivo, límites y condiciones del proyecto.</span>
+      </li>
+      <li>
+        <strong>¿Qué información existe?</strong>
+        <span>Datos disponibles, calidad y vacíos.</span>
+      </li>
+      <li>
+        <strong>¿Qué muestran los cálculos?</strong>
+        <span>Escenarios, sensibilidad y criterios de diseño.</span>
+      </li>
+      <li>
+        <strong>¿Qué debe entregarse?</strong>
+        <span>Decisiones, planos, memorias y material de apoyo.</span>
+      </li>
+    </ol>
+  </section>
+
+  <section class="page-section split-section page-section--ice" aria-labelledby="publish-title">
+    <h2 id="publish-title">Cómo mostraremos el trabajo</h2>
+    <div class="prose">
+      <p>
+        El portafolio reúne proyectos autorizados para publicación. Cada ficha presenta el contexto,
+        el alcance, el método y el resultado.
+      </p>
+      <p>
+        Los videos y planos ayudan a explicar el proyecto. Los archivos sensibles o reservados
+        permanecen fuera de la web.
+      </p>
+    </div>
+  </section>
+</SiteLayout>
