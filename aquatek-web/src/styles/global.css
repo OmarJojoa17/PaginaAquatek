@@ -199,6 +199,10 @@ h1 {
   margin-bottom: 3rem;
 }
 
+.section-intro h2 span {
+  display: block;
+}
+
 h2 {
   max-width: 18ch;
   margin-bottom: 0;
@@ -212,8 +216,8 @@ h2 {
 .company p {
   max-width: 42rem;
   margin-bottom: 0;
-  font-size: 1.1rem;
-  line-height: 1.6;
+  font-size: clamp(1.15rem, 1.5vw, 1.32rem);
+  line-height: 1.58;
 }
 
 .discipline-list {
@@ -257,7 +261,7 @@ h2 {
 }
 
 .capabilities {
-  padding-block: var(--section-space);
+  padding-block: clamp(3.5rem, 6vw, 5.5rem);
   border-top: 1px solid var(--color-line);
 }
 
@@ -271,13 +275,18 @@ h2 {
 .capability-lines li {
   display: grid;
   gap: 0.35rem;
-  padding-block: 1.25rem;
+  padding-block: 1rem;
   border-bottom: 1px solid var(--color-line);
 }
 
 .capability-lines strong {
   color: var(--color-blue);
   font-family: var(--font-display);
+  font-size: 1.1rem;
+}
+
+.capability-lines span {
+  line-height: 1.45;
 }
 
 .company {
@@ -445,13 +454,14 @@ h2 {
   }
 
   .hero {
-    grid-template-columns: minmax(20rem, 0.82fr) minmax(0, 1.18fr);
+    grid-template-columns: minmax(20rem, 0.78fr) minmax(0, 1.22fr);
+    column-gap: clamp(1.5rem, 3.2vw, 3.5rem);
   }
 
   .section-intro,
   .company {
     grid-template-columns: minmax(16rem, 0.8fr) minmax(20rem, 1.2fr);
-    align-items: start;
+    align-items: center;
   }
 
   .discipline-list {
@@ -467,15 +477,18 @@ h2 {
     border-right: 1px solid var(--color-line);
   }
 
-  .discipline-list li:last-child {
-    grid-column: 1 / -1;
-    grid-template-columns: minmax(14rem, 0.55fr) minmax(10rem, auto);
-    gap: 2rem;
+  .capability-lines {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-left: 1px solid var(--color-line);
   }
 
   .capability-lines li {
-    grid-template-columns: minmax(10rem, 0.45fr) minmax(20rem, 1fr);
-    gap: 2rem;
+    min-height: 8.5rem;
+    align-content: start;
+    gap: 0.75rem;
+    padding: 1.5rem;
+    border-right: 1px solid var(--color-line);
   }
 
   .split-section,
@@ -499,6 +512,12 @@ h2 {
   .process-list li {
     grid-template-columns: minmax(16rem, 0.8fr) minmax(20rem, 1.2fr);
     gap: 2rem;
+  }
+}
+
+@media (min-width: 64rem) {
+  .capability-lines {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 

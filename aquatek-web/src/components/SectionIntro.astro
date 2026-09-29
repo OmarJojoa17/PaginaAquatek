@@ -3,12 +3,13 @@ type Props = {
   title: string;
   description: string;
   headingId: string;
+  titleLines?: string[];
 };
 
-const { title, description, headingId } = Astro.props;
+const { title, description, headingId, titleLines } = Astro.props;
 ---
 
 <div class="section-intro">
-  <h2 id={headingId}>{title}</h2>
+  <h2 id={headingId}>{titleLines ? titleLines.map((line) => <span>{line}</span>) : title}</h2>
   <p>{description}</p>
 </div>

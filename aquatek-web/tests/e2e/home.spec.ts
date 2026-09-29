@@ -16,6 +16,16 @@ test('presenta el alcance técnico sin desbordamiento horizontal', async ({ page
   await expect(page.locator('#especialidades').getByRole('listitem')).toHaveCount(7);
   await expect(page.getByText('Redes contra incendio', { exact: true })).toBeVisible();
   await expect(page.getByText('Redes hidrosanitarias', { exact: true })).toBeVisible();
+  await expect(
+    page.getByRole('heading', {
+      name: 'Quienes atienden también diseñan y firman.',
+    }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole('heading', {
+      name: 'Servicios para diseñar y controlar el agua adecuadamente.',
+    }),
+  ).toBeVisible();
   await expect(page.getByText('Sitio técnico de Aquatek')).toBeVisible();
   await expect(page.getByText('Portafolio técnico en desarrollo')).toHaveCount(0);
 
@@ -45,6 +55,7 @@ test('abre el menú móvil y expone navegación principal', async ({ page }, tes
   await page.getByText('Menú', { exact: true }).click();
   const mobileNavigation = page.getByRole('navigation', { name: 'Navegación móvil' });
   await expect(mobileNavigation).toBeVisible();
+  await expect(mobileNavigation.getByRole('link', { name: 'Inicio' })).toBeVisible();
   await expect(mobileNavigation.getByRole('link', { name: 'Proyectos' })).toBeVisible();
   await expect(mobileNavigation.getByRole('link', { name: 'Contacto' })).toBeVisible();
 

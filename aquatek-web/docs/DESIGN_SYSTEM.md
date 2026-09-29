@@ -86,3 +86,15 @@ Móvil                     Escritorio
 - `ProjectShowcase`: marco índigo para modelo o plano y narrativa técnica.
 - `ServiceFlow`: secuencia comprensible del análisis especializado.
 - Logo oficial: archivo de marca con el descriptor «Ingeniería de Recursos Hídricos».
+
+## Composición editorial de la portada
+
+- La navegación muestra siempre un acceso explícito a **Inicio**.
+- En escritorio, los títulos y sus explicaciones se centran verticalmente para evitar vacíos sin
+  función.
+- Los saltos de línea importantes pueden fijarse desde el contenido; en móvil vuelven al flujo
+  natural cuando el ancho lo exige.
+- El caso destacado prioriza la evidencia visual y mantiene una narrativa lateral compacta.
+- La matriz de especialidades conserva una celda disponible para crecimiento futuro.
+- Las capacidades se presentan como una banda de cuatro criterios verificables en escritorio y se
+  apilan progresivamente en pantallas menores.

@@ -2,7 +2,11 @@
   <div class="technical-team__intro">
     <div>
       <p class="technical-team__label">Responsabilidad técnica directa</p>
-      <h2 id="team-title">Quienes atienden también realizan y firman.</h2>
+      <h2 id="team-title">
+        <span>Quienes atienden</span>
+        <span>también diseñan</span>
+        <span>y firman.</span>
+      </h2>
     </div>
     <p>
       La consulta no pasa por un equipo comercial. Julián Pasuy y Omar David Jojoa revisan la
@@ -72,8 +76,12 @@
   .technical-team__intro > p {
     max-width: 43rem;
     margin: 0;
-    font-size: 1.12rem;
-    line-height: 1.65;
+    font-size: clamp(1.18rem, 1.5vw, 1.35rem);
+    line-height: 1.58;
+  }
+
+  .technical-team__intro h2 span {
+    display: block;
   }
 
   .technical-team__grid {
@@ -135,7 +143,7 @@
   @media (min-width: 48rem) {
     .technical-team__intro {
       grid-template-columns: minmax(18rem, 0.9fr) minmax(22rem, 1.1fr);
-      align-items: end;
+      align-items: center;
     }
 
     .technical-team__grid {

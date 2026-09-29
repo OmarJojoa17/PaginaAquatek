@@ -29,6 +29,9 @@ const isCurrent = (href: string) => {
     </a>
 
     <nav class="desktop-nav" aria-label="Navegación principal">
+      <a href={base} aria-current={currentPath === base ? 'page' : undefined}>
+        Inicio
+      </a>
       {links.map((link) => (
         <a href={link.href} aria-current={isCurrent(link.href) ? 'page' : undefined}>
           {link.label}
@@ -52,6 +55,9 @@ const isCurrent = (href: string) => {
         </span>
       </summary>
       <nav aria-label="Navegación móvil">
+        <a href={base} aria-current={currentPath === base ? 'page' : undefined}>
+          Inicio
+        </a>
         {links.map((link) => (
           <a href={link.href} aria-current={isCurrent(link.href) ? 'page' : undefined}>
             {link.label}
