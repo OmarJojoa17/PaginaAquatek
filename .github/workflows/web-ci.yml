@@ -72,8 +72,8 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Compilar vista previa pública
         env:
-          PUBLIC_SITE_URL: https://omarjojoa17.github.io/aquatek-web/
-          PUBLIC_BASE_PATH: /aquatek-web/
+          PUBLIC_SITE_URL: https://omarjojoa17.github.io/PaginaAquatek/
+          PUBLIC_BASE_PATH: /PaginaAquatek/
           PUBLIC_ALLOW_INDEXING: "false"
         run: pnpm build
       - name: Auditar artefacto público

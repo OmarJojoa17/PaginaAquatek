@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Publicar una vista revisable en `https://omarjojoa17.github.io/aquatek-web/` sin habilitar todavía
+Publicar una vista revisable en `https://omarjojoa17.github.io/PaginaAquatek/` sin habilitar todavía
 la indexación en buscadores.
 
 ## Controles aplicados

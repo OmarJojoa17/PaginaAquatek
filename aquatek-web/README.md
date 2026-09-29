@@ -30,8 +30,8 @@ El workflow `.github/workflows/web-ci.yml` verifica el proyecto y publica la ram
 Pages. La vista previa usa:
 
 ```text
-PUBLIC_SITE_URL=https://omarjojoa17.github.io/aquatek-web/
-PUBLIC_BASE_PATH=/aquatek-web/
+PUBLIC_SITE_URL=https://omarjojoa17.github.io/PaginaAquatek/
+PUBLIC_BASE_PATH=/PaginaAquatek/
 PUBLIC_ALLOW_INDEXING=false
 ```
 
