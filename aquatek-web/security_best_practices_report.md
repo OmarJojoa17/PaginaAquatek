@@ -19,28 +19,26 @@ Security Policy generada por Astro con hashes SHA-256 y sin `unsafe-inline` ni `
 se fijaron las versiones de todas las dependencias, se agregó seguimiento mensual mediante
 Dependabot y se incorporó una comprobación de seguridad al build.
 
-No quedan hallazgos altos ni medios en el código revisado. Queda un punto bajo que debe verificarse
-sobre la respuesta pública de GitHub Pages.
+No quedan hallazgos altos ni medios en el código revisado. Queda un punto bajo asociado a las
+cabeceras que GitHub Pages no permite configurar directamente.
 
 ## Hallazgos abiertos
 
-### SEC-002 — Cabeceras del proveedor aún no verificables
+### SEC-002 — Cabeceras limitadas por GitHub Pages
 
 - Rule ID: `JS-CSP-001`
 - Severidad: baja
-- Ubicación: configuración de hosting no presente en el repositorio.
-- Evidencia: la aplicación ya entrega CSP mediante metaetiqueta en `astro.config.mjs:9`, pero todavía
-  no existe una respuesta pública para comprobar HSTS, `X-Content-Type-Options`,
-  `Permissions-Policy` y una directiva anti-embebido como `frame-ancestors`.
-- Impacto: sin verificación en el borde no se puede confirmar la defensa completa contra downgrade,
-  interpretación incorrecta de MIME o clickjacking.
-- Corrección recomendada: revisar las cabeceras reales tras el despliegue provisional. Si GitHub
-  Pages no permite establecer alguna cabecera necesaria, configurarla en la capa DNS/CDN al conectar
-  el dominio.
+- Ubicación: respuesta pública de `https://omarjojoa17.github.io/PaginaAquatek/`.
+- Evidencia: la comprobación posterior al despliegue confirmó HTTPS y
+  `Strict-Transport-Security: max-age=31556952`. GitHub Pages no entrega
+  `X-Content-Type-Options`, `Permissions-Policy` ni una CSP como cabecera HTTP.
+- Impacto: faltan capas complementarias contra interpretación incorrecta de MIME y uso innecesario
+  de capacidades del navegador. `frame-ancestors` no se puede aplicar mediante metaetiqueta.
+- Corrección recomendada: configurar las cabeceras faltantes en la capa DNS/CDN cuando se conecte el
+  dominio propio.
 - Mitigación actual: CSP estricta con hashes, `object-src 'none'`, `frame-src 'none'`,
   `base-uri 'self'`, política de referencia restrictiva y ausencia de operaciones sensibles.
-- Posible falso positivo: sí. El proveedor puede incluir parte de estas cabeceras automáticamente;
-  debe verificarse sobre la URL publicada.
+- Posible falso positivo: bajo; la respuesta pública fue inspeccionada después del despliegue.
 
 ## Hallazgos corregidos
 

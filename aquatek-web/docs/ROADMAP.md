@@ -67,11 +67,11 @@
 - [x] Rendimiento, accesibilidad, SEO y seguridad.
 - [x] Presupuestos automáticos para medios, metadatos y archivos públicos.
 - [x] CSP con hashes, dependencias deterministas y auditoría de vulnerabilidades.
-- [ ] Verificar cabeceras HTTP sobre la URL de GitHub Pages en el Módulo 6.3.
+- [x] Verificar cabeceras HTTP sobre la URL de GitHub Pages en el Módulo 6.3.
 
 ### Módulo 6.3 — Despliegue provisional
 
-- [ ] GitHub Pages y flujo automático de publicación.
+- [x] GitHub Pages y flujo automático de publicación.
 
 ### Módulo 6.4 — Lanzamiento
 
