@@ -76,6 +76,7 @@ const searchableText = [
 <style>
   .project-card {
     min-width: 0;
+    height: 100%;
     border: 1px solid var(--color-line);
     background: var(--color-white);
   }
@@ -87,6 +88,7 @@ const searchableText = [
   .project-card article {
     display: grid;
     grid-template-rows: auto 1fr;
+    height: 100%;
   }
 
   .project-card__visual {
@@ -117,6 +119,7 @@ const searchableText = [
 
   .project-card__body {
     display: grid;
+    grid-template-rows: auto auto auto auto 1fr;
     align-content: start;
     padding: clamp(1.25rem, 3vw, 2rem);
   }
@@ -132,7 +135,8 @@ const searchableText = [
 
   .project-card h2 {
     max-width: 20ch;
-    font-size: clamp(1.65rem, 3vw, 2.5rem);
+    font-size: clamp(1.65rem, 2.35vw, 2.25rem);
+    line-height: 1.08;
   }
 
   .project-card h2 a {
@@ -146,6 +150,7 @@ const searchableText = [
   }
 
   .project-card p {
+    margin-bottom: 1.25rem;
     line-height: 1.6;
   }
 
