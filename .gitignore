@@ -5,6 +5,8 @@
 # Original media library: keep local; publish optimized derivatives only
 assets/
 aquatek-ptap-video/public/assets/
+aquatek-orito-video/
+proyectos-fuente/
 
 # JavaScript build products
 **/node_modules/

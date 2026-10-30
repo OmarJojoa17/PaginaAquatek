@@ -8,9 +8,10 @@ import { disciplineLabels } from '../../utils/disciplines';
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
+  const previewDrafts = import.meta.env.DEV && import.meta.env.PREVIEW_DRAFTS === 'true';
 
   return projects
-    .filter((project) => isPublicProject(project.data))
+    .filter((project) => previewDrafts || isPublicProject(project.data))
     .map((project) => ({ params: { slug: project.data.slug }, props: { project } }));
 }
 
@@ -47,8 +48,11 @@ const remainingMedia = project.data.media.filter((medium) => medium !== featured
     <section class="project-film page-section" aria-labelledby="film-title">
       <div class="project-film__intro">
         <p>Primera mirada</p>
-        <h2 id="film-title">El proyecto en 60 segundos</h2>
-        <p>Del tren de tratamiento al modelo BIM y los planos que permiten revisar la solución.</p>
+        <h2 id="film-title">El proyecto explicado en video</h2>
+        <p>
+          Del problema inicial a las decisiones, el modelo y los entregables que permiten revisar la
+          solución.
+        </p>
       </div>
       <ProjectGallery media={[featuredVideo]} />
     </section>
@@ -101,10 +105,15 @@ const remainingMedia = project.data.media.filter((medium) => medium !== featured
 
   <section class="project-work page-section" aria-labelledby="work-title">
     <div>
-      <p>Proceso</p>
-      <h2 id="work-title">Qué se revisó y cómo se analizó</h2>
+      <p>Revisión técnica</p>
+      <h2 id="work-title">Qué se revisó en el proyecto</h2>
     </div>
-    <div class="project-work__columns">
+    <div
+      class:list={[
+        'project-work__columns',
+        { 'project-work__columns--single': !project.data.methodology },
+      ]}
+    >
       <article>
         <h3>Alcance</h3>
         <ul>
@@ -113,14 +122,16 @@ const remainingMedia = project.data.media.filter((medium) => medium !== featured
           ))}
         </ul>
       </article>
-      <article>
-        <h3>Metodología</h3>
-        <ol>
-          {project.data.methodology?.map((item) => (
-            <li>{item}</li>
-          ))}
-        </ol>
-      </article>
+      {project.data.methodology && (
+        <article>
+          <h3>Metodología</h3>
+          <ol>
+            {project.data.methodology.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ol>
+        </article>
+      )}
     </div>
   </section>
 
@@ -237,7 +248,18 @@ const remainingMedia = project.data.media.filter((medium) => medium !== featured
   .project-work > div:first-child > p,
   .project-results > div:first-child > p {
     color: var(--color-blue);
+    font-size: clamp(1rem, 1.2vw, 1.15rem);
     font-weight: 750;
+  }
+
+  .project-question h2,
+  .project-work h2,
+  .project-results h2,
+  .project-basis h2,
+  .project-evidence__intro h2 {
+    max-width: 12ch;
+    font-size: clamp(2.65rem, 4.8vw, 4.8rem);
+    line-height: 0.98;
   }
 
   .project-facts dd {
@@ -245,7 +267,7 @@ const remainingMedia = project.data.media.filter((medium) => medium !== featured
   }
 
   .project-question__copy > p {
-    font-size: clamp(1.25rem, 2vw, 1.55rem);
+    font-size: clamp(1.3rem, 1.8vw, 1.65rem);
     line-height: 1.55;
   }
 
@@ -279,7 +301,8 @@ const remainingMedia = project.data.media.filter((medium) => medium !== featured
     gap: 0.8rem;
     margin: 0;
     padding-left: 1.25rem;
-    line-height: 1.55;
+    font-size: clamp(1.03rem, 1.15vw, 1.15rem);
+    line-height: 1.6;
   }
 
   .project-results h2,
@@ -300,8 +323,9 @@ const remainingMedia = project.data.media.filter((medium) => medium !== featured
   }
 
   .project-results li {
-    padding: 1.1rem 0;
+    padding: 1.2rem 0;
     border-bottom: 1px solid rgb(255 255 255 / 24%);
+    font-size: clamp(1.05rem, 1.2vw, 1.18rem);
   }
 
   .project-basis > div {
@@ -338,6 +362,14 @@ const remainingMedia = project.data.media.filter((medium) => medium !== featured
     .project-work__columns,
     .project-basis > div {
       grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .project-work__columns--single {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .project-work__columns--single article {
+      max-width: 52rem;
     }
   }
 </style>

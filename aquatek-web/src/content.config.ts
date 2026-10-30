@@ -75,14 +75,7 @@ const projects = defineCollection({
     .superRefine((project, context) => {
       if (project.publicationStatus !== 'published' || !project.approvedForPublication) return;
 
-      const requiredFields = [
-        'headline',
-        'year',
-        'need',
-        'scope',
-        'methodology',
-        'results',
-      ] as const;
+      const requiredFields = ['headline', 'year', 'need', 'scope', 'results'] as const;
       for (const field of requiredFields) {
         if (project[field] === undefined) {
           context.addIssue({

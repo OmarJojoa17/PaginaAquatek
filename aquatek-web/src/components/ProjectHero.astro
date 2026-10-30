@@ -8,9 +8,10 @@ type Props = {
 
 const { project } = Astro.props;
 const base = import.meta.env.BASE_URL;
-const cover =
-  project.data.media.find((medium) => medium.type === 'video' && medium.poster)?.poster ??
-  project.data.media.find((medium) => medium.type === 'image')?.src;
+const coverMedium =
+  project.data.media.find((medium) => medium.type === 'video' && medium.poster) ??
+  project.data.media.find((medium) => medium.type === 'image');
+const cover = coverMedium?.type === 'video' ? coverMedium.poster : coverMedium?.src;
 ---
 
 <header class="project-hero">
@@ -48,13 +49,15 @@ const cover =
       <figure>
         <img
           src={`${base}${cover.replace(/^\//, '')}`}
-          alt="Modelo general de la planta de tratamiento de agua potable de San Francisco"
+          alt={coverMedium?.alt ?? `Portada técnica de ${project.data.title}`}
           width="1600"
           height="900"
           fetchpriority="high"
           draggable="false"
         />
-        <figcaption>Portada del caso · modelo coordinado y documentación técnica.</figcaption>
+        <figcaption>
+          {coverMedium?.caption ?? 'Portada del caso con evidencia técnica revisada.'}
+        </figcaption>
       </figure>
     )}
   </div>
@@ -70,7 +73,7 @@ const cover =
   .project-hero > nav {
     display: flex;
     gap: 0.55rem;
-    padding: 2rem var(--page-gutter);
+    padding: 1.35rem var(--page-gutter);
     color: var(--color-blue);
     font-size: 0.92rem;
   }
@@ -85,12 +88,12 @@ const cover =
 
   .project-hero__copy {
     align-content: center;
-    padding: clamp(3rem, 8vw, 7rem) var(--page-gutter);
+    padding: clamp(2.4rem, 5vw, 4.5rem) var(--page-gutter);
   }
 
   .project-hero__copy > p:first-child {
     width: fit-content;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.15rem;
     padding-bottom: 0.35rem;
     border-bottom: 2px solid var(--color-signal);
     color: var(--color-blue);
@@ -98,21 +101,22 @@ const cover =
   }
 
   .project-hero h1 {
-    max-width: 14ch;
-    font-size: clamp(2.8rem, 6vw, 5.8rem);
+    max-width: 16ch;
+    font-size: clamp(2.75rem, 4.8vw, 4.9rem);
+    line-height: 0.97;
   }
 
   .project-hero__summary {
     max-width: 42rem;
-    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    font-size: clamp(1.05rem, 1.35vw, 1.2rem);
     line-height: 1.55;
   }
 
   .project-hero dl {
     display: grid;
     gap: 0.8rem;
-    margin: 2rem 0 0;
-    padding-top: 1.25rem;
+    margin: 1.5rem 0 0;
+    padding-top: 1rem;
     border-top: 1px solid var(--color-line);
   }
 
@@ -133,6 +137,7 @@ const cover =
 
   .project-hero figure {
     display: grid;
+    grid-template-rows: minmax(0, 1fr) auto;
     align-self: stretch;
     margin: 0;
     border-top: 1px solid var(--color-line);
@@ -143,7 +148,7 @@ const cover =
     display: block;
     width: 100%;
     height: 100%;
-    min-height: 22rem;
+    min-height: 20rem;
     object-fit: cover;
     pointer-events: none;
     user-select: none;
@@ -159,12 +164,19 @@ const cover =
 
   @media (min-width: 64rem) {
     .project-hero__body {
-      grid-template-columns: minmax(30rem, 0.95fr) minmax(32rem, 1.05fr);
+      grid-template-columns: minmax(28rem, 0.88fr) minmax(34rem, 1.12fr);
+      min-height: 38rem;
+      max-height: 46rem;
     }
 
     .project-hero figure {
+      min-height: 0;
       border-top: 0;
       border-left: 1px solid var(--color-line);
+    }
+
+    .project-hero figure img {
+      min-height: 0;
     }
   }
 </style>

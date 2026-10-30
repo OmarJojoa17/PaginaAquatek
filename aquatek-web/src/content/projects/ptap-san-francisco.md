@@ -1,7 +1,7 @@
 ---
 slug: ptap-san-francisco
 title: Diseño hidráulico de la nueva PTAP de San Francisco
-headline: Diseño hidráulico y modelación BIM de una PTAP convencional para 16 L/s.
+headline: Diseño hidráulico y modelación BIM de una PTAP para 16 L/s.
 summary: Estudio y diseño del tren de potabilización para San Francisco, Putumayo, desde la definición del caudal hasta los planos constructivos y el modelo BIM.
 discipline: aqueducts
 relatedDisciplines:
@@ -40,7 +40,7 @@ standards:
   - Resolución 2115 de 2007
 media:
   - type: video
-    src: /media/projects/ptap-san-francisco/ptap-san-francisco-720p.mp4
+    src: /media/projects/ptap-san-francisco/ptap-san-francisco-web.mp4
     poster: /media/projects/ptap-san-francisco/video-poster.webp
     alt: Recorrido audiovisual por el diseño hidráulico, el modelo BIM y los planos de la PTAP de San Francisco.
     caption: Síntesis del tren de tratamiento, las unidades proyectadas y la documentación técnica desarrollada.
