@@ -42,7 +42,7 @@ standards:
 media:
   - type: video
     src: /media/projects/alcantarillado-pluvial-orito/orito-pluvial-720p.mp4
-    poster: /media/projects/alcantarillado-pluvial-orito/video-poster.png
+    poster: /media/projects/alcantarillado-pluvial-orito/video-poster-final.webp
     alt: Video explicativo del diseño hidráulico del alcantarillado pluvial de Orito
     caption: Recorrido desde las áreas tributarias y el modelo tridimensional hasta las estructuras y la descarga protegida.
     layout: wide
