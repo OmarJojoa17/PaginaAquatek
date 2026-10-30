@@ -1,7 +1,7 @@
 import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
 
-test('presenta el primer proyecto publicado', async ({ page }, testInfo) => {
+test('presenta los proyectos publicados', async ({ page }, testInfo) => {
   await page.goto('/proyectos/');
 
   await expect(page).toHaveTitle(/Proyectos de ingeniería del agua/);
@@ -15,13 +15,21 @@ test('presenta el primer proyecto publicado', async ({ page }, testInfo) => {
   await expect(
     page.getByRole('link', { name: 'Diseño hidráulico de la nueva PTAP de San Francisco' }),
   ).toBeVisible();
+  await expect(
+    page.getByRole('link', { name: 'Diseño hidráulico del alcantarillado pluvial de Orito' }),
+  ).toBeVisible();
 
-  const visualRatio = await page.locator('.project-card__visual').evaluate((visual) => {
-    const bounds = visual.getBoundingClientRect();
-    return bounds.width / bounds.height;
-  });
-  expect(visualRatio).toBeGreaterThan(1.7);
-  expect(visualRatio).toBeLessThan(1.85);
+  const visualRatios = await page.locator('.project-card__visual').evaluateAll((visuals) =>
+    visuals.map((visual) => {
+      const bounds = visual.getBoundingClientRect();
+      return bounds.width / bounds.height;
+    }),
+  );
+  expect(visualRatios).toHaveLength(2);
+  for (const visualRatio of visualRatios) {
+    expect(visualRatio).toBeGreaterThan(1.7);
+    expect(visualRatio).toBeLessThan(1.85);
+  }
 
   const hasHorizontalOverflow = await page.evaluate(
     () => document.documentElement.scrollWidth > document.documentElement.clientWidth,
@@ -53,10 +61,13 @@ test('marca proyectos como sección actual', async ({ page }, testInfo) => {
 test('el proyecto genera una ruta pública y entra al sitemap', async ({ request }) => {
   const projectResponse = await request.get('/proyectos/ptap-san-francisco/');
   expect(projectResponse.status()).toBe(200);
+  const oritoResponse = await request.get('/proyectos/alcantarillado-pluvial-orito/');
+  expect(oritoResponse.status()).toBe(200);
 
   const sitemap = await (await request.get('/sitemap.xml')).text();
   expect(sitemap).toContain('https://aquatek.invalid/proyectos/');
   expect(sitemap).toContain('/proyectos/ptap-san-francisco/');
+  expect(sitemap).toContain('/proyectos/alcantarillado-pluvial-orito/');
 });
 
 test('la ficha abre con portada y luego presenta el video', async ({ page }, testInfo) => {
@@ -65,14 +76,11 @@ test('la ficha abre con portada y luego presenta el video', async ({ page }, tes
   await expect(
     page.getByRole('heading', {
       level: 1,
-      name: 'Diseño hidráulico y modelación BIM de una PTAP convencional para 16 L/s.',
+      name: 'Diseño hidráulico y modelación BIM de una PTAP para 16 L/s.',
     }),
   ).toBeVisible();
-  await expect(page.getByRole('heading', { name: 'El proyecto en 60 segundos' })).toBeVisible();
-  await expect(page.locator('video source')).toHaveAttribute(
-    'src',
-    /ptap-san-francisco-720p\.mp4$/,
-  );
+  await expect(page.getByRole('heading', { name: 'El proyecto explicado en video' })).toBeVisible();
+  await expect(page.locator('video source')).toHaveAttribute('src', /ptap-san-francisco-web\.mp4$/);
   await expect(page.locator('video')).toHaveAttribute('preload', 'metadata');
   const galleryLoadingModes = await page
     .locator('.project-gallery img')

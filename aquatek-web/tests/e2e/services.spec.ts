@@ -74,11 +74,22 @@ for (const service of services) {
     expect(schemas.some((schema) => schema.includes('"@type":"Service"'))).toBe(true);
     const hasPtapProject =
       service.slug === 'hidrologia' || service.slug === 'acueductos-redes-presion';
+    const hasOritoProject =
+      service.slug === 'hidrologia' ||
+      service.slug === 'alcantarillado-sanitario-pluvial' ||
+      service.slug === 'hidraulica-ingenieria-rios' ||
+      service.slug === 'drenaje-vial';
     if (hasPtapProject) {
       await expect(
         page.getByRole('link', { name: 'Diseño hidráulico de la nueva PTAP de San Francisco' }),
       ).toHaveAttribute('href', '/proyectos/ptap-san-francisco/');
-    } else {
+    }
+    if (hasOritoProject) {
+      await expect(
+        page.getByRole('link', { name: 'Diseño hidráulico del alcantarillado pluvial de Orito' }),
+      ).toHaveAttribute('href', '/proyectos/alcantarillado-pluvial-orito/');
+    }
+    if (!hasPtapProject && !hasOritoProject) {
       await expect(
         page.getByText(
           'Los casos públicos de esta especialidad se incorporarán cuando su información esté revisada y autorizada.',
