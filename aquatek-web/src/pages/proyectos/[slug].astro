@@ -209,10 +209,12 @@ const remainingMedia = project.data.media.filter((medium) => medium !== featured
 
   .project-film {
     background: var(--color-navy);
+    padding-block: clamp(2.25rem, 4vw, 3.5rem) clamp(2rem, 3.5vw, 3rem);
   }
 
   .project-film__intro {
-    margin-bottom: 2.5rem;
+    row-gap: 0.75rem;
+    margin-bottom: 1.75rem;
   }
 
   .project-film__intro > p:first-child {
@@ -316,12 +318,14 @@ const remainingMedia = project.data.media.filter((medium) => medium !== featured
   .project-results ul {
     border-top: 1px solid rgb(255 255 255 / 24%);
     color: var(--color-on-dark);
+    gap: 0;
+    line-height: 1.4;
     list-style: none;
     padding-left: 0;
   }
 
   .project-results li {
-    padding: 1.1rem 0;
+    padding: 0.7rem 0;
     border-bottom: 1px solid rgb(255 255 255 / 24%);
   }
 
@@ -331,6 +335,10 @@ const remainingMedia = project.data.media.filter((medium) => medium !== featured
   .project-results,
   .project-basis {
     padding-block: clamp(3.5rem, 6vw, 5.5rem);
+  }
+
+  .project-results {
+    padding-block: clamp(2.5rem, 4.5vw, 4rem);
   }
 
   .project-basis > div {
@@ -362,6 +370,27 @@ const remainingMedia = project.data.media.filter((medium) => medium !== featured
     .project-facts dl div {
       grid-template-columns: minmax(10rem, 0.5fr) 1fr;
       gap: 1.5rem;
+    }
+
+    .project-film__intro {
+      grid-template-areas:
+        'label title'
+        'summary title';
+      grid-template-rows: auto 1fr;
+      align-items: start;
+    }
+
+    .project-film__intro > p:first-child {
+      grid-area: label;
+    }
+
+    .project-film__intro h2 {
+      grid-area: title;
+    }
+
+    .project-film__intro > p:last-child {
+      grid-area: summary;
+      align-self: end;
     }
 
     .project-work__columns,

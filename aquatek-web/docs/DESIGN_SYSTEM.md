@@ -76,6 +76,9 @@ Móvil                     Escritorio
 - Navegación móvil con HTML nativo; JavaScript solo cuando aporte una función necesaria.
 - Los proyectos explican problema, proceso y resultado; no son tarjetas promocionales aisladas.
 - La numeración se reserva para procesos secuenciales; las especialidades no se numeran.
+- En las fichas de proyecto, la transición de color ya separa el video y los resultados: usar un
+  relleno vertical moderado, alinear el encabezado con su explicación y mantener las listas de
+  resultados compactas. Conservar el aire necesario para leerlas en móvil.
 
 ## Componentes base
 
