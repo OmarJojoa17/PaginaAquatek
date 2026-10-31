@@ -55,6 +55,32 @@ media:
     height: 540
     layout: wide
   - type: image
+    src: /media/projects/alcantarillado-pluvial-orito/modelo-red-3d.webp
+    alt: Modelo tridimensional de la red pluvial coordinada con el terreno
+    caption: El recorrido tridimensional ayuda a revisar el alineamiento, los cambios de dirección y las estructuras de inspección.
+    width: 960
+    height: 540
+    layout: wide
+  - type: image
+    src: /media/projects/alcantarillado-pluvial-orito/planta-perfil.webp
+    alt: Lectura coordinada de la planta y el perfil longitudinal del alcantarillado pluvial
+    caption: Planta y perfil se revisan conjuntamente para controlar cotas, pendientes, recubrimientos y continuidad hidráulica.
+    width: 960
+    height: 540
+    layout: wide
+  - type: image
+    src: /media/projects/alcantarillado-pluvial-orito/estructuras.webp
+    alt: Detalles técnicos de un pozo de inspección y un sumidero de la red pluvial
+    caption: Las estructuras de captación e inspección se presentan mediante recortes técnicos sin firmas ni cajetines.
+    width: 960
+    height: 540
+  - type: image
+    src: /media/projects/alcantarillado-pluvial-orito/descarga-protegida.webp
+    alt: Vista de la protección de la descarga del alcantarillado pluvial
+    caption: Cabezal y enrocado forman parte de la solución de salida presentada en el proyecto.
+    width: 960
+    height: 540
+  - type: image
     src: /media/projects/alcantarillado-pluvial-orito/precipitacion-mensual.webp
     alt: Gráfica de precipitación media mensual multianual incluida en la memoria hidráulica
     caption: La distribución mensual de la lluvia aporta contexto hidrológico al diseño de la red.
