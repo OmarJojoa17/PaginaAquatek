@@ -103,6 +103,8 @@ const typeLabels = {
 
   .project-gallery figure {
     margin: 0;
+    display: flex;
+    flex-direction: column;
   }
 
   .project-gallery img,
@@ -127,6 +129,15 @@ const typeLabels = {
   .project-gallery__item:not(.project-gallery__item--wide) img {
     aspect-ratio: 4 / 3;
     max-height: none;
+  }
+
+  .project-gallery__item--image {
+    align-self: start;
+  }
+
+  .project-gallery__item--image:not(.project-gallery__item--wide) img {
+    aspect-ratio: auto;
+    height: auto;
   }
 
   .project-gallery figcaption,

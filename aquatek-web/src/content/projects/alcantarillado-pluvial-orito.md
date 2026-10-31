@@ -41,7 +41,7 @@ standards:
   - Criterios de drenaje y protección de descargas del INVIAS
 media:
   - type: video
-    src: /media/projects/alcantarillado-pluvial-orito/orito-pluvial-720p.mp4
+    src: /media/projects/alcantarillado-pluvial-orito/orito-pluvial-1080p.mp4
     poster: /media/projects/alcantarillado-pluvial-orito/video-poster-final.webp
     alt: Video explicativo del diseño hidráulico del alcantarillado pluvial de Orito
     caption: Recorrido desde las áreas tributarias y el modelo tridimensional hasta las estructuras y la descarga protegida.
@@ -54,26 +54,6 @@ media:
     width: 960
     height: 540
     layout: wide
-  - type: image
-    src: /media/projects/alcantarillado-pluvial-orito/modelo-red-3d.webp
-    alt: Modelo tridimensional de la red pluvial coordinada con el terreno
-    caption: El recorrido tridimensional ayuda a revisar el alineamiento, los cambios de dirección y las estructuras de inspección.
-    width: 960
-    height: 540
-    layout: wide
-  - type: image
-    src: /media/projects/alcantarillado-pluvial-orito/planta-perfil.webp
-    alt: Lectura coordinada de la planta y el perfil longitudinal del alcantarillado pluvial
-    caption: Planta y perfil se revisan conjuntamente para controlar cotas, pendientes, recubrimientos y continuidad hidráulica.
-    width: 960
-    height: 540
-    layout: wide
-  - type: image
-    src: /media/projects/alcantarillado-pluvial-orito/estructuras.webp
-    alt: Detalles técnicos de un pozo de inspección y un sumidero de la red pluvial
-    caption: Las estructuras de captación e inspección se presentan mediante recortes técnicos sin firmas ni cajetines.
-    width: 960
-    height: 540
   - type: image
     src: /media/projects/alcantarillado-pluvial-orito/precipitacion-mensual.webp
     alt: Gráfica de precipitación media mensual multianual incluida en la memoria hidráulica
@@ -92,12 +72,6 @@ media:
     caption: La representación permite reconocer la geometría potencial de la fosa en la descarga.
     width: 960
     height: 720
-  - type: image
-    src: /media/projects/alcantarillado-pluvial-orito/descarga-protegida.webp
-    alt: Vista de la protección de la descarga del alcantarillado pluvial
-    caption: Cabezal y enrocado forman parte de la solución de salida presentada en el proyecto.
-    width: 960
-    height: 540
   - type: image
     src: /media/projects/alcantarillado-pluvial-orito/enrocado-planta-perfil.webp
     alt: Extracto de la memoria con la planta y el perfil del enrocado de protección

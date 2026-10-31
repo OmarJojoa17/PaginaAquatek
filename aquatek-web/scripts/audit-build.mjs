@@ -11,9 +11,9 @@ const expectedBase = configuredBase
   : undefined;
 const limits = {
   image: 200 * 1024,
-  video: 6 * 1024 * 1024,
-  // Dos casos incluyen video; conservar el límite individual de 6 MiB.
-  totalMedia: 12 * 1024 * 1024,
+  video: 16 * 1024 * 1024,
+  // El caso de Orito se publica en 1080p; mantener un presupuesto explícito.
+  totalMedia: 24 * 1024 * 1024,
 };
 const imageExtensions = new Set(['.avif', '.jpg', '.jpeg', '.png', '.webp']);
 const videoExtensions = new Set(['.mp4', '.webm']);
@@ -61,12 +61,14 @@ for (const file of mediaFiles) {
     failures.push(`${relative(dist, file)} supera 200 KiB (${Math.ceil(size / 1024)} KiB).`);
   }
   if (videoExtensions.has(extension) && size > limits.video) {
-    failures.push(`${relative(dist, file)} supera 6 MiB (${(size / 1024 / 1024).toFixed(2)} MiB).`);
+    failures.push(
+      `${relative(dist, file)} supera 16 MiB (${(size / 1024 / 1024).toFixed(2)} MiB).`,
+    );
   }
 }
 
 if (totalMedia > limits.totalMedia) {
-  failures.push(`Los medios suman ${(totalMedia / 1024 / 1024).toFixed(2)} MiB; límite: 12 MiB.`);
+  failures.push(`Los medios suman ${(totalMedia / 1024 / 1024).toFixed(2)} MiB; límite: 24 MiB.`);
 }
 
 for (const file of publicFiles) {
