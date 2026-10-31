@@ -75,17 +75,35 @@ media:
     width: 960
     height: 540
   - type: image
-    src: /media/projects/alcantarillado-pluvial-orito/socavacion-estimada.webp
-    alt: Esquema en planta y perfil de la fosa de socavación local estimada en la descarga
-    caption: La estimación representa la geometría potencial de la fosa antes de definir la protección de la salida.
-    width: 780
-    height: 760
+    src: /media/projects/alcantarillado-pluvial-orito/precipitacion-mensual.webp
+    alt: Gráfica de precipitación media mensual multianual incluida en la memoria hidráulica
+    caption: La distribución mensual de la lluvia aporta contexto hidrológico al diseño de la red.
+    width: 960
+    height: 720
+  - type: image
+    src: /media/projects/alcantarillado-pluvial-orito/esquema-red-3d.webp
+    alt: Extracto de la memoria con el esquema tridimensional de la red pluvial
+    caption: La vista del modelo muestra el recorrido general y las estructuras de inspección.
+    width: 960
+    height: 720
+  - type: image
+    src: /media/projects/alcantarillado-pluvial-orito/socavacion-documento.webp
+    alt: Gráficas de la estimación de socavación local en planta y perfil
+    caption: La representación permite reconocer la geometría potencial de la fosa en la descarga.
+    width: 960
+    height: 720
   - type: image
     src: /media/projects/alcantarillado-pluvial-orito/descarga-protegida.webp
-    alt: Detalle del cabezal y enrocado para proteger la descarga del alcantarillado pluvial
-    caption: La salida incorpora elementos para reducir la erosión y facilitar una entrega controlada del flujo.
+    alt: Vista de la protección de la descarga del alcantarillado pluvial
+    caption: Cabezal y enrocado forman parte de la solución de salida presentada en el proyecto.
     width: 960
     height: 540
+  - type: image
+    src: /media/projects/alcantarillado-pluvial-orito/enrocado-planta-perfil.webp
+    alt: Extracto de la memoria con la planta y el perfil del enrocado de protección
+    caption: La planta y el perfil muestran cómo se protege la transición hacia el cauce receptor.
+    width: 960
+    height: 720
 ---
 
 El caso relaciona el territorio, los aportes de escorrentía y el perfil de la red con las decisiones
