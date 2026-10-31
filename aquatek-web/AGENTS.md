@@ -26,3 +26,5 @@ reales, sin copiar estructura, contenido ni identidad de otros sitios.
 ## Documentación
 
 Registrar cambios de arquitectura, contenido, pruebas o decisiones visuales en `docs/`.
+Para cada proyecto nuevo o cambio de galería/video, seguir `docs/ADDING_PROJECTS.md` y comparar
+con la versión anterior antes de retirar medios o secciones existentes.

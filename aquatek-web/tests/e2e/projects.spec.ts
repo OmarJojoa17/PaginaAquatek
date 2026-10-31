@@ -80,7 +80,10 @@ test('la ficha abre con portada y luego presenta el video', async ({ page }, tes
     }),
   ).toBeVisible();
   await expect(page.getByRole('heading', { name: 'El proyecto explicado en video' })).toBeVisible();
-  await expect(page.locator('video source')).toHaveAttribute('src', /ptap-san-francisco-web\.mp4$/);
+  await expect(page.locator('video source')).toHaveAttribute(
+    'src',
+    /ptap-san-francisco-1080p\.mp4$/,
+  );
   await expect(page.locator('video')).toHaveAttribute('preload', 'metadata');
   const galleryLoadingModes = await page
     .locator('.project-gallery img')

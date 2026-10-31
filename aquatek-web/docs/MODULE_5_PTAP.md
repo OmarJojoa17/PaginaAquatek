@@ -28,7 +28,7 @@ explicar el trabajo de manera clara.
 
 ## Medios publicados
 
-- Video web H.264 a 1280 × 720, reducido de aproximadamente 60 MB a 5,8 MB.
+- Video web H.264 a 1920 × 1080, derivado del maestro Full HD y optimizado a aproximadamente 17 MB.
 - Portada WebP del video.
 - Vista general, corte de unidades e implantación del modelo BIM sobre la topografía.
 - Tres vistas derivadas de planos a color.
