@@ -12,7 +12,8 @@ const expectedBase = configuredBase
 const limits = {
   image: 200 * 1024,
   video: 6 * 1024 * 1024,
-  totalMedia: 8 * 1024 * 1024,
+  // Dos casos incluyen video; conservar el límite individual de 6 MiB.
+  totalMedia: 12 * 1024 * 1024,
 };
 const imageExtensions = new Set(['.avif', '.jpg', '.jpeg', '.png', '.webp']);
 const videoExtensions = new Set(['.mp4', '.webm']);
@@ -65,7 +66,7 @@ for (const file of mediaFiles) {
 }
 
 if (totalMedia > limits.totalMedia) {
-  failures.push(`Los medios suman ${(totalMedia / 1024 / 1024).toFixed(2)} MiB; límite: 8 MiB.`);
+  failures.push(`Los medios suman ${(totalMedia / 1024 / 1024).toFixed(2)} MiB; límite: 12 MiB.`);
 }
 
 for (const file of publicFiles) {
