@@ -28,6 +28,9 @@ Orden de la página:
 - Revisar cada fotograma, imagen y página para encontrar firmas, matrículas, nombres de terceros, cajetines, coordenadas, tablas reservadas y datos personales.
 - Recortar o difuminar esos elementos **en el archivo exportado**. Una capa CSS o una superposición del reproductor no protege el archivo original.
 - Si se muestra una gráfica de la memoria, dejar legibles su título, la gráfica y la fuente aprobada; difuminar el texto circundante. No usar una página completa si contiene información reservada.
+- En mapas destinados a publicación, difuminar físicamente topónimos, nombres de cauces,
+  poblaciones y cualquier rótulo que identifique una ubicación no autorizada. Revisar el WebP final
+  a tamaño completo.
 - Marcar los planos derivados como «Vista web · No apto para construcción» cuando corresponda. Nunca subir PDF completo, DWG, DOCX, archivos de cálculo ni video maestro a `public/`.
 - Comprobar el archivo final directamente, incluso fuera de la página. Todo medio servido por el navegador puede guardarse o capturarse; la protección depende de publicar solo el derivado revisado.
 
@@ -47,6 +50,10 @@ Crear `src/content/projects/<slug>.md` siguiendo el esquema de una ficha publica
 Los medios van en `public/media/projects/<slug>/`. Para imágenes, registrar `alt`, `caption`, `width` y `height` reales. Para video, usar `poster` y subtítulos WebVTT o `transcript`. Los planos se publican como **imágenes derivadas**, no como PDF original. `layout: wide` se reserva para el video o una figura que necesite todo el ancho.
 
 Comprobar que la galería no tenga tarjetas vacías o estiradas: dos imágenes de una pareja deben equilibrarse; las tarjetas deben seguir la altura del contenido. Revisar portada, títulos, leyendas, espaciado y proporciones a 390 px y en escritorio. Mantener el video visible sin deformarlo.
+
+Para planos panorámicos con demasiado espacio vertical, usar `layout: wide` junto con
+`display: compact`. Las leyendas son títulos técnicos breves, no notas sobre privacidad o proceso
+editorial. Ejemplo: «Gaviones · Planta, perfil y secciones transversales · Sector 1».
 
 ## 6. Puertas de revisión y publicación
 

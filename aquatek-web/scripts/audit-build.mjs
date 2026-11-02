@@ -12,8 +12,8 @@ const expectedBase = configuredBase
 const limits = {
   image: 200 * 1024,
   video: 18 * 1024 * 1024,
-  // Ambos casos se publican en 1080p; mantener un presupuesto explícito.
-  totalMedia: 32 * 1024 * 1024,
+  // Tres casos se publican en 1080p. El tercer video web pesa 10.67 MiB y el total medido es 40.65 MiB.
+  totalMedia: 44 * 1024 * 1024,
 };
 const imageExtensions = new Set(['.avif', '.jpg', '.jpeg', '.png', '.webp']);
 const videoExtensions = new Set(['.mp4', '.webm']);
@@ -68,7 +68,9 @@ for (const file of mediaFiles) {
 }
 
 if (totalMedia > limits.totalMedia) {
-  failures.push(`Los medios suman ${(totalMedia / 1024 / 1024).toFixed(2)} MiB; límite: 32 MiB.`);
+  failures.push(
+    `Los medios suman ${(totalMedia / 1024 / 1024).toFixed(2)} MiB; límite: ${(limits.totalMedia / 1024 / 1024).toFixed(0)} MiB.`,
+  );
 }
 
 for (const file of publicFiles) {

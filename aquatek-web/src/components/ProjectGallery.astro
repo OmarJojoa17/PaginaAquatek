@@ -22,7 +22,10 @@ const typeLabels = {
       class:list={[
         'project-gallery__item',
         `project-gallery__item--${medium.type}`,
-        { 'project-gallery__item--wide': medium.layout === 'wide' },
+        {
+          'project-gallery__item--wide': medium.layout === 'wide',
+          'project-gallery__item--compact': medium.display === 'compact',
+        },
       ]}
     >
       {medium.type === 'image' && (
@@ -133,6 +136,23 @@ const typeLabels = {
 
   .project-gallery__item--image {
     align-self: start;
+  }
+
+  .project-gallery__item--compact figure {
+    align-items: center;
+  }
+
+  .project-gallery__item--compact img {
+    width: auto;
+    max-width: 100%;
+    max-height: 34rem;
+  }
+
+  .project-gallery__item--compact figcaption {
+    width: 100%;
+    padding-block: 0.9rem;
+    color: var(--color-navy);
+    font-weight: 750;
   }
 
   .project-gallery__item--image:not(.project-gallery__item--wide) img {
