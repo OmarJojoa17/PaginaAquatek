@@ -11,6 +11,9 @@ guía fija las decisiones que deben repetirse en futuros videos sin copiar datos
 4. Títulos dentro de una zona segura; los medios nunca pueden cortar ni tapar el texto.
 5. Planos y memorias dentro de cajones con borde, fondo y sombra discretos.
 6. Cierre comercial sobre otro encuadre del proyecto, con servicios, contacto y logo.
+7. Sello final obligatorio sobre fondo blanco: logo Aquatek centrado y línea de contacto. Este
+   fotograma limpio aparece después del cierre comercial y constituye la última imagen de todos
+   los videos.
 
 ## Reglas de composición
 
@@ -32,6 +35,14 @@ guía fija las decisiones que deben repetirse en futuros videos sin copiar datos
 - Cinco o seis cajas de servicios.
 - Contacto y logo con contraste suficiente.
 - Fondo formado por un segundo encuadre del proyecto, con degradado oscuro.
+
+## Sello final obligatorio
+
+- Fondo blanco sin planos, fotografías, videos ni elementos técnicos.
+- Logo oficial Aquatek centrado, con proporciones intactas y espacio generoso alrededor.
+- Debajo del logo: «Contacto» y `aquatek@gmail.com`, con el correo en azul Aquatek.
+- Duración recomendada: entre 3 y 4 segundos.
+- No reemplaza el cierre comercial: aparece inmediatamente después y siempre es el último plano.
 
 ## Control previo al render
 

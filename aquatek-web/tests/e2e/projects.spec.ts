@@ -21,6 +21,9 @@ test('presenta los proyectos publicados', async ({ page }, testInfo) => {
   await expect(
     page.getByRole('link', { name: 'Diseño hidráulico de gaviones para defensa ribereña' }),
   ).toBeVisible();
+  await expect(
+    page.getByRole('link', { name: 'Diseño hidrológico e hidráulico de drenaje vial' }),
+  ).toBeVisible();
 
   const visualRatios = await page.locator('.project-card__visual').evaluateAll((visuals) =>
     visuals.map((visual) => {
@@ -28,7 +31,7 @@ test('presenta los proyectos publicados', async ({ page }, testInfo) => {
       return bounds.width / bounds.height;
     }),
   );
-  expect(visualRatios).toHaveLength(3);
+  expect(visualRatios).toHaveLength(4);
   for (const visualRatio of visualRatios) {
     expect(visualRatio).toBeGreaterThan(1.7);
     expect(visualRatio).toBeLessThan(1.85);
@@ -68,12 +71,15 @@ test('el proyecto genera una ruta pública y entra al sitemap', async ({ request
   expect(oritoResponse.status()).toBe(200);
   const gavionesResponse = await request.get('/proyectos/gaviones-defensa-riberena/');
   expect(gavionesResponse.status()).toBe(200);
+  const drenajeVialResponse = await request.get('/proyectos/drenaje-vial/');
+  expect(drenajeVialResponse.status()).toBe(200);
 
   const sitemap = await (await request.get('/sitemap.xml')).text();
   expect(sitemap).toContain('https://aquatek.invalid/proyectos/');
   expect(sitemap).toContain('/proyectos/ptap-san-francisco/');
   expect(sitemap).toContain('/proyectos/alcantarillado-pluvial-orito/');
   expect(sitemap).toContain('/proyectos/gaviones-defensa-riberena/');
+  expect(sitemap).toContain('/proyectos/drenaje-vial/');
 });
 
 test('la ficha abre con portada y luego presenta el video', async ({ page }, testInfo) => {
