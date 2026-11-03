@@ -43,7 +43,7 @@ media:
     alt: Video explicativo del estudio y diseño de obras con gaviones para dos cuencas.
     caption: Recorrido por el territorio, el análisis hidrológico, la modelación hidráulica, los planos y la revisión de socavación.
     layout: wide
-    transcript: El video no contiene narración; utiliza música de fondo y textos en pantalla. Presenta el territorio y las cuencas estudiadas, gráficas seleccionadas del análisis hidrológico, salidas de la modelación hidráulica, planos derivados de los dos sectores, vistas tridimensionales de las obras con gaviones y gráficas de la evaluación de socavación. Los documentos y planos se muestran mediante derivados protegidos.
+    transcript: El video no contiene narración; utiliza música de fondo y textos en pantalla. Presenta el territorio y las cuencas estudiadas, gráficas seleccionadas del análisis hidrológico, salidas de la modelación hidráulica, planos derivados de los dos sectores, vistas tridimensionales de las obras con gaviones y gráficas de la evaluación de socavación. Los documentos y planos se muestran mediante derivados protegidos. Finaliza con el cierre comercial y el sello de contacto de Aquatek.
   - type: image
     src: /media/projects/gaviones-defensa-riberena/mapa-hidrologico.webp
     alt: Mapa hidrológico derivado de las cuencas y drenajes asociados al área de estudio.

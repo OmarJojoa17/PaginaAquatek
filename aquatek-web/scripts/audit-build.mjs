@@ -12,8 +12,9 @@ const expectedBase = configuredBase
 const limits = {
   image: 200 * 1024,
   video: 18 * 1024 * 1024,
-  // Tres casos se publican en 1080p. El tercer video web pesa 10.67 MiB y el total medido es 40.65 MiB.
-  totalMedia: 44 * 1024 * 1024,
+  // Cuatro casos se publican en 1080p. El presupuesto conserva copias web legibles para planos,
+  // gráficas y tipografía técnica sin superar 18 MiB por video.
+  totalMedia: 58 * 1024 * 1024,
 };
 const imageExtensions = new Set(['.avif', '.jpg', '.jpeg', '.png', '.webp']);
 const videoExtensions = new Set(['.mp4', '.webm']);
