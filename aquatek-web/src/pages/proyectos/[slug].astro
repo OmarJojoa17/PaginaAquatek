@@ -8,7 +8,7 @@ import { disciplineLabels } from '../../utils/disciplines';
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
-  const previewDrafts = import.meta.env.DEV && import.meta.env.PREVIEW_DRAFTS === 'true';
+  const previewDrafts = import.meta.env.PREVIEW_DRAFTS === 'true';
 
   return projects
     .filter((project) => previewDrafts || isPublicProject(project.data))
@@ -182,9 +182,7 @@ const remainingMedia = project.data.media.filter((medium) => medium !== featured
     >
       <div class="project-evidence__intro">
         <h2 id="evidence-title">Evidencia del proyecto</h2>
-        <p>
-          Los archivos publicados son derivados web revisados; los originales permanecen protegidos.
-        </p>
+        <p>Modelos, planos y documentos seleccionados para presentar el alcance técnico.</p>
       </div>
       <ProjectGallery media={remainingMedia} />
     </section>

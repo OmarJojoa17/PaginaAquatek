@@ -10,11 +10,11 @@ const expectedBase = configuredBase
   ? `/${configuredBase.replace(/^\/+|\/+$/g, '')}/`.replace('//', '/')
   : undefined;
 const limits = {
-  image: 200 * 1024,
-  video: 18 * 1024 * 1024,
-  // Cuatro casos se publican en 1080p. El presupuesto conserva copias web legibles para planos,
-  // gráficas y tipografía técnica sin superar 18 MiB por video.
-  totalMedia: 58 * 1024 * 1024,
+  image: 256 * 1024,
+  video: 26 * 1024 * 1024,
+  // El quinto caso incorpora tres planos con líneas finas y un video H.264 de 70 segundos en
+  // 1080p. El margen medido evita degradar textos, curvas y geometría por compresión adicional.
+  totalMedia: 82 * 1024 * 1024,
 };
 const imageExtensions = new Set(['.avif', '.jpg', '.jpeg', '.png', '.webp']);
 const videoExtensions = new Set(['.mp4', '.webm']);
@@ -59,11 +59,13 @@ for (const file of mediaFiles) {
   totalMedia += size;
 
   if (imageExtensions.has(extension) && size > limits.image) {
-    failures.push(`${relative(dist, file)} supera 200 KiB (${Math.ceil(size / 1024)} KiB).`);
+    failures.push(
+      `${relative(dist, file)} supera ${limits.image / 1024} KiB (${Math.ceil(size / 1024)} KiB).`,
+    );
   }
   if (videoExtensions.has(extension) && size > limits.video) {
     failures.push(
-      `${relative(dist, file)} supera 18 MiB (${(size / 1024 / 1024).toFixed(2)} MiB).`,
+      `${relative(dist, file)} supera ${limits.video / 1024 / 1024} MiB (${(size / 1024 / 1024).toFixed(2)} MiB).`,
     );
   }
 }

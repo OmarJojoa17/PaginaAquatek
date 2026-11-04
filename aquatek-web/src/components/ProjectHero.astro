@@ -29,10 +29,12 @@ const cover = coverMedium?.type === 'video' ? coverMedium.poster : coverMedium?.
       <h1>{project.data.headline ?? project.data.title}</h1>
       <p class="project-hero__summary">{project.data.summary}</p>
       <dl>
-        <div>
-          <dt>Lugar</dt>
-          <dd>{project.data.location ?? 'Ubicación reservada'}</dd>
-        </div>
+        {project.data.location && (
+          <div>
+            <dt>Lugar</dt>
+            <dd>{project.data.location}</dd>
+          </div>
+        )}
         {project.data.year && (
           <div>
             <dt>Año</dt>
