@@ -39,7 +39,7 @@ tools:
 media:
   - type: video
     src: /media/projects/gaviones-defensa-riberena/gaviones-defensa-riberena-1080p.mp4
-    poster: /media/projects/gaviones-defensa-riberena/video-poster.webp
+    poster: /media/projects/gaviones-defensa-riberena/video-poster-v5.webp
     alt: Video explicativo del estudio y diseño de obras con gaviones para dos cuencas.
     caption: Recorrido por el territorio, el análisis hidrológico, la modelación hidráulica, los planos y la revisión de socavación.
     layout: wide
