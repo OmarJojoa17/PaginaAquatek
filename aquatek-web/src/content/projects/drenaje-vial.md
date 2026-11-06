@@ -67,7 +67,7 @@ media:
     width: 1600
     height: 1055
     layout: wide
-    display: compact
+    display: section-row
   - type: image
     src: /media/projects/drenaje-vial/plano-04-subdrenaje.webp
     alt: Plano en planta del filtro del ZODMES y sus elementos de recolección.

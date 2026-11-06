@@ -65,7 +65,7 @@ const projects = defineCollection({
             width: z.number().int().positive().optional(),
             height: z.number().int().positive().optional(),
             layout: z.enum(['standard', 'wide']).default('standard'),
-            display: z.enum(['default', 'compact', 'figure']).default('default'),
+            display: z.enum(['default', 'compact', 'figure', 'section-row']).default('default'),
             focus: z.enum(['top', 'center', 'bottom']).default('center'),
             poster: z.string().startsWith('/').optional(),
             captionsSrc: z.string().startsWith('/').optional(),

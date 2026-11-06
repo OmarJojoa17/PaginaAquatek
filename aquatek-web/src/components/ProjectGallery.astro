@@ -26,6 +26,7 @@ const typeLabels = {
           'project-gallery__item--wide': medium.layout === 'wide',
           'project-gallery__item--compact': medium.display === 'compact',
           'project-gallery__item--figure': medium.display === 'figure',
+          'project-gallery__item--section-row': medium.display === 'section-row',
           [`project-gallery__item--focus-${medium.focus}`]: medium.display === 'figure',
         },
       ]}
@@ -155,6 +156,22 @@ const typeLabels = {
     padding-block: 0.9rem;
     color: var(--color-navy);
     font-weight: 750;
+  }
+
+  .project-gallery__item--section-row figure {
+    height: clamp(18rem, 45vw, 34rem);
+  }
+
+  .project-gallery__item--section-row img {
+    width: 100%;
+    min-height: 0;
+    flex: 1;
+    object-fit: cover;
+    object-position: center 8%;
+  }
+
+  .project-gallery__item--section-row figcaption {
+    flex: 0 0 auto;
   }
 
   .project-gallery__item--image:not(.project-gallery__item--wide) img {
