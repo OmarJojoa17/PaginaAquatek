@@ -24,11 +24,18 @@ Los archivos servidos por el navegador se revisan como archivos independientes, 
 la interfaz. Las protecciones se aplican al derivado exportado. La ficha permanece como borrador y
 no genera una ruta pública mientras `approvedForPublication` sea `false`.
 
-## Revisión audiovisual v2
+## Revisión audiovisual v3
 
 - La portada usa el patrón aprobado de video de fondo, título corto y tres píldoras.
-- La escena territorial se redujo a dos cuencas genéricas, sin mapa ni nombres de ubicación.
-- Hidrología reserva una franja exclusiva para el título y distribuye las tres figuras en cajones.
+- La escena territorial identifica, con autorización posterior, las cuencas La Coruña y Sachamates.
+- Hidrología reserva una franja exclusiva para el título y prioriza una figura dominante junto con
+  el encuadre de las cuencas en HEC-HMS.
+- Las escenas hidráulica, de diseño y de socavación usan encuadres cerrados reproducibles sobre los
+  derivados revisados para que las figuras sean legibles a distancia de video.
+- El plano de cada sector se amplía y aumenta ligeramente su contraste; no se reconstruyen ni
+  reinterpretan líneas, cotas o resultados.
+- La escena final técnica se titula «Perfil hidráulico y de socavación» y separa las plantas de los
+  dos sectores del perfil socavado.
 - Diseño, modelo y socavación describen el trabajo técnico y no las medidas de privacidad.
 - El cierre reproduce la estructura aprobada de servicios, contacto y logo sobre un segundo
   encuadre del proyecto.
@@ -36,10 +43,11 @@ no genera una ruta pública mientras `approvedForPublication` sea `false`.
 
 ## Revisión de la ficha
 
-- El mapa hidrológico se regeneró con los topónimos y nombres de cauces difuminados dentro del
-  WebP.
+- El mapa hidrológico conserva los nombres de las cuencas y cauces por autorización expresa del
+  usuario del 6 de noviembre de 2026. Continúan excluidos firmas, cajetines y documentos fuente.
 - Mapa y planos usan la presentación compacta para reducir su altura en escritorio.
-- Los planos se identifican como sector 1 y sector 2, sin nombres propios.
+- Los planos y las figuras técnicas se muestran con encuadres más cerrados, conservando sus
+  proporciones y sin alterar el contenido técnico.
 - Las leyendas de las memorias describen la figura técnica y omiten referencias al proceso de
   protección editorial.
 

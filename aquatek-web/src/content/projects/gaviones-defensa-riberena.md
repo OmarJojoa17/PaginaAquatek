@@ -43,7 +43,7 @@ media:
     alt: Video explicativo del estudio y diseño de obras con gaviones para dos cuencas.
     caption: Recorrido por el territorio, el análisis hidrológico, la modelación hidráulica, los planos y la revisión de socavación.
     layout: wide
-    transcript: El video no contiene narración; utiliza música de fondo y textos en pantalla. Presenta el territorio y las cuencas estudiadas, gráficas seleccionadas del análisis hidrológico, salidas de la modelación hidráulica, planos derivados de los dos sectores, vistas tridimensionales de las obras con gaviones y gráficas de la evaluación de socavación. Los documentos y planos se muestran mediante derivados protegidos. Finaliza con el cierre comercial y el sello de contacto de Aquatek.
+    transcript: El video no contiene narración; utiliza música de fondo y textos en pantalla. Presenta las cuencas La Coruña y Sachamates, figuras ampliadas del análisis hidrológico, salidas de la modelación hidráulica, planos legibles de los dos sectores, vistas tridimensionales de las obras con gaviones y el perfil hidráulico y de socavación. Los documentos y planos se muestran mediante derivados revisados. Finaliza con el cierre comercial y el sello de contacto de Aquatek.
   - type: image
     src: /media/projects/gaviones-defensa-riberena/mapa-hidrologico.webp
     alt: Mapa hidrológico derivado de las cuencas y drenajes asociados al área de estudio.
@@ -74,48 +74,72 @@ media:
     caption: Distribuciones de probabilidad para precipitaciones máximas.
     width: 960
     height: 1242
+    display: figure
+    focus: top
   - type: image
     src: /media/projects/gaviones-defensa-riberena/hidrologia-curvas-idf.webp
     alt: Curvas de intensidad, duración y frecuencia seleccionadas de la memoria hidrológica.
     caption: Curvas intensidad–duración–frecuencia del análisis hidrológico.
     width: 960
     height: 1242
+    display: figure
+    focus: top
   - type: image
     src: /media/projects/gaviones-defensa-riberena/hidrologia-modelo-hec-hms.webp
     alt: Representación de las cuencas y un hidrograma incluidos en el modelo hidrológico del estudio.
     caption: Modelo hidrológico de las cuencas e hidrograma de respuesta.
     width: 960
     height: 1242
+    display: figure
+    focus: top
   - type: image
     src: /media/projects/gaviones-defensa-riberena/hidraulica-granulometria.webp
     alt: Curva granulométrica seleccionada de la caracterización del material del lecho.
     caption: Curva granulométrica del material del lecho.
     width: 960
     height: 1242
+    display: figure
+    focus: top
   - type: image
     src: /media/projects/gaviones-defensa-riberena/hidraulica-lamina-agua.webp
     alt: Salidas gráficas del modelo hidráulico para la elevación de la lámina de agua.
     caption: Elevación de la lámina de agua en el modelo hidráulico.
     width: 960
     height: 1242
+    display: figure
+    focus: top
   - type: image
     src: /media/projects/gaviones-defensa-riberena/hidraulica-velocidad-perfil.webp
     alt: Distribución de velocidades y perfil longitudinal del sector modelado.
     caption: Distribución de velocidades y perfil longitudinal del cauce.
     width: 960
     height: 1242
+    display: figure
+    focus: top
   - type: image
     src: /media/projects/gaviones-defensa-riberena/hidraulica-radios-curvatura.webp
-    alt: Figuras en planta utilizadas para revisar los radios de curvatura de los sectores estudiados.
-    caption: Radios de curvatura de los dos sectores analizados.
+    alt: Figura en planta utilizada para revisar la geometría y el radio de curvatura del primer sector.
+    caption: Sector 1 · Geometría en planta y radio de curvatura.
     width: 960
     height: 1242
+    display: figure
+    focus: top
+  - type: image
+    src: /media/projects/gaviones-defensa-riberena/hidraulica-radios-curvatura.webp
+    alt: Figura en planta utilizada para revisar la geometría y los radios de curvatura del segundo sector.
+    caption: Sector 2 · Geometría en planta y radios de curvatura.
+    width: 960
+    height: 1242
+    display: figure
+    focus: bottom
   - type: image
     src: /media/projects/gaviones-defensa-riberena/hidraulica-perfil-socavacion.webp
     alt: Perfil de socavación seleccionado de la evaluación hidráulica del cauce.
     caption: Perfil de socavación del cauce evaluado.
     width: 960
     height: 1242
+    display: figure
+    focus: bottom
 ---
 
 El caso reúne la lectura de las cuencas, la modelación de los cauces y la representación de las

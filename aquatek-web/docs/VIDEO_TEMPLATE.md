@@ -22,7 +22,8 @@ guía fija las decisiones que deben repetirse en futuros videos sin copiar datos
 - Título principal: entre 64 y 88 px. Texto explicativo: entre 26 y 30 px.
 - Las escenas documentales reservan primero el espacio del título y luego distribuyen los cajones.
 - La portada usa etiquetas tipo píldora; las etapas técnicas usan riel inferior.
-- No incluir nombres de sitios, clientes o profesionales salvo autorización expresa.
+- No incluir nombres de sitios, clientes o profesionales salvo autorización expresa. Cuando exista,
+  documentar la excepción por proyecto; no convertirla en regla general para videos posteriores.
 - No explicar protecciones editoriales dentro de la narrativa. El texto habla del proyecto; la
   protección se comunica mediante la marca persistente y la ficha web.
 - Si un video fuente contiene interfaz, cubrir o recortar por completo menús, paneles, nombres de
@@ -55,7 +56,11 @@ guía fija las decisiones que deben repetirse en futuros videos sin copiar datos
 ## Presentación de medios en la ficha web
 
 - Los mapas públicos no muestran topónimos, nombres de cauces, poblaciones, coordenadas sensibles
-  ni tablas de identificación. Esos datos se difuminan en el archivo derivado, nunca con CSS.
+  ni tablas de identificación, salvo autorización expresa documentada para el proyecto. Cuando no
+  exista esa autorización, los datos se difuminan en el archivo derivado, nunca con CSS.
+- Para ampliar una figura sin modificarla, usar un encuadre reproducible sobre el derivado revisado:
+  `object-fit: cover`, foco declarado y contraste moderado. No redibujar, completar ni reinterpretar
+  información técnica mediante generación de imágenes.
 - Los planos panorámicos usan `layout: wide` y `display: compact` para evitar tarjetas demasiado
   altas. Antes de exportarlos se recorta el espacio blanco que no aporte lectura técnica.
 - La leyenda de un plano funciona como título corto: elemento, vistas y sector. Ejemplo:

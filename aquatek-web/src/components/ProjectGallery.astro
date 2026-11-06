@@ -25,6 +25,8 @@ const typeLabels = {
         {
           'project-gallery__item--wide': medium.layout === 'wide',
           'project-gallery__item--compact': medium.display === 'compact',
+          'project-gallery__item--figure': medium.display === 'figure',
+          [`project-gallery__item--focus-${medium.focus}`]: medium.display === 'figure',
         },
       ]}
     >
@@ -158,6 +160,28 @@ const typeLabels = {
   .project-gallery__item--image:not(.project-gallery__item--wide) img {
     aspect-ratio: auto;
     height: auto;
+  }
+
+  .project-gallery__item--figure img,
+  .project-gallery__item--image:not(.project-gallery__item--wide).project-gallery__item--figure
+    img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    filter: contrast(1.08) saturate(1.03);
+  }
+
+  .project-gallery__item--focus-top img {
+    object-position: center 14%;
+  }
+
+  .project-gallery__item--focus-center img {
+    object-position: center 50%;
+  }
+
+  .project-gallery__item--focus-bottom img {
+    object-position: center 84%;
   }
 
   .project-gallery figcaption,
