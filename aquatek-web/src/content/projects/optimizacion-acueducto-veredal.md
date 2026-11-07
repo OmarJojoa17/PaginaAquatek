@@ -43,7 +43,7 @@ media:
     alt: Video explicativo de los estudios, la captación flotante, el bombeo y las líneas de impulsión del acueducto veredal.
     caption: Síntesis audiovisual del análisis hidrológico e hidráulico, las visualizaciones tridimensionales y los planos generales del sistema.
     layout: wide
-    transcript: El video no contiene narración; utiliza música de fondo y textos en pantalla. Presenta la base hidrológica, el modelo y el registro de campo, la lectura hidráulica del cauce, los recorridos tridimensionales de la captación flotante y la estación de bombeo, los tres planos generales del sistema, la selección del equipo y el esquema de la barcaza. Finaliza con los servicios de Aquatek y el sello de contacto.
+    transcript: El video no contiene narración; utiliza música de fondo y textos en pantalla. Presenta en detalle las gráficas hidrológicas, el modelo y la curva de duración, la lectura hidráulica del cauce, los recorridos tridimensionales de la captación flotante y la estación de bombeo, las plantas y perfiles de los tres planos generales, el equipo de bombeo, el plano adicional de detalles y el render de la barcaza. Finaliza con los servicios de Aquatek y el sello de contacto.
   - type: image
     src: /media/projects/optimizacion-acueducto-veredal/recorrido-barcaza.webp
     alt: Vista tridimensional del conjunto de captación y bombeo instalado sobre una plataforma flotante.
@@ -57,89 +57,138 @@ media:
     width: 881
     height: 575
   - type: image
-    src: /media/projects/optimizacion-acueducto-veredal/11-plano-implantacion-barcaza.webp
-    alt: Plano general de implantación y sección del sistema de captación flotante.
-    caption: Captación flotante · Implantación y sección general del sistema.
-    width: 1530
-    height: 1200
+    src: /media/projects/optimizacion-acueducto-veredal/detalle-probabilidad-acumulada.png
+    alt: Gráfica de probabilidad acumulada de la precipitación máxima.
+    caption: Probabilidad acumulada de la precipitación máxima utilizada como base del análisis hidrológico.
+    width: 1658
+    height: 820
     layout: wide
-    display: compact
   - type: image
-    src: /media/projects/optimizacion-acueducto-veredal/12-plano-impulsion-inicial.webp
-    alt: Plano en planta y perfil del primer tramo de la línea de impulsión.
-    caption: Impulsión inicial · Recorrido general en planta y perfil.
-    width: 1530
-    height: 1200
+    src: /media/projects/optimizacion-acueducto-veredal/detalle-probabilidad-excedencia.png
+    alt: Gráfica de probabilidad de excedencia de la precipitación máxima.
+    caption: Probabilidad de excedencia de la precipitación máxima utilizada en el análisis hidrológico.
+    width: 1658
+    height: 850
     layout: wide
-    display: compact
   - type: image
-    src: /media/projects/optimizacion-acueducto-veredal/13-plano-impulsion-final.webp
-    alt: Plano en planta y perfil del tramo final de la línea de impulsión.
-    caption: Impulsión final · Conexión general entre almacenamiento y tanque elevado.
-    width: 1530
-    height: 1200
-    layout: wide
-    display: compact
-  - type: image
-    src: /media/projects/optimizacion-acueducto-veredal/01-probabilidad-precipitacion.webp
-    alt: Gráficas de probabilidad acumulada y excedencia de la precipitación máxima.
-    caption: Comparación probabilística de la precipitación máxima utilizada como base del análisis hidrológico.
-    width: 960
-    height: 1242
-  - type: image
-    src: /media/projects/optimizacion-acueducto-veredal/02-curvas-idf.webp
+    src: /media/projects/optimizacion-acueducto-veredal/detalle-curvas-idf.png
     alt: Curvas de intensidad, duración y frecuencia seleccionadas del estudio hidrológico.
-    caption: Curvas intensidad–duración–frecuencia empleadas para caracterizar los eventos de lluvia del estudio.
-    width: 960
-    height: 1242
+    caption: Curvas intensidad–duración–frecuencia empleadas para caracterizar los eventos de lluvia.
+    width: 1989
+    height: 1090
+    layout: wide
   - type: image
-    src: /media/projects/optimizacion-acueducto-veredal/03-modelo-hidrologico.webp
-    alt: Esquema del modelo hidrológico y representación temporal del evento de diseño.
-    caption: Modelo hidrológico y representación temporal del evento de diseño.
-    width: 960
-    height: 1242
+    src: /media/projects/optimizacion-acueducto-veredal/detalle-modelo-hidrologico.png
+    alt: Esquema gráfico del modelo hidrológico.
+    caption: Representación espacial del modelo hidrológico utilizado en el análisis.
+    width: 1989
+    height: 760
+    layout: wide
   - type: image
-    src: /media/projects/optimizacion-acueducto-veredal/04-aforo-campo.webp
-    alt: Fotografías del trabajo de campo realizado para observar el comportamiento hidráulico.
-    caption: Registro de la campaña de aforo utilizada para contrastar el comportamiento hidráulico observado.
-    width: 960
-    height: 1242
-  - type: image
-    src: /media/projects/optimizacion-acueducto-veredal/05-curva-duracion-caudales.webp
+    src: /media/projects/optimizacion-acueducto-veredal/detalle-curva-duracion.png
     alt: Curva de duración utilizada para examinar la permanencia relativa de los caudales analizados.
     caption: Curva de duración de los caudales analizados.
-    width: 960
-    height: 1242
+    width: 2015
+    height: 1090
+    layout: wide
   - type: image
-    src: /media/projects/optimizacion-acueducto-veredal/06-reconocimiento-aereo.webp
+    src: /media/projects/optimizacion-acueducto-veredal/detalle-reconocimiento-aereo.png
     alt: Conjunto de fotografías aéreas utilizadas para reconocer el patrón general del cauce.
     caption: Reconocimiento aéreo del patrón del cauce en el tramo evaluado.
-    width: 960
-    height: 1242
+    width: 2015
+    height: 1400
+    layout: wide
   - type: image
-    src: /media/projects/optimizacion-acueducto-veredal/07-modelo-hidraulico.webp
+    src: /media/projects/optimizacion-acueducto-veredal/detalle-modelo-hidraulico.png
     alt: Geometría tridimensional utilizada para representar hidráulicamente el tramo evaluado.
     caption: Geometría del tramo representada para la simulación hidráulica del flujo.
-    width: 960
-    height: 1242
+    width: 1796
+    height: 1126
+    layout: wide
   - type: image
-    src: /media/projects/optimizacion-acueducto-veredal/08-velocidades-seccion.webp
-    alt: Distribución general de velocidades y sección transversal de implantación del sistema flotante.
-    caption: Distribución general de velocidades y sección evaluada para la implantación del sistema flotante.
-    width: 960
-    height: 1242
+    src: /media/projects/optimizacion-acueducto-veredal/detalle-velocidades.png
+    alt: Distribución general de velocidades en el tramo modelado.
+    caption: Lectura espacial de la distribución de velocidades obtenida en la modelación.
+    width: 2091
+    height: 924
+    layout: wide
   - type: image
-    src: /media/projects/optimizacion-acueducto-veredal/09-seleccion-equipo-bombeo.webp
+    src: /media/projects/optimizacion-acueducto-veredal/detalle-seccion-barcaza.png
+    alt: Sección transversal evaluada para la implantación del sistema flotante.
+    caption: Sección transversal de referencia para la implantación de la barcaza flotante.
+    width: 2346
+    height: 528
+    layout: wide
+  - type: image
+    src: /media/projects/optimizacion-acueducto-veredal/plano-barcaza-planta.png
+    alt: Planta general de implantación del sistema de captación flotante.
+    caption: Captación flotante · Planta general de implantación.
+    width: 4725
+    height: 2025
+    layout: wide
+  - type: image
+    src: /media/projects/optimizacion-acueducto-veredal/plano-barcaza-perfil.png
+    alt: Perfil general de implantación del sistema de captación flotante.
+    caption: Captación flotante · Perfil longitudinal y sección del sistema.
+    width: 1579
+    height: 363
+    layout: wide
+  - type: image
+    src: /media/projects/optimizacion-acueducto-veredal/plano-impulsion-inicial-planta.png
+    alt: Planta general del tramo inicial de la línea de impulsión.
+    caption: Impulsión inicial · Recorrido general en planta.
+    width: 4725
+    height: 2025
+    layout: wide
+  - type: image
+    src: /media/projects/optimizacion-acueducto-veredal/plano-impulsion-inicial-perfil.png
+    alt: Perfil longitudinal del tramo inicial de la línea de impulsión.
+    caption: Impulsión inicial · Perfil longitudinal.
+    width: 1616
+    height: 354
+    layout: wide
+  - type: image
+    src: /media/projects/optimizacion-acueducto-veredal/plano-impulsion-final-planta.png
+    alt: Planta general del tramo final de la línea de impulsión.
+    caption: Impulsión final · Conexión general en planta.
+    width: 4725
+    height: 2025
+    layout: wide
+  - type: image
+    src: /media/projects/optimizacion-acueducto-veredal/plano-impulsion-final-perfil.png
+    alt: Perfil longitudinal del tramo final de la línea de impulsión.
+    caption: Impulsión final · Perfil longitudinal hasta el almacenamiento.
+    width: 1122
+    height: 691
+    layout: wide
+  - type: image
+    src: /media/projects/optimizacion-acueducto-veredal/detalle-equipo-bombeo.png
     alt: Equipo de bombeo y curvas generales de funcionamiento revisadas para el sistema.
-    caption: Verificación de un equipo de bombeo frente a las condiciones hidráulicas definidas para el sistema.
-    width: 960
-    height: 1242
+    caption: Verificación del equipo de bombeo frente a las condiciones hidráulicas definidas.
+    width: 2066
+    height: 2409
+    layout: wide
   - type: image
-    src: /media/projects/optimizacion-acueducto-veredal/10-esquema-barcaza.webp
-    alt: Esquema general de la barcaza flotante, su conexión flexible y el acceso desde la margen.
-    caption: Configuración general de la barcaza flotante y su conexión con la margen.
-    width: 960
-    height: 1242
+    src: /media/projects/optimizacion-acueducto-veredal/detalle-esquema-barcaza.png
+    alt: Esquema general de la barcaza flotante y su conexión con la margen.
+    caption: Configuración general de la barcaza flotante y su conexión de acceso.
+    width: 1989
+    height: 1023
+    layout: wide
+  - type: image
+    src: /media/projects/optimizacion-acueducto-veredal/plano-detalles-barcaza.png
+    alt: Plano de detalles generales de la estructura flotante y su pasarela de acceso.
+    caption: Barcaza flotante · Detalles generales de estructura, plataforma y pasarela.
+    width: 4754
+    height: 3802
+    layout: wide
+  - type: image
+    src: /media/projects/optimizacion-acueducto-veredal/render-barcaza-nuevo.jpeg
+    alt: Render tridimensional de la barcaza flotante con cubierta, cerramiento y barandas.
+    caption: Barcaza flotante · Visualización general del conjunto terminado.
+    width: 966
+    height: 679
+    layout: wide
 ---
 
 El proyecto articula el análisis hidrológico e hidráulico con la representación de la captación,

@@ -10,11 +10,12 @@ const expectedBase = configuredBase
   ? `/${configuredBase.replace(/^\/+|\/+$/g, '')}/`.replace('//', '/')
   : undefined;
 const limits = {
-  image: 256 * 1024,
-  video: 26 * 1024 * 1024,
-  // El quinto caso incorpora tres planos con líneas finas y un video H.264 de 70 segundos en
-  // 1080p. El margen medido evita degradar textos, curvas y geometría por compresión adicional.
-  totalMedia: 82 * 1024 * 1024,
+  image: 7 * 1024 * 1024,
+  video: 76 * 1024 * 1024,
+  // El caso incorpora recortes a alta resolución, seis vistas de planos con líneas finas y un
+  // video H.264 de 114 segundos en 1080p. El presupuesto prioriza legibilidad técnica sin
+  // forzar una compresión destructiva de gráficas, perfiles o detalles constructivos.
+  totalMedia: 155 * 1024 * 1024,
 };
 const imageExtensions = new Set(['.avif', '.jpg', '.jpeg', '.png', '.webp']);
 const videoExtensions = new Set(['.mp4', '.webm']);

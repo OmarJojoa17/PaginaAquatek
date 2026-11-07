@@ -16,7 +16,7 @@ test.describe('proyecto del acueducto veredal', () => {
       /optimizacion-acueducto-veredal-1080p\.mp4$/,
     );
     await expect(page.locator('video')).toHaveAttribute('preload', 'metadata');
-    await expect(page.locator('.project-gallery img')).toHaveCount(15);
+    await expect(page.locator('.project-gallery img')).toHaveCount(21);
 
     const videoMetadata = await page.locator('video').evaluate(async (video) => {
       const media = video as HTMLVideoElement;
@@ -29,8 +29,8 @@ test.describe('proyecto del acueducto veredal', () => {
     });
     expect(videoMetadata.width).toBe(1920);
     expect(videoMetadata.height).toBe(1080);
-    expect(videoMetadata.duration).toBeGreaterThan(69);
-    expect(videoMetadata.duration).toBeLessThan(71);
+    expect(videoMetadata.duration).toBeGreaterThan(113);
+    expect(videoMetadata.duration).toBeLessThan(115);
 
     const hasHorizontalOverflow = await page.evaluate(
       () => document.documentElement.scrollWidth > document.documentElement.clientWidth,

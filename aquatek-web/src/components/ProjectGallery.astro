@@ -127,6 +127,13 @@ const typeLabels = {
     user-select: none;
   }
 
+  .project-gallery__item--wide img {
+    width: 100%;
+    height: auto;
+    max-height: none;
+    object-fit: contain;
+  }
+
   .project-gallery video {
     aspect-ratio: 16 / 9;
     background: var(--color-ice);
@@ -264,6 +271,15 @@ const typeLabels = {
     .project-gallery__item--wide,
     .project-gallery__item:first-child:last-child {
       grid-column: 1 / -1;
+    }
+
+    .project-gallery__item--wide figure {
+      padding: clamp(0.75rem, 2vw, 1.5rem);
+    }
+
+    .project-gallery__item--wide figcaption {
+      padding-inline: 0;
+      padding-bottom: 0;
     }
   }
 </style>
