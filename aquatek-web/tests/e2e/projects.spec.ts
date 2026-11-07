@@ -27,6 +27,11 @@ test('presenta los proyectos publicados', async ({ page }, testInfo) => {
   await expect(
     page.getByRole('link', { name: 'Optimización de acueducto veredal con captación flotante' }),
   ).toBeVisible();
+  await expect(
+    page.getByRole('link', {
+      name: 'Modelación hidrológica e hidráulica para el encauzamiento de un cauce',
+    }),
+  ).toBeVisible();
 
   const visualRatios = await page.locator('.project-card__visual').evaluateAll((visuals) =>
     visuals.map((visual) => {
@@ -34,7 +39,7 @@ test('presenta los proyectos publicados', async ({ page }, testInfo) => {
       return bounds.width / bounds.height;
     }),
   );
-  expect(visualRatios).toHaveLength(5);
+  expect(visualRatios).toHaveLength(6);
   for (const visualRatio of visualRatios) {
     expect(visualRatio).toBeGreaterThan(1.7);
     expect(visualRatio).toBeLessThan(1.85);
@@ -78,6 +83,8 @@ test('el proyecto genera una ruta pública y entra al sitemap', async ({ request
   expect(drenajeVialResponse.status()).toBe(200);
   const acueductoResponse = await request.get('/proyectos/optimizacion-acueducto-veredal/');
   expect(acueductoResponse.status()).toBe(200);
+  const encauzamientoResponse = await request.get('/proyectos/encauzamiento-cauce/');
+  expect(encauzamientoResponse.status()).toBe(200);
 
   const sitemap = await (await request.get('/sitemap.xml')).text();
   expect(sitemap).toContain('https://aquatek.invalid/proyectos/');
@@ -86,6 +93,7 @@ test('el proyecto genera una ruta pública y entra al sitemap', async ({ request
   expect(sitemap).toContain('/proyectos/gaviones-defensa-riberena/');
   expect(sitemap).toContain('/proyectos/drenaje-vial/');
   expect(sitemap).toContain('/proyectos/optimizacion-acueducto-veredal/');
+  expect(sitemap).toContain('/proyectos/encauzamiento-cauce/');
 });
 
 test('la ficha abre con portada y luego presenta el video', async ({ page }, testInfo) => {

@@ -12,10 +12,10 @@ const expectedBase = configuredBase
 const limits = {
   image: 7 * 1024 * 1024,
   video: 76 * 1024 * 1024,
-  // El caso incorpora recortes a alta resolución, seis vistas de planos con líneas finas y un
-  // video H.264 de 114 segundos en 1080p. El presupuesto prioriza legibilidad técnica sin
-  // forzar una compresión destructiva de gráficas, perfiles o detalles constructivos.
-  totalMedia: 155 * 1024 * 1024,
+  // El catálogo incorpora videos H.264 en 1080p y derivados técnicos de alta resolución.
+  // El presupuesto prioriza la lectura de gráficas, perfiles y líneas finas sin forzar una
+  // compresión destructiva; cada video y cada imagen conservan además su límite individual.
+  totalMedia: 210 * 1024 * 1024,
 };
 const imageExtensions = new Set(['.avif', '.jpg', '.jpeg', '.png', '.webp']);
 const videoExtensions = new Set(['.mp4', '.webm']);
