@@ -50,6 +50,32 @@ test.describe('proyecto de encauzamiento', () => {
       await page.screenshot({
         path: `output/revision-encauzamiento/portada-web-${testInfo.project.name}.png`,
       });
+      const centeredMap = page.locator('.project-gallery__item--centered');
+      await centeredMap.scrollIntoViewIfNeeded();
+      await centeredMap.locator('img').evaluate(async (image) => {
+        const element = image as HTMLImageElement;
+        if (!element.complete) {
+          await new Promise<void>((resolve) => {
+            element.addEventListener('load', () => resolve(), { once: true });
+          });
+        }
+      });
+      await centeredMap.screenshot({
+        path: `output/revision-encauzamiento/mapa-centrado-${testInfo.project.name}.png`,
+      });
+      const completeSection = page.locator('.project-gallery__item').last();
+      await completeSection.scrollIntoViewIfNeeded();
+      await completeSection.locator('img').evaluate(async (image) => {
+        const element = image as HTMLImageElement;
+        if (!element.complete) {
+          await new Promise<void>((resolve) => {
+            element.addEventListener('load', () => resolve(), { once: true });
+          });
+        }
+      });
+      await completeSection.screenshot({
+        path: `output/revision-encauzamiento/seccion-completa-${testInfo.project.name}.png`,
+      });
     }
   });
 });

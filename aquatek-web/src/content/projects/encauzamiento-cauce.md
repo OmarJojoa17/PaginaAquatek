@@ -50,6 +50,7 @@ media:
     caption: Caracterización territorial · Cuenca, drenajes y área directa de estudio.
     width: 1850
     height: 2400
+    display: centered
   - type: image
     src: /media/projects/encauzamiento-cauce/02-probabilidad-precipitacion.webp
     alt: Curvas de probabilidad ajustadas a los registros de precipitación máxima.
@@ -123,7 +124,6 @@ media:
     width: 3200
     height: 377
     layout: wide
-    display: section-row
 ---
 
 El proyecto articula la caracterización de la cuenca, el análisis de precipitación y la modelación
