@@ -2,20 +2,22 @@ import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
 
 test.describe('proyecto de encauzamiento', () => {
-  test('publica el video y los derivados técnicos sin desbordamiento', async ({ page }) => {
+  test('publica el video y los derivados técnicos sin desbordamiento', async ({
+    page,
+  }, testInfo) => {
     await page.goto('/proyectos/encauzamiento-cauce/');
 
     await expect(
       page.getByRole('heading', {
         level: 1,
-        name: 'Caracterización, simulación y definición geométrica de una intervención de descolmatación y encauzamiento.',
+        name: 'Un cauce definido para conducir mejor el flujo.',
       }),
     ).toBeVisible();
     await expect(page.locator('video source')).toHaveAttribute(
       'src',
       /encauzamiento-cauce-1080p\.mp4$/,
     );
-    await expect(page.locator('.project-gallery img')).toHaveCount(15);
+    await expect(page.locator('.project-gallery img')).toHaveCount(12);
 
     const metadata = await page.locator('video').evaluate(async (video) => {
       const media = video as HTMLVideoElement;
@@ -42,5 +44,12 @@ test.describe('proyecto de encauzamiento', () => {
         (violation) => violation.impact === 'serious' || violation.impact === 'critical',
       ),
     ).toEqual([]);
+
+    if (process.env.CAPTURE_MILESTONES) {
+      await page.evaluate(() => window.scrollTo(0, 0));
+      await page.screenshot({
+        path: `output/revision-encauzamiento/portada-web-${testInfo.project.name}.png`,
+      });
+    }
   });
 });

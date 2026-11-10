@@ -180,8 +180,13 @@ const remainingMedia = project.data.media.filter((medium) => medium !== featured
       class="project-evidence page-section page-section--ice"
       aria-labelledby="evidence-title"
     >
-      <div class="project-evidence__intro">
-        <h2 id="evidence-title">Evidencia del proyecto</h2>
+      <div
+        class:list={[
+          'project-evidence__intro',
+          { 'project-evidence__intro--stacked': project.data.slug === 'encauzamiento-cauce' },
+        ]}
+      >
+        <h2 id="evidence-title">Evidencia técnica</h2>
         <p>Modelos, planos y documentos seleccionados para presentar el alcance técnico.</p>
       </div>
       <ProjectGallery media={remainingMedia} />
@@ -352,6 +357,16 @@ const remainingMedia = project.data.media.filter((medium) => medium !== featured
     max-width: 42rem;
     margin: 0;
     line-height: 1.6;
+  }
+
+  .project-evidence__intro--stacked {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.85rem;
+  }
+
+  .project-evidence__intro--stacked h2,
+  .project-evidence__intro--stacked p {
+    max-width: 46rem;
   }
 
   @media (min-width: 48rem) {

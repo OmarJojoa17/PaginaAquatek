@@ -29,7 +29,7 @@ test('presenta los proyectos publicados', async ({ page }, testInfo) => {
   ).toBeVisible();
   await expect(
     page.getByRole('link', {
-      name: 'Modelación hidrológica e hidráulica para el encauzamiento de un cauce',
+      name: 'Diseño hidráulico para encauzar un cauce',
     }),
   ).toBeVisible();
 

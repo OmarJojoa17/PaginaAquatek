@@ -1,8 +1,9 @@
 ---
 slug: encauzamiento-cauce
-title: Modelación hidrológica e hidráulica para el encauzamiento de un cauce
-headline: Caracterización, simulación y definición geométrica de una intervención de descolmatación y encauzamiento.
-summary: Desarrollo técnico de una alternativa de descolmatación y encauzamiento mediante análisis hidrológico, modelación hidráulica y planos coordinados de planta, perfil y secciones transversales.
+title: Diseño hidráulico para encauzar un cauce
+headline: Un cauce definido para conducir mejor el flujo.
+summary: Diseño de una alternativa de descolmatación y encauzamiento sustentada en análisis hidrológico, modelación hidráulica y planos coordinados.
+cover: /media/projects/encauzamiento-cauce/10-plano-planta.webp
 discipline: river-engineering
 relatedDisciplines:
   - hydrology
@@ -38,7 +39,7 @@ tools:
 media:
   - type: video
     src: /media/projects/encauzamiento-cauce/encauzamiento-cauce-1080p.mp4
-    poster: /media/projects/encauzamiento-cauce/video-poster.webp
+    poster: /media/projects/encauzamiento-cauce/video-poster.png
     alt: Video técnico del análisis hidrológico, la modelación hidráulica y los planos de encauzamiento.
     caption: Síntesis audiovisual del proceso de caracterización, modelación y definición geométrica de la intervención.
     layout: wide
@@ -123,27 +124,6 @@ media:
     height: 377
     layout: wide
     display: section-row
-  - type: image
-    src: /media/projects/encauzamiento-cauce/12-secciones-transversales-01.webp
-    alt: Primera lámina completa de secciones transversales del encauzamiento.
-    caption: Lámina de secciones transversales · Primer tramo.
-    width: 3200
-    height: 2527
-    layout: wide
-  - type: image
-    src: /media/projects/encauzamiento-cauce/13-secciones-transversales-02.webp
-    alt: Segunda lámina completa de secciones transversales del encauzamiento.
-    caption: Lámina de secciones transversales · Tramo intermedio.
-    width: 3200
-    height: 2527
-    layout: wide
-  - type: image
-    src: /media/projects/encauzamiento-cauce/14-secciones-transversales-03.webp
-    alt: Tercera lámina completa de secciones transversales y cuadro de volúmenes.
-    caption: Lámina de secciones transversales · Tramo final y síntesis gráfica.
-    width: 3200
-    height: 2527
-    layout: wide
 ---
 
 El proyecto articula la caracterización de la cuenca, el análisis de precipitación y la modelación

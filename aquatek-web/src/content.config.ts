@@ -41,6 +41,7 @@ const projects = defineCollection({
       title: z.string().min(5),
       headline: z.string().min(20).max(110).optional(),
       summary: z.string().min(30).max(260),
+      cover: z.string().startsWith('/').optional(),
       discipline: z.enum(disciplineValues),
       relatedDisciplines: z.array(z.enum(disciplineValues)).default([]),
       publicationStatus: z.enum(['draft', 'published']).default('draft'),

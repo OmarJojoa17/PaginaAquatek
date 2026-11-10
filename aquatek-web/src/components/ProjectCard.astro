@@ -17,6 +17,7 @@ const mediaLabels = {
 } as const;
 const availableMedia = [...new Set(project.data.media.map((medium) => medium.type))];
 const preview =
+  project.data.cover ??
   project.data.media.find((medium) => medium.type === 'video' && medium.poster)?.poster ??
   project.data.media.find((medium) => medium.type === 'image')?.src;
 const searchableText = [
