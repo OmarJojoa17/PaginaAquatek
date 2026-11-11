@@ -28,6 +28,7 @@ const typeLabels = {
           'project-gallery__item--centered': medium.display === 'centered',
           'project-gallery__item--figure': medium.display === 'figure',
           'project-gallery__item--section-row': medium.display === 'section-row',
+          'project-gallery__item--paired': medium.display === 'paired',
           [`project-gallery__item--focus-${medium.focus}`]: medium.display === 'figure',
         },
       ]}
@@ -197,6 +198,10 @@ const typeLabels = {
     flex: 0 0 auto;
   }
 
+  .project-gallery__item--paired figure {
+    height: 100%;
+  }
+
   .project-gallery__item--image:not(.project-gallery__item--wide) img {
     aspect-ratio: auto;
     height: auto;
@@ -302,6 +307,16 @@ const typeLabels = {
     .project-gallery__item--wide figcaption {
       padding-inline: 0;
       padding-bottom: 0;
+    }
+
+    .project-gallery__item--image.project-gallery__item--paired img {
+      width: 100%;
+      height: clamp(22rem, 32vw, 30rem);
+      object-fit: contain;
+    }
+
+    .project-gallery__item--paired figcaption {
+      flex: 1;
     }
   }
 </style>
