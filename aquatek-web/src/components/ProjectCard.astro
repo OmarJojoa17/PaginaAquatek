@@ -35,11 +35,15 @@ const searchableText = [
   data-search={searchableText}
 >
   <article>
-    <div class="project-card__visual" aria-hidden="true">
+    <a
+      class="project-card__visual"
+      href={`${base}proyectos/${project.data.slug}/`}
+      aria-label={`Ver proyecto: ${project.data.title}`}
+    >
       {preview ? (
         <img
           src={`${base}${preview.replace(/^\//, '')}`}
-          alt=""
+          alt={`Portada de ${project.data.title}`}
           width="1600"
           height="900"
           loading="lazy"
@@ -50,7 +54,7 @@ const searchableText = [
           title={`Representación técnica provisional de ${project.data.title}`}
         />
       )}
-    </div>
+    </a>
     <div class="project-card__body">
       <div class="project-card__meta">
         <span>{disciplineLabels[project.data.discipline]}</span>
@@ -98,6 +102,11 @@ const searchableText = [
     overflow: hidden;
     border-bottom: 1px solid var(--color-line);
     background: var(--color-ice);
+    outline-offset: 0.25rem;
+  }
+
+  .project-card__visual:focus-visible {
+    outline: 3px solid var(--color-signal);
   }
 
   .project-card__visual :global(svg) {

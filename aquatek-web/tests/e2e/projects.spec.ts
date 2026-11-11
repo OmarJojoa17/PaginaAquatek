@@ -13,30 +13,53 @@ test('presenta los proyectos publicados', async ({ page }, testInfo) => {
   ).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Portafolio técnico' })).toBeVisible();
   await expect(
-    page.getByRole('link', { name: 'Diseño hidráulico de la nueva PTAP de San Francisco' }),
+    page.getByRole('link', {
+      name: 'Diseño hidráulico de la nueva PTAP de San Francisco',
+      exact: true,
+    }),
   ).toBeVisible();
   await expect(
-    page.getByRole('link', { name: 'Diseño hidráulico del alcantarillado pluvial de Orito' }),
+    page.getByRole('link', {
+      name: 'Diseño hidráulico del alcantarillado pluvial de Orito',
+      exact: true,
+    }),
   ).toBeVisible();
   await expect(
-    page.getByRole('link', { name: 'Diseño hidráulico de gaviones para defensa ribereña' }),
+    page.getByRole('link', {
+      name: 'Diseño hidráulico de gaviones para defensa ribereña',
+      exact: true,
+    }),
   ).toBeVisible();
   await expect(
-    page.getByRole('link', { name: 'Diseño hidrológico e hidráulico de drenaje vial' }),
+    page.getByRole('link', {
+      name: 'Diseño hidrológico e hidráulico de drenaje vial',
+      exact: true,
+    }),
   ).toBeVisible();
   await expect(
-    page.getByRole('link', { name: 'Optimización de acueducto veredal con captación flotante' }),
+    page.getByRole('link', {
+      name: 'Optimización de acueducto veredal con captación flotante',
+      exact: true,
+    }),
   ).toBeVisible();
   await expect(
     page.getByRole('link', {
       name: 'Diseño hidráulico para encauzar un cauce',
+      exact: true,
     }),
   ).toBeVisible();
   await expect(
     page.getByRole('link', {
       name: 'Encauzamiento hidráulico del cauce',
+      exact: true,
     }),
   ).toBeVisible();
+
+  const coverLinks = page.locator('a.project-card__visual');
+  await expect(coverLinks).toHaveCount(7);
+  for (const coverLink of await coverLinks.all()) {
+    await expect(coverLink).toHaveAttribute('href', /\/proyectos\/[a-z0-9-]+\/$/);
+  }
 
   const visualRatios = await page.locator('.project-card__visual').evaluateAll((visuals) =>
     visuals.map((visual) => {

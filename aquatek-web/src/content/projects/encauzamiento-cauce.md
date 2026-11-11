@@ -3,7 +3,7 @@ slug: encauzamiento-cauce
 title: Diseño hidráulico para encauzar un cauce
 headline: Un cauce definido para conducir mejor el flujo.
 summary: Diseño de una alternativa de descolmatación y encauzamiento sustentada en análisis hidrológico, modelación hidráulica y planos coordinados.
-cover: /media/projects/encauzamiento-cauce/10-plano-planta.webp
+cover: /media/projects/encauzamiento-cauce/video-poster.png
 discipline: river-engineering
 relatedDisciplines:
   - hydrology

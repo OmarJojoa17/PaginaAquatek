@@ -3,7 +3,7 @@ slug: encauzamiento-hidraulico-uchupayaco
 title: Encauzamiento hidráulico del cauce
 headline: Modelar el cauce para ordenar el flujo.
 summary: Modelación hidráulica y definición geométrica de una alternativa de descolmatación, canal y dique longitudinal.
-cover: /media/projects/encauzamiento-hidraulico-uchupayaco/03-cauce-vista-aerea.png
+cover: /media/projects/encauzamiento-hidraulico-uchupayaco/video-poster.png
 discipline: river-engineering
 publicationStatus: published
 approvedForPublication: true
