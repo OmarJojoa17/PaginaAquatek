@@ -183,7 +183,12 @@ const remainingMedia = project.data.media.filter((medium) => medium !== featured
       <div
         class:list={[
           'project-evidence__intro',
-          { 'project-evidence__intro--stacked': project.data.slug === 'encauzamiento-cauce' },
+          {
+            'project-evidence__intro--stacked': [
+              'encauzamiento-cauce',
+              'encauzamiento-hidraulico-uchupayaco',
+            ].includes(project.data.slug),
+          },
         ]}
       >
         <h2 id="evidence-title">Evidencia técnica</h2>

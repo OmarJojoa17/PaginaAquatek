@@ -15,7 +15,7 @@ const limits = {
   // El catálogo incorpora videos H.264 en 1080p y derivados técnicos de alta resolución.
   // El presupuesto prioriza la lectura de gráficas, perfiles y líneas finas sin forzar una
   // compresión destructiva; cada video y cada imagen conservan además su límite individual.
-  totalMedia: 210 * 1024 * 1024,
+  totalMedia: 300 * 1024 * 1024,
 };
 const imageExtensions = new Set(['.avif', '.jpg', '.jpeg', '.png', '.webp']);
 const videoExtensions = new Set(['.mp4', '.webm']);
