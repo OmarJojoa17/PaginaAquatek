@@ -16,7 +16,7 @@ test.describe('proyecto de encauzamiento hidráulico', () => {
       /encauzamiento-hidraulico-uchupayaco-1080p\.mp4$/,
     );
     await expect(page.locator('video')).toHaveAttribute('preload', 'metadata');
-    await expect(page.locator('.project-gallery img')).toHaveCount(11);
+    await expect(page.locator('.project-gallery img')).toHaveCount(12);
 
     const metadata = await page.locator('video').evaluate(async (video) => {
       const media = video as HTMLVideoElement;

@@ -62,7 +62,12 @@ media:
     height: 1010
     alt: Clasificación visual del material del lecho utilizada en la caracterización granulométrica.
     caption: Material del lecho · Clasificación visual de partículas.
-    layout: wide
+  - type: image
+    src: /media/projects/encauzamiento-hidraulico-uchupayaco/01-curva-granulometrica.png
+    width: 1440
+    height: 820
+    alt: Curva granulométrica empleada para caracterizar la distribución de tamaños del material del lecho.
+    caption: Caracterización granulométrica · Distribución de tamaños del material.
   - type: image
     src: /media/projects/encauzamiento-hidraulico-uchupayaco/06-modelo-sin-intervencion.png
     width: 1030
@@ -83,14 +88,12 @@ media:
     height: 1100
     alt: Geometría del modelo hidráulico con el canal y el dique longitudinal incorporados.
     caption: Alternativa modelada · Implantación del canal y del dique longitudinal.
-    display: centered
   - type: image
     src: /media/projects/encauzamiento-hidraulico-uchupayaco/09-distribucion-velocidades.png
     width: 1320
     height: 1370
     alt: Distribución espacial de velocidades obtenida para el escenario con intervención.
     caption: Verificación hidráulica · Distribución de velocidades del flujo.
-    display: centered
   - type: image
     src: /media/projects/encauzamiento-hidraulico-uchupayaco/12-plano-planta.png
     width: 1250
@@ -98,6 +101,7 @@ media:
     alt: Planta general del trazado definido para la alternativa de encauzamiento.
     caption: Plano general · Planta del tramo intervenido.
     layout: wide
+    display: compact
   - type: image
     src: /media/projects/encauzamiento-hidraulico-uchupayaco/13-plano-perfil.png
     width: 1650
