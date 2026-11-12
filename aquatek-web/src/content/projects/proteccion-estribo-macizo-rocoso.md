@@ -60,6 +60,34 @@ media:
     caption: Macizo rocoso · Lectura de litología, estructura y meteorización como referencia complementaria.
     display: paired
   - type: image
+    src: /media/projects/proteccion-estribo-macizo-rocoso/11-vista-aerea.jpg
+    width: 1800
+    height: 1349
+    alt: Vista aérea del puente y del corredor fluvial evaluado.
+    caption: Vista aérea · Relación del puente con el corredor fluvial.
+    display: paired
+  - type: image
+    src: /media/projects/proteccion-estribo-macizo-rocoso/12-puente-cauce.jpg
+    width: 1800
+    height: 1349
+    alt: Vista de campo del puente y del cauce en el tramo analizado.
+    caption: Puente y cauce · Lectura de la sección y del apoyo.
+    display: paired
+  - type: image
+    src: /media/projects/proteccion-estribo-macizo-rocoso/13-muestra-material.jpg
+    width: 963
+    height: 1280
+    alt: Muestra de material recolectado durante el reconocimiento técnico.
+    caption: Muestra de material · Evidencia preparada para caracterización.
+    display: paired
+  - type: image
+    src: /media/projects/proteccion-estribo-macizo-rocoso/14-reconocimiento-orilla.jpg
+    width: 963
+    height: 1280
+    alt: Reconocimiento de campo ejecutado en la margen del cauce.
+    caption: Reconocimiento de margen · Condición observable junto al estribo.
+    display: paired
+  - type: image
     src: /media/projects/proteccion-estribo-macizo-rocoso/03-modelacion-hidraulica.png
     width: 900
     height: 875
@@ -67,19 +95,19 @@ media:
     caption: Modelación hidráulica · Lectura espacial del comportamiento del flujo.
     display: paired
   - type: image
-    src: /media/projects/proteccion-estribo-macizo-rocoso/04-socavacion.png
-    width: 1530
-    height: 1980
+    src: /media/projects/proteccion-estribo-macizo-rocoso/04-socavacion-detalle.jpg
+    width: 1190
+    height: 1530
     alt: Extracto gráfico de la evaluación de socavación asociada al estribo del puente.
     caption: Socavación · Síntesis gráfica del análisis aplicado al apoyo.
     display: paired
   - type: image
-    src: /media/projects/proteccion-estribo-macizo-rocoso/05-levantamiento-3d.png
-    width: 1530
-    height: 1980
+    src: /media/projects/proteccion-estribo-macizo-rocoso/05-levantamiento-3d-detalle.jpg
+    width: 2200
+    height: 900
     alt: Representación tridimensional del levantamiento del cauce y del entorno del puente.
     caption: Levantamiento · Representación tridimensional del tramo evaluado.
-    display: paired
+    layout: wide
   - type: image
     src: /media/projects/proteccion-estribo-macizo-rocoso/06-proteccion.png
     width: 1120
@@ -95,11 +123,18 @@ media:
     caption: Planta general · Implantación de la alternativa en el tramo del puente.
     layout: wide
   - type: image
-    src: /media/projects/proteccion-estribo-macizo-rocoso/08-secciones.png
-    width: 1920
-    height: 1080
-    alt: Derivado web con secciones transversales representativas del cauce y la intervención.
-    caption: Secciones transversales · Relación entre terreno, cauce y geometría propuesta.
+    src: /media/projects/proteccion-estribo-macizo-rocoso/08-secciones-01-acercamiento.jpg
+    width: 2400
+    height: 1500
+    alt: Acercamiento web a las secciones transversales del primer tramo del cauce.
+    caption: Secciones transversales · Primer tramo con mayor escala de lectura.
+    layout: wide
+  - type: image
+    src: /media/projects/proteccion-estribo-macizo-rocoso/09-secciones-02-acercamiento.jpg
+    width: 2400
+    height: 1500
+    alt: Acercamiento web a las secciones transversales del segundo tramo del cauce.
+    caption: Secciones transversales · Segundo tramo con mayor escala de lectura.
     layout: wide
   - type: image
     src: /media/projects/proteccion-estribo-macizo-rocoso/09-perfil.png
@@ -109,9 +144,9 @@ media:
     caption: Perfil longitudinal · Coordinación altimétrica de la intervención.
     layout: wide
   - type: image
-    src: /media/projects/proteccion-estribo-macizo-rocoso/10-proteccion.png
-    width: 1920
-    height: 1080
+    src: /media/projects/proteccion-estribo-macizo-rocoso/10-proteccion-detalle.jpg
+    width: 2400
+    height: 1985
     alt: Derivado web de los detalles técnicos de protección del estribo.
     caption: Detalle del estribo · Configuración gráfica de la solución de protección.
     layout: wide
