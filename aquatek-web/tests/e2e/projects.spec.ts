@@ -54,9 +54,15 @@ test('presenta los proyectos publicados', async ({ page }, testInfo) => {
       exact: true,
     }),
   ).toBeVisible();
+  await expect(
+    page.getByRole('link', {
+      name: 'Estudio hidráulico y de socavación para puente',
+      exact: true,
+    }),
+  ).toBeVisible();
 
   const coverLinks = page.locator('a.project-card__visual');
-  await expect(coverLinks).toHaveCount(8);
+  await expect(coverLinks).toHaveCount(9);
   for (const coverLink of await coverLinks.all()) {
     await expect(coverLink).toHaveAttribute('href', /\/proyectos\/[a-z0-9-]+\/$/);
   }
@@ -67,7 +73,7 @@ test('presenta los proyectos publicados', async ({ page }, testInfo) => {
       return bounds.width / bounds.height;
     }),
   );
-  expect(visualRatios).toHaveLength(8);
+  expect(visualRatios).toHaveLength(9);
   for (const visualRatio of visualRatios) {
     expect(visualRatio).toBeGreaterThan(1.7);
     expect(visualRatio).toBeLessThan(1.85);
