@@ -57,7 +57,7 @@ media:
     height: 1012
     alt: Vista aérea del cauce y del puente existente en el corredor estudiado.
     caption: Reconocimiento aéreo · Relación entre el cauce, el puente y las márgenes.
-    display: centered
+    layout: wide
   - type: image
     src: /media/projects/estudio-puente-sangoyaco/01-figura-05-cuencas.jpg
     width: 1285
@@ -120,7 +120,7 @@ media:
     height: 1003
     alt: Curva granulométrica integrada para el material del lecho del río.
     caption: Material del lecho · Integración del ensayo externo y el análisis de material grueso.
-    display: centered
+    display: paired
   - type: image
     src: /media/projects/estudio-puente-sangoyaco/18-figura-38-socavacion-general.jpg
     width: 1550
