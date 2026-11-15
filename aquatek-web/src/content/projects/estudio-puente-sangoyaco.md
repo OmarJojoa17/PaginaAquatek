@@ -54,10 +54,10 @@ media:
   - type: image
     src: /media/projects/estudio-puente-sangoyaco/aerea-01.jpg
     width: 1800
-    height: 1349
+    height: 1012
     alt: Vista aérea del cauce y del puente existente en el corredor estudiado.
     caption: Reconocimiento aéreo · Relación entre el cauce, el puente y las márgenes.
-    layout: wide
+    display: centered
   - type: image
     src: /media/projects/estudio-puente-sangoyaco/01-figura-05-cuencas.jpg
     width: 1285
@@ -75,7 +75,7 @@ media:
   - type: image
     src: /media/projects/estudio-puente-sangoyaco/07-figura-23-modelo-hec-hms.jpg
     width: 1489
-    height: 924
+    height: 816
     alt: Representación del modelo hidrológico construido en HEC-HMS.
     caption: Modelo HEC-HMS · Esquematización de cuencas y conexiones hidrológicas.
     layout: wide
@@ -120,7 +120,7 @@ media:
     height: 1003
     alt: Curva granulométrica integrada para el material del lecho del río.
     caption: Material del lecho · Integración del ensayo externo y el análisis de material grueso.
-    layout: wide
+    display: centered
   - type: image
     src: /media/projects/estudio-puente-sangoyaco/18-figura-38-socavacion-general.jpg
     width: 1550
