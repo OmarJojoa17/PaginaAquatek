@@ -62,7 +62,7 @@ test('presenta los proyectos publicados', async ({ page }, testInfo) => {
   ).toBeVisible();
 
   const coverLinks = page.locator('a.project-card__visual');
-  await expect(coverLinks).toHaveCount(9);
+  await expect(coverLinks).toHaveCount(10);
   for (const coverLink of await coverLinks.all()) {
     await expect(coverLink).toHaveAttribute('href', /\/proyectos\/[a-z0-9-]+\/$/);
   }
