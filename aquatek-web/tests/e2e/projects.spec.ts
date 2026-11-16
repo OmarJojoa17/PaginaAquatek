@@ -73,7 +73,7 @@ test('presenta los proyectos publicados', async ({ page }, testInfo) => {
       return bounds.width / bounds.height;
     }),
   );
-  expect(visualRatios).toHaveLength(9);
+  expect(visualRatios).toHaveLength(10);
   for (const visualRatio of visualRatios) {
     expect(visualRatio).toBeGreaterThan(1.7);
     expect(visualRatio).toBeLessThan(1.85);
