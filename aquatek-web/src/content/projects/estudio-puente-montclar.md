@@ -3,7 +3,7 @@ slug: estudio-puente-montclar
 title: Estudio hidrológico, hidráulico y de socavación · Puente Montclar
 headline: Del reconocimiento de la cuenca a la evaluación hidráulica del cruce.
 summary: Estudio integral para el puente peatonal sobre el río Mocoa en la vereda Montclar, con reconocimiento aéreo, hidrología, modelación HEC-HMS y HEC-RAS, caracterización del lecho y evaluación de socavación.
-cover: /media/projects/estudio-puente-montclar/photos/02-puente-aereo-aguas-arriba.jpg
+cover: /media/projects/estudio-puente-montclar/video-poster.png
 discipline: river-engineering
 relatedDisciplines: [hydrology]
 publicationStatus: published
