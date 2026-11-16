@@ -56,7 +56,7 @@ media:
     height: 1798
     alt: Vista aérea del valle y de la cuenca del río Mocoa en el entorno de Montclar.
     caption: Contexto territorial · Relieve, cobertura vegetal y corredor fluvial de la cuenca.
-    layout: wide
+    display: balanced
   - type: image
     src: /media/projects/estudio-puente-montclar/photos/02-puente-aereo-aguas-arriba.jpg
     width: 2400
@@ -119,7 +119,7 @@ media:
     height: 669
     alt: Hidrograma unitario SCS preparado para la cuenca de estudio.
     caption: Respuesta hidrológica · Hidrograma unitario de la cuenca.
-    layout: wide
+    display: balanced
   - type: image
     src: /media/projects/estudio-puente-montclar/figures/04-modelo-hec-hms.jpg
     width: 898
@@ -140,7 +140,7 @@ media:
     height: 933
     alt: Plano topográfico y batimétrico del sector del puente.
     caption: Base geométrica · Topografía y batimetría del emplazamiento.
-    layout: wide
+    display: balanced
   - type: image
     src: /media/projects/estudio-puente-montclar/figures/07-geometria-terreno.jpg
     width: 925
@@ -175,7 +175,7 @@ media:
     height: 740
     alt: Perfil de la lámina de agua bajo el puente y revisión del gálibo.
     caption: Perfil hidráulico · Lámina de agua de diseño bajo el puente.
-    layout: wide
+    display: balanced
   - type: image
     src: /media/projects/estudio-puente-montclar/figures/12-velocidades-seccion.jpg
     width: 953
@@ -196,7 +196,7 @@ media:
     height: 898
     alt: Curva granulométrica integrada del material del lecho.
     caption: Granulometría integrada · D50 de 25.00 mm y D84 de 89.89 mm.
-    layout: wide
+    display: balanced
   - type: image
     src: /media/projects/estudio-puente-montclar/figures/15-socavacion-general.jpg
     width: 1034
