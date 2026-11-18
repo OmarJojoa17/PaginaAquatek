@@ -66,9 +66,15 @@ test('presenta los proyectos publicados', async ({ page }, testInfo) => {
       exact: true,
     }),
   ).toBeVisible();
+  await expect(
+    page.getByRole('link', {
+      name: 'Diseño de alcantarillado sanitario y pluvial · Villa Nova',
+      exact: true,
+    }),
+  ).toBeVisible();
 
   const coverLinks = page.locator('a.project-card__visual');
-  await expect(coverLinks).toHaveCount(11);
+  await expect(coverLinks).toHaveCount(12);
   for (const coverLink of await coverLinks.all()) {
     await expect(coverLink).toHaveAttribute('href', /\/proyectos\/[a-z0-9-]+\/$/);
   }
@@ -79,7 +85,7 @@ test('presenta los proyectos publicados', async ({ page }, testInfo) => {
       return bounds.width / bounds.height;
     }),
   );
-  expect(visualRatios).toHaveLength(11);
+  expect(visualRatios).toHaveLength(12);
   for (const visualRatio of visualRatios) {
     expect(visualRatio).toBeGreaterThan(1.7);
     expect(visualRatio).toBeLessThan(1.85);
@@ -129,6 +135,8 @@ test('el proyecto genera una ruta pública y entra al sitemap', async ({ request
   expect(uchupayacoResponse.status()).toBe(200);
   const villaNovaResponse = await request.get('/proyectos/diseno-acueducto-villa-nova/');
   expect(villaNovaResponse.status()).toBe(200);
+  const sewerVillaNovaResponse = await request.get('/proyectos/alcantarillado-villa-nova/');
+  expect(sewerVillaNovaResponse.status()).toBe(200);
 
   const sitemap = await (await request.get('/sitemap.xml')).text();
   expect(sitemap).toContain('https://aquatek.invalid/proyectos/');
@@ -140,6 +148,7 @@ test('el proyecto genera una ruta pública y entra al sitemap', async ({ request
   expect(sitemap).toContain('/proyectos/encauzamiento-cauce/');
   expect(sitemap).toContain('/proyectos/encauzamiento-hidraulico-uchupayaco/');
   expect(sitemap).toContain('/proyectos/diseno-acueducto-villa-nova/');
+  expect(sitemap).toContain('/proyectos/alcantarillado-villa-nova/');
 });
 
 test('la ficha abre con portada y luego presenta el video', async ({ page }, testInfo) => {
