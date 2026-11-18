@@ -50,21 +50,14 @@ media:
     caption: Plano hidráulico · Trazado, nodos, diámetros, caudales y presiones de la red.
     width: 2050
     height: 3180
-    display: balanced
+    display: compact
   - type: image
     src: /media/projects/diseno-acueducto-villa-nova/02-plano-constructivo-red.png
     alt: Plano constructivo de la red interna de acueducto del conjunto residencial Villa Nova.
     caption: Plano constructivo · Implantación coordinada de tuberías, nodos y accesorios.
     width: 2050
     height: 3180
-    display: balanced
-  - type: image
-    src: /media/projects/diseno-acueducto-villa-nova/03-detalles-constructivos.png
-    alt: Detalles constructivos de acometidas domiciliarias, cajas para medidor y cajas para válvula.
-    caption: Detalles constructivos · Acometida, medidor, válvula y especificaciones de instalación.
-    width: 850
-    height: 2050
-    display: balanced
+    display: compact
   - type: image
     src: /media/projects/diseno-acueducto-villa-nova/04-nodos-consumo.png
     alt: Distribución de nodos de consumo en las viviendas del conjunto Villa Nova.
@@ -83,9 +76,9 @@ media:
     src: /media/projects/diseno-acueducto-villa-nova/06-modelo-hidraulico.png
     alt: Modelo hidráulico completo de la red de distribución del conjunto Villa Nova.
     caption: Modelo hidráulico · Configuración general de la red y ubicación de la purga recomendada.
-    width: 520
-    height: 1000
-    display: balanced
+    width: 420
+    height: 625
+    display: compact
   - type: image
     src: /media/projects/diseno-acueducto-villa-nova/07-presiones-sector-1.png
     alt: Presiones disponibles en el primer sector de la red de distribución.
