@@ -3,7 +3,7 @@ slug: alcantarillado-villa-nova
 title: Diseño de alcantarillado sanitario y pluvial · Villa Nova
 headline: Dos redes coordinadas para sanear y drenar la urbanización.
 summary: Diseño sanitario y pluvial de Villa Nova, con plantas generales, perfiles longitudinales, análisis demográfico e hidrológico y criterios constructivos para zanjas y estructuras.
-cover: /media/projects/alcantarillado-villa-nova/03-plano-pluvial.png
+cover: /media/projects/alcantarillado-villa-nova/video-poster.png
 discipline: sewerage
 relatedDisciplines:
   - hydrology
