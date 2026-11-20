@@ -97,9 +97,9 @@ media:
     src: /media/projects/diseno-acueducto-villa-nova/09-velocidades-sector-1.png
     alt: Velocidades calculadas en los tramos del primer sector de la red.
     caption: Velocidades en tuberías · Sector superior de la red.
-    width: 875
-    height: 1320
-    display: paired
+    width: 1750
+    height: 650
+    layout: wide
   - type: image
     src: /media/projects/diseno-acueducto-villa-nova/10-velocidades-sector-2.png
     alt: Velocidades calculadas en los tramos del segundo sector de la red.
