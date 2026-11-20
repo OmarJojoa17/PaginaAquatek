@@ -51,29 +51,29 @@ media:
     src: /media/projects/alcantarillado-villa-nova/01-plano-sanitario.png
     alt: Plano general completo de la red de alcantarillado sanitario de Villa Nova.
     caption: Red sanitaria · Planta general con colectores, pozos y conexión.
-    width: 2835
-    height: 2004
+    width: 1619
+    height: 793
     layout: wide
   - type: image
     src: /media/projects/alcantarillado-villa-nova/02-perfiles-sanitario.png
     alt: Plano completo de perfiles longitudinales y detalles del alcantarillado sanitario.
     caption: Red sanitaria · Perfiles longitudinales y detalles constructivos.
-    width: 2835
-    height: 2004
+    width: 849
+    height: 637
     layout: wide
   - type: image
     src: /media/projects/alcantarillado-villa-nova/03-plano-pluvial.png
     alt: Plano general completo de la red de alcantarillado pluvial de Villa Nova.
     caption: Red pluvial · Planta general de captación y conducción.
-    width: 2835
-    height: 2004
+    width: 1620
+    height: 802
     layout: wide
   - type: image
     src: /media/projects/alcantarillado-villa-nova/04-perfiles-pluvial.png
     alt: Plano completo de perfiles longitudinales, sumideros y secciones de la red pluvial.
     caption: Red pluvial · Perfiles, sumideros y secciones constructivas.
-    width: 2835
-    height: 2004
+    width: 785
+    height: 614
     layout: wide
   - type: image
     src: /media/projects/alcantarillado-villa-nova/05-poblacion-lineal.png
