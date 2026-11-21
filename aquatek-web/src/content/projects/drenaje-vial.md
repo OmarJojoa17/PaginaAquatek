@@ -1,6 +1,6 @@
 ---
 slug: drenaje-vial
-title: Diseño hidrológico e hidráulico de drenaje vial · La Cabaña
+title: Diseño hidrológico e hidráulico de drenaje vial
 headline: Escorrentía organizada para proteger un corredor vial crítico.
 summary: Diseño de las obras de drenaje para el corredor La Cabaña Rivera-1, con análisis hidrológico, áreas de aporte, alcantarillas, cunetas y una caída escalonada.
 discipline: road-drainage
