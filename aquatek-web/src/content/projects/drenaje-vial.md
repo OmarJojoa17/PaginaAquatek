@@ -105,14 +105,14 @@ media:
     src: /media/projects/drenaje-vial/figura-08-secciones-cuneta.webp
     alt: Secciones transversales típicas del bordillo y la cuneta proyectada.
     caption: Secciones típicas de drenaje longitudinal.
-    width: 940
-    height: 380
+    width: 985
+    height: 435
   - type: image
     src: /media/projects/drenaje-vial/figura-09-curva-cuneta.webp
     alt: Curva de capacidad hidráulica de la cuneta y el bordillo.
     caption: Curva de capacidad de la cuneta propuesta.
-    width: 920
-    height: 485
+    width: 965
+    height: 695
   - type: image
     src: /media/projects/drenaje-vial/figura-10-datos-entrada-caida.webp
     alt: Datos de entrada utilizados para diseñar la caída escalonada.
@@ -123,8 +123,8 @@ media:
     src: /media/projects/drenaje-vial/figura-11-caida-escalonada.webp
     alt: Esquema técnico de la caída escalonada propuesta en K0+067.92.
     caption: Esquema de la caída escalonada propuesta.
-    width: 1020
-    height: 520
+    width: 1070
+    height: 485
 ---
 
 El proyecto articula la información hidrológica con la geometría del corredor para definir soluciones
