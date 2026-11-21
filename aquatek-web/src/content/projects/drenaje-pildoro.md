@@ -49,21 +49,31 @@ media:
     }
   - {
       type: image,
-      src: /media/projects/drenaje-pildoro/plano-01-planta-general.webp,
-      alt: Planta general del corredor vial con sus obras de drenaje.,
-      caption: Planta general · Corredor y obras de drenaje.,
-      width: 2400,
-      height: 1908,
+      src: /media/projects/drenaje-pildoro/plano-01-tramo-estructuras.webp,
+      alt: Tramo ampliado del corredor vial con alcantarillas y canales de alivio.,
+      caption: Planta ampliada · Tramo con estructuras de drenaje.,
+      width: 1850,
+      height: 1220,
       layout: wide,
       display: compact,
     }
   - {
       type: image,
-      src: /media/projects/drenaje-pildoro/plano-02-secciones-detalles.webp,
-      alt: Plano de secciones transversales alcantarillas y canales de alivio.,
-      caption: Secciones y detalles · Alcantarillas y alivios.,
-      width: 2400,
-      height: 2224,
+      src: /media/projects/drenaje-pildoro/plano-02a-secciones-transversales.webp,
+      alt: Secciones transversales ampliadas de las alcantarillas existentes y proyectadas.,
+      caption: Secciones transversales · Alcantarillas del corredor.,
+      width: 2200,
+      height: 1256,
+      layout: wide,
+      display: compact,
+    }
+  - {
+      type: image,
+      src: /media/projects/drenaje-pildoro/plano-02b-canales-alivio.webp,
+      alt: Detalles ampliados de los canales laterales de alivio.,
+      caption: Detalles constructivos · Canales de alivio.,
+      width: 1350,
+      height: 670,
       layout: wide,
       display: compact,
     }
@@ -125,11 +135,11 @@ media:
     }
   - {
       type: image,
-      src: /media/projects/drenaje-pildoro/figura-08-registro-humedal.webp,
-      alt: Registro fotográfico del humedal en la vía proyectada.,
+      src: /media/projects/drenaje-pildoro/figura-08-humedal-dos-fotos.webp,
+      alt: Dos fotografías de la vegetación y el terreno del humedal sin rostros visibles.,
       caption: Diagnóstico de campo · Sector del humedal.,
       width: 915,
-      height: 1050,
+      height: 630,
     }
   - {
       type: image,
