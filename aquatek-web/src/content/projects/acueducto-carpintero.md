@@ -51,6 +51,7 @@ media:
     width: 1402
     height: 1095
     layout: wide
+    display: balanced
   - type: image
     src: /media/projects/acueducto-carpintero/figura-01-curva-hipsometrica.png
     alt: Curva hipsométrica y frecuencia de altitudes de la cuenca de la quebrada Carpintero.
@@ -58,6 +59,7 @@ media:
     width: 1395
     height: 885
     layout: wide
+    display: balanced
   - type: image
     src: /media/projects/acueducto-carpintero/figura-03-precipitacion.png
     alt: Serie de precipitación promedio mensual de la cuenca entre 1997 y 2024.
@@ -89,13 +91,15 @@ media:
     width: 1448
     height: 1132
     layout: wide
+    display: balanced
   - type: image
     src: /media/projects/acueducto-carpintero/figura-08-caudales-minimos.png
-    alt: Tabla y gráfica de caudales mínimos por regionalización para diferentes periodos de retorno.
+    alt: Gráfica de caudales mínimos por regionalización para diferentes periodos de retorno.
     caption: Condiciones secas · Caudales mínimos evaluados para la quebrada Carpintero.
-    width: 1402
-    height: 1388
+    width: 1260
+    height: 810
     layout: wide
+    display: centered
 ---
 
 El estudio organiza la evidencia disponible para una cuenca sin medición directa de caudales y
