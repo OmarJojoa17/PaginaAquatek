@@ -74,7 +74,7 @@ test('presenta los proyectos publicados', async ({ page }, testInfo) => {
   ).toBeVisible();
 
   const coverLinks = page.locator('a.project-card__visual');
-  await expect(coverLinks).toHaveCount(14);
+  await expect(coverLinks).toHaveCount(15);
   for (const coverLink of await coverLinks.all()) {
     await expect(coverLink).toHaveAttribute('href', /\/proyectos\/[a-z0-9-]+\/$/);
   }
@@ -85,7 +85,7 @@ test('presenta los proyectos publicados', async ({ page }, testInfo) => {
       return bounds.width / bounds.height;
     }),
   );
-  expect(visualRatios).toHaveLength(14);
+  expect(visualRatios).toHaveLength(15);
   for (const visualRatio of visualRatios) {
     expect(visualRatio).toBeGreaterThan(1.7);
     expect(visualRatio).toBeLessThan(1.85);
