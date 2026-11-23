@@ -52,10 +52,10 @@ media:
       src: /media/projects/chequeo-conduccion/figura-01-localizacion.png,
       alt: Localización de la captación el trazado y la PTAP en Sibundoy.,
       caption: 'Localización · Conducción entre la quebrada El Carpintero y la PTAP.',
-      width: 1010,
-      height: 1665,
+      width: 1235,
+      height: 1265,
       layout: wide,
-      display: centered,
+      display: compact,
     }
   - {
       type: image,
@@ -92,7 +92,7 @@ media:
       alt: Tabla de presión máxima y tiempo crítico por golpe de ariete.,
       caption: 'Golpe de ariete · Presiones máximas y tiempos críticos.',
       width: 1450,
-      height: 700,
+      height: 570,
       layout: wide,
       display: balanced,
     }
@@ -101,18 +101,28 @@ media:
       src: /media/projects/chequeo-conduccion/figura-02-modelo-epanet.png,
       alt: Modelo EPANET completo de la conducción.,
       caption: 'Modelación · Captación, desarenador, cámaras y PTAP.',
-      width: 850,
-      height: 1800,
+      width: 1050,
+      height: 1540,
       layout: wide,
-      display: centered,
+      display: compact,
     }
   - {
       type: image,
-      src: /media/projects/chequeo-conduccion/figura-03-perfiles-presion.png,
-      alt: Perfiles de presión de los primeros tramos.,
-      caption: 'Presión · Perfiles longitudinales.',
-      width: 1450,
-      height: 1750,
+      src: /media/projects/chequeo-conduccion/figura-03a-perfil-presion.png,
+      alt: Perfil de presión entre la captación y el desarenador.,
+      caption: 'Presión · Captación a desarenador.',
+      width: 1425,
+      height: 560,
+      layout: wide,
+      display: balanced,
+    }
+  - {
+      type: image,
+      src: /media/projects/chequeo-conduccion/figura-03b-perfil-presion.png,
+      alt: Perfil de presión entre el desarenador y la primera cámara de quiebre.,
+      caption: 'Presión · Desarenador a cámara de quiebre No. 1.',
+      width: 1425,
+      height: 560,
       layout: wide,
       display: balanced,
     }
@@ -142,7 +152,7 @@ media:
       alt: Perfil longitudinal del primer tramo.,
       caption: 'Lámina 2 · Perfil longitudinal asociado.',
       width: 1800,
-      height: 540,
+      height: 470,
       layout: wide,
       display: balanced,
     }
@@ -162,7 +172,7 @@ media:
       alt: Perfil longitudinal del tramo intermedio.,
       caption: 'Lámina 3 · Perfil longitudinal asociado.',
       width: 1800,
-      height: 540,
+      height: 470,
       layout: wide,
       display: balanced,
     }
@@ -182,7 +192,7 @@ media:
       alt: Perfil longitudinal del tramo final.,
       caption: 'Lámina 4 · Perfil longitudinal asociado.',
       width: 1800,
-      height: 540,
+      height: 470,
       layout: wide,
       display: balanced,
     }
