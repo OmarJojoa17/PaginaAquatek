@@ -38,6 +38,12 @@ test('presenta los proyectos publicados', async ({ page }, testInfo) => {
   ).toBeVisible();
   await expect(
     page.getByRole('link', {
+      name: 'Drenaje vial del corredor Puerto Guzmán–Santa Lucía',
+      exact: true,
+    }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole('link', {
       name: 'Optimización de acueducto veredal con captación flotante',
       exact: true,
     }),
@@ -74,7 +80,7 @@ test('presenta los proyectos publicados', async ({ page }, testInfo) => {
   ).toBeVisible();
 
   const coverLinks = page.locator('a.project-card__visual');
-  await expect(coverLinks).toHaveCount(15);
+  await expect(coverLinks).toHaveCount(16);
   for (const coverLink of await coverLinks.all()) {
     await expect(coverLink).toHaveAttribute('href', /\/proyectos\/[a-z0-9-]+\/$/);
   }
@@ -85,7 +91,7 @@ test('presenta los proyectos publicados', async ({ page }, testInfo) => {
       return bounds.width / bounds.height;
     }),
   );
-  expect(visualRatios).toHaveLength(15);
+  expect(visualRatios).toHaveLength(16);
   for (const visualRatio of visualRatios) {
     expect(visualRatio).toBeGreaterThan(1.7);
     expect(visualRatio).toBeLessThan(1.85);
@@ -127,6 +133,8 @@ test('el proyecto genera una ruta pública y entra al sitemap', async ({ request
   expect(gavionesResponse.status()).toBe(200);
   const drenajeVialResponse = await request.get('/proyectos/drenaje-vial/');
   expect(drenajeVialResponse.status()).toBe(200);
+  const santaLuciaResponse = await request.get('/proyectos/drenaje-vial-santa-lucia/');
+  expect(santaLuciaResponse.status()).toBe(200);
   const acueductoResponse = await request.get('/proyectos/optimizacion-acueducto-veredal/');
   expect(acueductoResponse.status()).toBe(200);
   const encauzamientoResponse = await request.get('/proyectos/encauzamiento-cauce/');
@@ -144,6 +152,7 @@ test('el proyecto genera una ruta pública y entra al sitemap', async ({ request
   expect(sitemap).toContain('/proyectos/alcantarillado-pluvial-orito/');
   expect(sitemap).toContain('/proyectos/gaviones-defensa-riberena/');
   expect(sitemap).toContain('/proyectos/drenaje-vial/');
+  expect(sitemap).toContain('/proyectos/drenaje-vial-santa-lucia/');
   expect(sitemap).toContain('/proyectos/optimizacion-acueducto-veredal/');
   expect(sitemap).toContain('/proyectos/encauzamiento-cauce/');
   expect(sitemap).toContain('/proyectos/encauzamiento-hidraulico-uchupayaco/');
