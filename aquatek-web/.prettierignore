@@ -3,4 +3,5 @@ dist/
 node_modules/
 playwright-report/
 test-results/
+tmp/
 pnpm-lock.yaml
